@@ -1,0 +1,67 @@
+{% extends 'vtr/base.html' %}
+
+{% block title %}Home{% endblock %}
+
+{% block body_block %}
+<body>
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-3" id="left">
+            
+            <ul>
+                    <h3>{{ user.username}}</h3>
+                    {% for users in userprofile %}
+                        {{ users.rollnumber }}
+                        <br><br>
+                        {{ users.year }}
+                        <br><br>
+                        {{ users.branch }}
+                    {% endfor %}
+            </ul>
+        </div>
+        <div class="col-lg-6" id="middle">
+        
+            <ul>
+                {% for query in singlequery %}
+                    
+                    {{ query.created_at }}
+                    <br>
+                    {{ query.content }}
+                    <br>
+                    {{ query.tag }}
+                    <br>
+                    {{ query.views }}
+                    <br><br>
+                {% endfor %}
+            </ul>
+        
+        </div>
+        <div class="col-lg-3" id="right">
+            <div>
+                <h3>Popular Query</h3>
+                <ul>
+                    {% for query in popularquery %}
+                        {{ query.content }} 
+                        <br>
+                    {% endfor %}    
+                </ul>
+            </div><br>
+        <div>
+            <h3>Branch Catagories<h3/>
+            <ul style="list-style-type: none" class="blist">
+                <li>Computer Science</li>
+                <li>Information Technology</li>
+                <li>Electronics and Communications</li>
+                <li>Mechanical Engineering</li>
+                <li>Electrical Engineering</li>
+                <li>Civil Engineering</li>
+                
+            </ul>
+        </div>    
+        </div>
+    </div>
+</div>
+
+</body>
+{% endblock %}

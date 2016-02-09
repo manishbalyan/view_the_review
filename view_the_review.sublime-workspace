@@ -1,0 +1,1080 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"fon",
+				"font-family"
+			],
+			[
+				"text",
+				"text-align"
+			],
+			[
+				"po",
+				"position"
+			],
+			[
+				"wid",
+				"width"
+			],
+			[
+				"Q",
+				"QueryForm"
+			],
+			[
+				"user",
+				"userprofile"
+			],
+			[
+				"b",
+				"branch"
+			],
+			[
+				"con",
+				"context_dict"
+			],
+			[
+				"CE",
+				"CE"
+			],
+			[
+				"C",
+				"CSE"
+			],
+			[
+				"l",
+				"loader"
+			],
+			[
+				"User",
+				"UserProfile"
+			],
+			[
+				"bo",
+				"border-radius"
+			],
+			[
+				"i",
+				"id	Attr"
+			],
+			[
+				"a",
+				"align	Attr"
+			],
+			[
+				"wi",
+				"max-width"
+			],
+			[
+				"d",
+				"default"
+			],
+			[
+				"M",
+				"models"
+			],
+			[
+				"model",
+				"models"
+			],
+			[
+				"U",
+				"UserProfile"
+			],
+			[
+				"he",
+				"help_text"
+			],
+			[
+				"pro",
+				"profile_form"
+			],
+			[
+				"Cho",
+				"CHOICES"
+			],
+			[
+				"Re",
+				"required"
+			],
+			[
+				"re",
+				"required"
+			],
+			[
+				"cle",
+				"cleaned_data"
+			],
+			[
+				"for",
+				"forms"
+			],
+			[
+				"ba",
+				"background-image"
+			],
+			[
+				"colo",
+				"background-color"
+			],
+			[
+				"STA",
+				"STATIC_PATH"
+			],
+			[
+				"TEM",
+				"TEMPLATE_PATH"
+			],
+			[
+				"back",
+				"background-image"
+			],
+			[
+				"p",
+				"p	Tag"
+			],
+			[
+				"de",
+				"default"
+			],
+			[
+				"get",
+				"get_popular_posts"
+			],
+			[
+				"Post",
+				"PostForm"
+			],
+			[
+				"url",
+				"url"
+			],
+			[
+				"li",
+				"li	Tag"
+			],
+			[
+				"st",
+				"style	Tag"
+			],
+			[
+				"PRO",
+				"PROJECT_ROOT"
+			],
+			[
+				"O",
+				"os"
+			],
+			[
+				"m",
+				"max_length"
+			],
+			[
+				"post",
+				"post_url"
+			],
+			[
+				"pr",
+				"PROJECT_ROOT"
+			],
+			[
+				"H",
+				"HttpResponse"
+			],
+			[
+				"te",
+				"TEMPLATE_DIRS"
+			],
+			[
+				"P",
+				"PROJECT_PATH"
+			],
+			[
+				"Pr",
+				"PROJECT_ROOT"
+			],
+			[
+				"S",
+				"SETTINGS_DIR"
+			],
+			[
+				"__",
+				"__file__"
+			],
+			[
+				"htt",
+				"HttpResponse"
+			],
+			[
+				"al",
+				"text-align"
+			],
+			[
+				"background",
+				"background-color"
+			],
+			[
+				"res",
+				"response"
+			],
+			[
+				"if",
+				"ifmain	if __name__ == '__main__'"
+			],
+			[
+				"I",
+				"IntegrityError"
+			],
+			[
+				"s",
+				"sqlalchemy"
+			],
+			[
+				"o",
+				"open_tasks"
+			],
+			[
+				"no",
+				"None"
+			],
+			[
+				"font",
+				"font-size"
+			],
+			[
+				"padd",
+				"padding-top"
+			],
+			[
+				"max",
+				"max-width"
+			],
+			[
+				"old",
+				"old_tasks"
+			],
+			[
+				"poste",
+				"posted_date"
+			],
+			[
+				"pos",
+				"posted_date"
+			],
+			[
+				"reu",
+				"return"
+			],
+			[
+				"ne",
+				"new_user"
+			],
+			[
+				"register",
+				"register"
+			],
+			[
+				"Pass",
+				"PasswordField"
+			],
+			[
+				"pa",
+				"Password"
+			],
+			[
+				"da",
+				"DataRequired"
+			],
+			[
+				"col",
+				"Column"
+			],
+			[
+				"tr",
+				"True"
+			],
+			[
+				"co",
+				"Column"
+			],
+			[
+				"DA",
+				"DATABASE_PATH"
+			],
+			[
+				"fi",
+				"filter_by"
+			],
+			[
+				"T",
+				"Task"
+			],
+			[
+				"new",
+				"new_task"
+			],
+			[
+				"nw",
+				"new_task"
+			],
+			[
+				"add",
+				"AddTaskForm"
+			],
+			[
+				"c",
+				"Column"
+			],
+			[
+				"du",
+				"DataRequired"
+			],
+			[
+				"D",
+				"DataRequired"
+			],
+			[
+				"Dat",
+				"DataField"
+			],
+			[
+				"th",
+				"th	Tag"
+			],
+			[
+				"op",
+				"option	Tag"
+			],
+			[
+				"wh",
+				"where"
+			],
+			[
+				"tas",
+				"task_id"
+			],
+			[
+				"task",
+				"task_id"
+			],
+			[
+				"t",
+				"task_id"
+			],
+			[
+				"u",
+				"url_for"
+			],
+			[
+				"conn",
+				"connect_db"
+			],
+			[
+				"ac",
+				"action	Attr"
+			],
+			[
+				"r",
+				"return"
+			],
+			[
+				"red",
+				"redirect"
+			],
+			[
+				"login",
+				"login_required"
+			],
+			[
+				"meth",
+				"methods"
+			],
+			[
+				"in",
+				"input"
+			],
+			[
+				"Pa",
+				"PASSWORD"
+			],
+			[
+				"fo",
+				"form"
+			],
+			[
+				"h",
+				"html	html"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "view_the_review/vtr/forms.py",
+			"settings":
+			{
+				"buffer_size": 883,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "view_the_review/vtr/models.py",
+			"settings":
+			{
+				"buffer_size": 931,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "view_the_review/vtr/views.py",
+			"settings":
+			{
+				"buffer_size": 4482,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "view_the_review/vtr/admin.py",
+			"settings":
+			{
+				"buffer_size": 164,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "view_the_review/vtr/urls.py",
+			"settings":
+			{
+				"buffer_size": 570,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "view_the_review/templates/vtr/base.html",
+			"settings":
+			{
+				"buffer_size": 4151,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "view_the_review/templates/vtr/index.html",
+			"settings":
+			{
+				"buffer_size": 1884,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "view_the_review/templates/vtr/add_query.html",
+			"settings":
+			{
+				"buffer_size": 470,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "view_the_review/templates/vtr/register.html",
+			"settings":
+			{
+				"buffer_size": 916,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "view_the_review/static/css/style.css",
+			"settings":
+			{
+				"buffer_size": 494,
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 75.0,
+		"last_filter": "install",
+		"selected_items":
+		[
+			[
+				"install",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 449.0
+	},
+	"console":
+	{
+		"height": 139.0,
+		"history":
+		[
+			"import urllib.request,os,hashlib; h = 'eb2297e1a458f27d836c04bb0cbaf282' + 'd0e7a3098092775ccb37ca9d6b2e4b7d'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by) ",
+			" import urllib.request,os,hashlib; h = 'eb2297e1a458f27d836c04bb0cbaf282' + 'd0e7a3098092775ccb37ca9d6b2e4b7d'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by) "
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/home/manish/Documents/view_the_review",
+		"/home/manish/Documents/view_the_review/view_the_review",
+		"/home/manish/Documents/view_the_review/view_the_review/static",
+		"/home/manish/Documents/view_the_review/view_the_review/static/css",
+		"/home/manish/Documents/view_the_review/view_the_review/templates",
+		"/home/manish/Documents/view_the_review/view_the_review/templates/vtr",
+		"/home/manish/Documents/view_the_review/view_the_review/vtr"
+	],
+	"file_history":
+	[
+		"/home/manish/Documents/view_the_review/view_the_review/static/css/style.css",
+		"/home/manish/Documents/view_the_review/view_the_review/templates/vtr/register.html",
+		"/home/manish/Documents/view_the_review/view_the_review/templates/vtr/login.html",
+		"/home/manish/Documents/view_the_review/view_the_review/templates/vtr/add_query.html",
+		"/home/manish/Documents/view_the_review/view_the_review/view_the_review/settings.py",
+		"/home/manish/Documents/reg.html",
+		"/home/manish/Documents/view_the_review/view_the_review/templates/vtr/index.html",
+		"/home/manish/Documents/view_the_review/view_the_review/vtr/admin.py",
+		"/home/manish/Documents/django_ecommerce/django_ecommerce/templates/payments/register.html",
+		"/home/manish/.config/sublime-text-3/Packages/Python Flake8 Lint/Flake8Lint.sublime-settings",
+		"/home/manish/.config/sublime-text-3/Packages/User/Flake8Lint.sublime-settings",
+		"/home/manish/Documents/view_the_review/view_the_review/vtr/models.py",
+		"/home/manish/Documents/view_the_review/view_the_review/view_the_review/urls.py",
+		"/home/manish/Documents/view_the_review/view_the_review/templates/vtr/contact.html",
+		"/home/manish/Documents/view_the_review/view_the_review/vtr/tests.py",
+		"/home/manish/Documents/Activity/view_the_review/demo/models.py",
+		"/home/manish/Documents/Activity/view_the_review/templates/vtr/register.html",
+		"/home/manish/Documents/bootstrap-3.2.0-dist/index.html",
+		"/home/manish/Documents/view_the_review/view_the_review/templates/vtr/add_post.html",
+		"/home/manish/Documents/view_the_review/view_the_review/vtr/views.py",
+		"/home/manish/Documents/view_the_review/view_the_review/vtr/urls.py",
+		"/home/manish/Documents/view_the_review/view_the_review/vtr/forms.py",
+		"/home/manish/Documents/Activity/view_the_review/view_the_review/settings.py",
+		"/home/manish/Documents/view_the_review/templates/demo/base.html",
+		"/home/manish/Documents/view_the_review/templates/demo/index.html",
+		"/home/manish/Documents/view_the_review/templates/demo/login.html",
+		"/home/manish/Documents/view_the_review/demo/forms.py",
+		"/home/manish/Documents/view_the_review/demo/models.py",
+		"/home/manish/Documents/view_the_review/templates/demo/register.html",
+		"/home/manish/Documents/view_the_review/demo/urls.py",
+		"/home/manish/Documents/view_the_review/templates/demo/add_post.html",
+		"/home/manish/Documents/view_the_review/demo/views.py",
+		"/home/manish/Documents/view_the_review/static/img/vtr.png",
+		"/home/manish/Documents/view_the_review/view_the_review/settings.py",
+		"/home/manish/Documents/view_the_review/templates/demo/contact.html",
+		"/home/manish/Documents/view_the_review/view_the_review/urls.py",
+		"/home/manish/Documents/bootstrap-3.2.0-dist/contact.html",
+		"/home/manish/Documents/books/django-bloggy/bloggy_project/blog/views.py",
+		"/home/manish/Documents/books/django-bloggy/bloggy_project/templates/blog/index.html",
+		"/home/manish/Documents/django-bloggy/wayapp_project/templates/blog/index.html",
+		"/home/manish/Documents/django-bloggy/wayapp_project/blog/urls.py",
+		"/home/manish/Documents/django-bloggy/wayapp_project/templates/blog/login.html",
+		"/home/manish/Documents/django-bloggy/wayapp_project/templates/base.html",
+		"/home/manish/Documents/django-bloggy/wayapp_project/templates/blog/post.html",
+		"/home/manish/Documents/django-bloggy/wayapp_project/blog/views.py",
+		"/home/manish/Documents/django-bloggy/wayapp_project/templates/blog/add_post.html",
+		"/home/manish/Documents/django-bloggy/wayapp_project/templates/blog/register.html",
+		"/home/manish/Documents/django-bloggy/wayapp_project/blog/forms.py",
+		"/home/manish/Documents/django-bloggy/wayapp_project/blog/models.py",
+		"/home/manish/Documents/django-bloggy/wayapp_project/static/style.css",
+		"/home/manish/Documents/django-bloggy/wayapp_project/bloggy_project/urls.py",
+		"/home/manish/Documents/django-bloggy/wayapp_project/blog/admin.py",
+		"/home/manish/Documents/django-bloggy/wayapp_project/bloggy_project/settings.py",
+		"/home/manish/Documents/django-bloggy/wayapp_project/blog/migrations/0003_post_slug.py",
+		"/media/manish/New Volume/guddu/zuntru/personal/bootstrap-3.2.0-dist/index.html",
+		"/home/manish/Documents/django-bloggy/bloggy_project/bloggy_project/settings.py",
+		"/home/manish/Documents/django-bloggy/bloggy_project/bloggy_project/urls.py",
+		"/home/manish/Documents/django-bloggy/bloggy_project/blog/urls.py",
+		"/home/manish/Documents/django-bloggy/bloggy_project/blog/models.py",
+		"/home/manish/Documents/django-bloggy/bloggy_project/blog/tests.py",
+		"/home/manish/Documents/django-bloggy/bloggy_project/blog/admin.py",
+		"/home/manish/Documents/django-bloggy/bloggy_project/blog/views.py",
+		"/home/manish/Documents/django-bloggy/bloggy_project/blog/forms.py",
+		"/home/manish/Documents/django-bloggy/bloggy_project/templates/base.html",
+		"/home/manish/Documents/django-bloggy/bloggy_project/templates/blog/index.html",
+		"/home/manish/Documents/django-bloggy/bloggy_project/templates/blog/post.html",
+		"/home/manish/Documents/django-bloggy/bloggy_project/templates/blog/add_post.html",
+		"/home/manish/Documents/django-bloggy/bloggy_project/blog/migrations/0003_post_slug.py",
+		"/home/manish/Documents/face_detect.py",
+		"/home/manish/Documents/haarcascade_frontalface_default.xml",
+		"/home/manish/Documents/django-quick-start/hello_world_project/templates/betterhello.html",
+		"/home/manish/Documents/django-quick-start/hello_world_project/hello_world_project/urls.py",
+		"/home/manish/Documents/django-quick-start/hello_world_project/hello_world/urls.py",
+		"/home/manish/Documents/django-quick-start/hello_world_project/hello_world/views.py",
+		"/home/manish/Documents/django-quick-start/hello_world_project/hello_world_project/settings.py",
+		"/home/manish/Documents/RealPython/flask-blog/blog.py",
+		"/home/manish/Documents/RealPython/flasktaskr/project/run.py",
+		"/home/manish/Documents/RealPython/flasktaskr/project/views.py",
+		"/home/manish/Documents/RealPython/flasktaskr/project/forms.py",
+		"/home/manish/Documents/RealPython/flasktaskr/project/models.py",
+		"/home/manish/Documents/RealPython/flasktaskr/project/_config.py",
+		"/home/manish/Documents/RealPython/flasktaskr/project/test.py",
+		"/home/manish/Documents/RealPython/flasktaskr/project/db_create.py",
+		"/home/manish/Documents/RealPython/flasktaskr/project/db_migrate.py",
+		"/home/manish/Documents/RealPython/flasktaskr/project/static/css/main.css",
+		"/home/manish/Documents/RealPython/flasktaskr/project/templates/tasks.html",
+		"/home/manish/Documents/RealPython/flasktaskr/project/templates/register.html",
+		"/home/manish/Documents/RealPython/flasktaskr/project/templates/login.html",
+		"/home/manish/Documents/RealPython/flasktaskr/project/templates/_base.html",
+		"/home/manish/Desktop/ram.html",
+		"/home/manish/Documents/raman.html",
+		"/media/manish/New Volume/guddu/Projects/SomeConnect/SoMe/New folder/SoMe/index.html",
+		"/media/manish/New Volume/study/bootstrap/galaxy s6/l.html",
+		"/media/manish/New Volume/study/bootstrap/galaxy s6/Galaxy S6a.html",
+		"/media/manish/New Volume/study/bootstrap/galaxy s6/Galaxy S6c.html",
+		"/media/manish/New Volume/study/bootstrap/JavaScript · Bootstrap_files/bootstrap",
+		"/home/manish/Documents/RealPython/front-end/index.html",
+		"/home/manish/Documents/RealPython/front-end/main.css",
+		"/home/manish/Documents/RealPython/front-end/main.js",
+		"/home/manish/GoogleAppEngineLauncher.py",
+		"/home/manish/Documents/Activity/python/fib.py",
+		"/media/manish/New Volume/study/Python/Scripts/largest_of_three.py",
+		"/home/manish/Documents/Activity/html_css/resume.css",
+		"/home/manish/Documents/Activity/html_css/resume.html",
+		"/home/manish/Documents/RealPython/flasktaskr/project/static/css/friends.css",
+		"/home/manish/Documents/RealPython/flasktaskr/project/static/css/sorting_friends.html",
+		"/home/manish/Documents/Activity/html_css/social_net_profile.html",
+		"/home/manish/.config/sublime-text-3/Packages/User/Plain text.sublime-settings",
+		"/home/manish/.config/sublime-text-3/Packages/User/Preferences.sublime-settings",
+		"/home/manish/.config/sublime-text-3/Packages/Default/Preferences.sublime-settings",
+		"/home/manish/Downloads/Python Downloads/Module 2 Apprentice Python/Solutions/Apprentice_Final_Activity_Solution.py",
+		"/home/manish/Downloads/Python Downloads/Module 2 Apprentice Python/Solutions/Apprentice_Activities_Solution.py",
+		"/home/manish/Downloads/Python Downloads/Module 2 Apprentice Python/Activities/Apprentice_Activities_Tester.py",
+		"/home/manish/Documents/RealPython/flasktaskr/views.py",
+		"/home/manish/Documents/RealPython/flask-blog/static/css/style.css",
+		"/home/manish/Documents/RealPython/flask-blog/templates/template.html",
+		"/home/manish/Documents/RealPython/flask-blog/templates/login.html",
+		"/home/manish/Documents/RealPython/flask-blog/templates/main.html",
+		"/home/manish/Documents/RealPython/flask-hello-world/app.py",
+		"/home/manish/Documents/RealPython/flask-blog/sql.py",
+		"/home/manish/Documents/RealPython/real-python-test/README.md"
+	],
+	"find":
+	{
+		"height": 35.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"p",
+			"lg"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 8,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "view_the_review/vtr/forms.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 883,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								808,
+								808
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 6,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "view_the_review/vtr/models.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 931,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								875,
+								875
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 7,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "view_the_review/vtr/views.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 4482,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								808,
+								808
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 144.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "view_the_review/vtr/admin.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 164,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								164,
+								164
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 8,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "view_the_review/vtr/urls.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 570,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								570,
+								570
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 9,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "view_the_review/templates/vtr/base.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 4151,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1835,
+								1835
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1077.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 5,
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "view_the_review/templates/vtr/index.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1884,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1486,
+								1486
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 610.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "view_the_review/templates/vtr/add_query.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 470,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								332,
+								301
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 8,
+					"file": "view_the_review/templates/vtr/register.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 916,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								326,
+								326
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 9,
+					"file": "view_the_review/static/css/style.css",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 494,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								494,
+								494
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/CSS/CSS.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": -0.0,
+						"translation.y": 44.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 25.0
+	},
+	"input":
+	{
+		"height": 0.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "",
+	"project": "view_the_review.sublime-project",
+	"replace":
+	{
+		"height": 46.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 500.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 380.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 217.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}
