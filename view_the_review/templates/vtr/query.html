@@ -37,7 +37,7 @@
                 <h3>Popular Query</h3>
                 <ul style="list-style-type: none">
                     {% for query in popular_query %}
-                        <li><a href="{{query.slug}}">{{ query.title }} </a></li>
+                        <li><a href="/vtr/{{query.slug}}">{{ query.title }} </a></li>
                         <br>
                     {% endfor %}    
                 </ul>
