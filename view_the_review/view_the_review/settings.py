@@ -38,8 +38,10 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'bootstrapform',
+    'django.contrib.sites',
     # local apps
-    'vtr'
+    'vtr',
+    'debug_toolbar',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -82,7 +84,7 @@ WSGI_APPLICATION = 'view_the_review.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'view_the_review.sqlite3'), #name of the database
+        'NAME': os.path.join(BASE_DIR, 'view_the_review.sqlite3'),  # name of the database
     }
 }
 
@@ -112,7 +114,7 @@ STATICFILES_DIRS = (
     STATIC_PATH,
 )
 
-LOGIN_REDIRECT_URL = '/'
+LOGIN_REDIRECT_URL = '/vtr/'
 
 LOGIN_URL = '/login/'
 
@@ -124,6 +126,5 @@ EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 DEFAULT_FROM_EMAIL = 'balyan05.manish@gmail.com'
 
-
-
 AUTH_PROFILE_MODULE = 'vtr.UserProfile'
+SITE_ID = 1

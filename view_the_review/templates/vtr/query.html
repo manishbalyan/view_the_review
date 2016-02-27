@@ -1,0 +1,61 @@
+{% extends 'vtr/base.html' %}
+
+{% block title %}Title{% endblock %}
+
+{% block body_block %}
+
+
+        <div class="row">
+            <div class="col-lg-3" id="left">
+                <ul>
+                  
+                    <h3>{{ user.username }}</h3>
+                        {% for users in userprofile %}
+                            {{ users.rollnumber }}
+                            <br><br>
+                            {{ users.year }}
+                            <br><br>
+                            {{ users.branch }}
+                        {% endfor %}
+                   }
+                </ul>
+            </div>
+            <div class="col-lg-6">
+                <h2>{{ single_query.title }}</h2>
+                <ul>
+                    <p><em>{{ single_query.created_at }}</em></p>
+                    <p>{{ single_query.content }}</p>
+                    <p>Tag: {{ single_query.tag }}</p>
+                    <p>Views: {{ single_query.views}}</p>
+                    <br>
+                </ul>
+                <br>
+  
+            </div>
+            <div class="col-lg-3">  
+            <div>    
+                <h3>Popular Query</h3>
+                <ul style="list-style-type: none">
+                    {% for query in popular_query %}
+                        <li><a href="{{query.slug}}">{{ query.title }} </a></li>
+                        <br>
+                    {% endfor %}    
+                </ul>
+            </div>
+            <br>
+            <div>
+                <h3>Branch Catagories<h3/>
+                <ul style="list-style-type: none" class="blist">
+                    <li>Computer Science</li>
+                    <li>Information Technology</li>
+                    <li>Electronics and Communications</li>
+                    <li>Mechanical Engineering</li>
+                    <li>Electrical Engineering</li>
+                    <li>Civil Engineering</li>
+                </ul>
+            </div> 
+            </div>
+        </div>
+     
+     
+{% endblock %}

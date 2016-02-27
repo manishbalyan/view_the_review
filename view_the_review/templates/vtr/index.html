@@ -3,9 +3,9 @@
 {% block title %}Home{% endblock %}
 
 {% block body_block %}
-<body>
 
-<div class="container">
+
+
     <div class="row">
         <div class="col-lg-3" id="left">
             
@@ -23,15 +23,19 @@
         <div class="col-lg-6" id="middle">
         
             <ul>
-                {% for query in singlequery %}
+                {% for query in allquery %}
                     
-                    {{ query.created_at }}
+                    
+                    
+                    <h3><a href="{{ query.slug }}">{{ query.title }}</a></h3>
                     <br>
-                    {{ query.content }}
+                    <p>{{ query.content }}</p>
                     <br>
-                    {{ query.tag }}
+                    <p>{{ query.tag }}</p>
                     <br>
-                    {{ query.views }}
+                    <p>{{ query.views }}</p>  
+                    <br>
+                    <p>{{ query.created_at }}</p>                 
                     <br><br>
                 {% endfor %}
             </ul>
@@ -39,29 +43,27 @@
         </div>
         <div class="col-lg-3" id="right">
             <div>
-                <h3>Popular Query</h3>
-                <ul>
+                <h3>Trending Query</h3>
+                <ul style="list-style-type: none">
                     {% for query in popularquery %}
-                        {{ query.content }} 
-                        <br>
+                        <li><a href="{{ query.slug }}">{{ query.title }}</a></li> 
+                        
                     {% endfor %}    
                 </ul>
             </div><br>
-        <div>
-            <h3>Branch Catagories<h3/>
-            <ul style="list-style-type: none" class="blist">
-                <li>Computer Science</li>
-                <li>Information Technology</li>
-                <li>Electronics and Communications</li>
-                <li>Mechanical Engineering</li>
-                <li>Electrical Engineering</li>
-                <li>Civil Engineering</li>
-                
-            </ul>
-        </div>    
+            <div>
+                <h3>Branch Catagories<h3/>
+                <ul style="list-style-type: none" class="blist">
+                    <li>Computer Science</li>
+                    <li>Information Technology</li>
+                    <li>Electronics and Communications</li>
+                    <li>Mechanical Engineering</li>
+                    <li>Electrical Engineering</li>
+                    <li>Civil Engineering</li>
+                </ul>
+            </div>    
         </div>
     </div>
-</div>
 
-</body>
+
 {% endblock %}
