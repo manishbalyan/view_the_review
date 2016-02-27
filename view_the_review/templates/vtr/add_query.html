@@ -3,14 +3,13 @@
 {% block body_block %}
 	<h2> Add Your Query</h2>
     <div class="qform">
-	<form id="query_form" method="POST" action="{% url 'add_query' %}" enctype="multipart/form-data">
-		{% csrf_token %}
-		{{ query_form | bootstrap_horizontal }}
-        
+	   <form id="query_form" method="POST" action="{% url 'add_query' %}" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ query_form | bootstrap_horizontal }}
         <div style="text-align:center">
-		<input type="submit" name="submit" value="Post Query" class="btn btn-primary">	
+            <input type="submit" name="submit" value="Post Query" class="btn btn-primary">	
         </div>
-	</form>
+	   </form>
     </div>
 	<br>
 {% endblock %}
