@@ -36,3 +36,8 @@ li{
     align-items: center;
     justify-content: center;
 }
+#id_comment{
+    height: 100px;
+    width: 400px;
+    label: none;
+}

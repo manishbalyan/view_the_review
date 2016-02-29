@@ -1,5 +1,7 @@
 {% extends 'vtr/base.html' %}
 {% block title %}Title{% endblock %}
+{% load i18n comments %}
+{% load markup_tags %}
 {% block body_block %}
     <div class="row">
         <div class="col-lg-3" id="left">
@@ -23,7 +25,16 @@
                 <p>Views: {{ single_query.views}}</p>
                 <br>
             </ul>
-            <br>
+            <h2>Comments</h2>
+            {% load comments %}
+            <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}fluent_comments/css/ajaxcomments.css" />
+<script type="text/javascript" src="{{ STATIC_URL }}fluent_comments/js/ajaxcomments.js"></script>
+            {% get_comment_count for single_query as comment_count %}
+            {% render_comment_list for single_query %}
+            {% render_comment_form for single_query %}
+                
+
+                
         </div>
         <div class="col-lg-3">  
             <div>    

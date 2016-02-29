@@ -26,7 +26,12 @@ SECRET_KEY = '6y4f%$c3llq$!s!up7d=3+63c#21m62xps1s(ks7$)+t@$jbjl'
 DEBUG = True
 
 ALLOWED_HOSTS = []
-
+try:
+    import imp
+    imp.find_module('django_comments')
+    django_comments = 'django_comments'
+except ImportError:
+    django_comments = 'django.contrib.comments'
 
 # Application definition
 
@@ -39,10 +44,16 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'bootstrapform',
     'django.contrib.sites',
+    'django_markup',
+    'fluent_comments',
+    'crispy_forms',
+    'django_comments',
     # local apps
     'vtr',
     'debug_toolbar',
 )
+FLUENT_COMMENTS_EXCLUDE_FIELDS = ('name', 'email', 'url')
+COMMENTS_APP = "fluent_comments"
 
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -128,3 +139,4 @@ DEFAULT_FROM_EMAIL = 'balyan05.manish@gmail.com'
 
 AUTH_PROFILE_MODULE = 'vtr.UserProfile'
 SITE_ID = 1
+USE_I18N = True
