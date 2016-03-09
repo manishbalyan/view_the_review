@@ -1,7 +1,9 @@
 <div class="comment_start"></div>
 {% for comment in comment_list %}
    <div class="comment">
+   <b>(from <a href="javascript:alert('show user profile/stats')">{{ comment.user }}</a> - {{ comment.submit_date|timesince }} ago)</b><br>
       {{ comment.comment }}
-      (from <a href="javascript:alert('show user profile/stats')">{{ comment.user }}</a> - {{ comment.submit_date|timesince }} ago)
+      <br>
+      <br>
    </div>
 {% endfor %}

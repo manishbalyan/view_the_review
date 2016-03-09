@@ -39,5 +39,9 @@ li{
 #id_comment{
     height: 100px;
     width: 400px;
-    label: none;
+    
+}
+#lbtn{
+    width: 26.5%;
+    position: relative;
 }

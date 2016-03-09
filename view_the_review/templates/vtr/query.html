@@ -27,8 +27,7 @@
             </ul>
             <h2>Comments</h2>
             {% load comments %}
-            <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}fluent_comments/css/ajaxcomments.css" />
-<script type="text/javascript" src="{{ STATIC_URL }}fluent_comments/js/ajaxcomments.js"></script>
+            
             {% get_comment_count for single_query as comment_count %}
             {% render_comment_list for single_query %}
             {% render_comment_form for single_query %}
@@ -38,7 +37,7 @@
         </div>
         <div class="col-lg-3">  
             <div>    
-                <h3>Popular Query</h3>
+                <h3>Trending Query</h3>
                 <ul style="list-style-type: none">
                     {% for query in popular_query %}
                     <li>
@@ -52,12 +51,12 @@
             <div>
                 <h3>Branch Catagories<h3/>
                 <ul style="list-style-type: none" class="blist">
-                    <li>Computer Science</li>
-                    <li>Information Technology</li>
-                    <li>Electronics and Communications</li>
-                    <li>Mechanical Engineering</li>
-                    <li>Electrical Engineering</li>
-                    <li>Civil Engineering</li>
+                    <li><a href="{% url 'branchcs' %}" name='CSE'>Computer Science</a></li>
+                    <li><a href="{% url 'branchit' %}" name='IT'>Information Technology</a></li>
+                    <li><a href="{% url 'branchec' %}" name='ECE'>Electronics and Communications</a></li>
+                    <li><a href="{% url 'branchme' %}" name='ME'>Mechanical Engineering</a></li>
+                    <li><a href="{% url 'branchee' %}" name='EE'>Electrical Engineering</a></li>
+                    <li><a href="{% url 'branchce' %}" name='CE'>Civil Engineering</a></li>
                 </ul>
             </div> 
         </div>

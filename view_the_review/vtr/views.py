@@ -1,27 +1,21 @@
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
-# from vtr.forms import UserForm
-# from vtr.models import Post
 from django.shortcuts import get_object_or_404, redirect
 from vtr.forms import UserForm, UserProfileForm, QueryForm
 from vtr.models import UserProfile, Query
 
 
-
-def get_popular_query():
-    popular_query = Query.objects.order_by('-views')[:5]
-    return popular_query
 # Create your views here.
-
 
 @login_required
 def index(request):
     userprofile = UserProfile.objects.filter(user=request.user.id)
     allquery = Query.objects.all().order_by('-created_at')
+    popular_query = Query.objects.order_by('-views')[:5]
     context_dict = {
         'userprofile': userprofile,
         'allquery': allquery,
-        'popularquery': get_popular_query()
+        'popular_query': popular_query,
     }
     return render(request, 'vtr/index.html', context_dict)
 
@@ -81,7 +75,8 @@ def query(request, slug):
     context_dict = {
         'single_query': single_query,
         'popular_query': popular_query,
-        'userprofile': userprofile}
+        'userprofile': userprofile
+    }
     return render(request, 'vtr/query.html', context_dict)
 
 
@@ -98,8 +93,68 @@ def add_query(request):
         query_form = QueryForm()
     return render(request, 'vtr/add_query.html', {'query_form': query_form},)
 
-"""def branch(request):
-    branch_query = Query.objects.filter(tag = CSE)
-    t = loader.get_template('vtr/cse.html')
-    c = Context({'branch_query': branch_query}
-    return HttpResponse(t.render(c))"""
+def branchcs(request):
+    branch_query = Query.objects.filter(tag='CSE')
+    userprofile = UserProfile.objects.filter(user=request.user.id)
+    popular_query = Query.objects.order_by('-views')[:5]
+    context_dict = {
+        'branch_query': branch_query,
+        'userprofile': userprofile,
+        'popular_query': popular_query,
+    }
+    return render(request, 'vtr/branch.html', context_dict)   
+
+def branchec(request):
+    branch_query = Query.objects.filter(tag='ECE')
+    userprofile = UserProfile.objects.filter(user=request.user.id)
+    popular_query = Query.objects.order_by('-views')[:5]
+    context_dict = {
+        'branch_query': branch_query,
+        'userprofile': userprofile,
+        'popular_query': popular_query,
+    }
+    return render(request, 'vtr/branch.html', context_dict)   
+
+def branchme(request):
+    branch_query = Query.objects.filter(tag='ME')
+    userprofile = UserProfile.objects.filter(user=request.user.id)
+    popular_query = Query.objects.order_by('-views')[:5]
+    context_dict = {
+        'branch_query': branch_query,
+        'userprofile': userprofile,
+        'popular_query': popular_query,
+    }
+    return render(request, 'vtr/branch.html', context_dict)   
+
+def branchee(request):
+    branch_query = Query.objects.filter(tag='EE')
+    userprofile = UserProfile.objects.filter(user=request.user.id)
+    popular_query = Query.objects.order_by('-views')[:5]
+    context_dict = {
+        'branch_query': branch_query,
+        'userprofile': userprofile,
+        'popular_query': popular_query,
+    }
+    return render(request, 'vtr/branch.html', context_dict)   
+
+def branchit(request):
+    branch_query = Query.objects.filter(tag='IT')
+    userprofile = UserProfile.objects.filter(user=request.user.id)
+    popular_query = Query.objects.order_by('-views')[:5]
+    context_dict = {
+        'branch_query': branch_query,
+        'userprofile': userprofile,
+        'popular_query': popular_query,
+    }
+    return render(request, 'vtr/branch.html', context_dict)   
+
+def branchce(request):
+    branch_query = Query.objects.filter(tag='CE')
+    userprofile = UserProfile.objects.filter(user=request.user.id)
+    popular_query = Query.objects.order_by('-views')[:5]
+    context_dict = {
+        'branch_query': branch_query,
+        'userprofile': userprofile,
+        'popular_query': popular_query,
+    }
+    return render(request, 'vtr/branch.html', context_dict)   
