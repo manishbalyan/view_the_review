@@ -12,4 +12,5 @@ urlpatterns = [
     url(r'^logout/$', 'django.contrib.auth.views.logout', {'next_page': '/login/'}, name='logout'),
     url(r'^vtr/', include('vtr.urls')),
     url(r'^comments/', include('fluent_comments.urls'))
+    
 ]

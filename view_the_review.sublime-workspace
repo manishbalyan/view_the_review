@@ -4,6 +4,38 @@
 		"selected_items":
 		[
 			[
+				"pa",
+				"padding"
+			],
+			[
+				"p",
+				"position"
+			],
+			[
+				"wi",
+				"width"
+			],
+			[
+				"back",
+				"background-color"
+			],
+			[
+				"color",
+				"background-color"
+			],
+			[
+				"col",
+				"border-collapse"
+			],
+			[
+				"ba",
+				"box-shadow"
+			],
+			[
+				"b",
+				"border-image"
+			],
+			[
 				"po",
 				"position"
 			],
@@ -72,10 +104,6 @@
 				"userprofile"
 			],
 			[
-				"b",
-				"branch"
-			],
-			[
 				"con",
 				"context_dict"
 			],
@@ -106,10 +134,6 @@
 			[
 				"a",
 				"align	Attr"
-			],
-			[
-				"wi",
-				"max-width"
 			],
 			[
 				"d",
@@ -152,10 +176,6 @@
 				"forms"
 			],
 			[
-				"ba",
-				"background-image"
-			],
-			[
 				"colo",
 				"background-color"
 			],
@@ -166,14 +186,6 @@
 			[
 				"TEM",
 				"TEMPLATE_PATH"
-			],
-			[
-				"back",
-				"background-image"
-			],
-			[
-				"p",
-				"p	Tag"
 			],
 			[
 				"de",
@@ -312,16 +324,8 @@
 				"PasswordField"
 			],
 			[
-				"pa",
-				"Password"
-			],
-			[
 				"da",
 				"DataRequired"
-			],
-			[
-				"col",
-				"Column"
 			],
 			[
 				"tr",
@@ -444,26 +448,10 @@
 	"buffers":
 	[
 		{
-			"file": "view_the_review/vtr/urls.py",
+			"file": "view_the_review/templates/vtr/base.html",
 			"settings":
 			{
-				"buffer_size": 669,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "view_the_review/vtr/views.py",
-			"settings":
-			{
-				"buffer_size": 6450,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "view_the_review/templates/comments/posted.html",
-			"settings":
-			{
-				"buffer_size": 287,
+				"buffer_size": 2784,
 				"line_ending": "Unix"
 			}
 		},
@@ -471,23 +459,15 @@
 			"file": "view_the_review/templates/vtr/login.html",
 			"settings":
 			{
-				"buffer_size": 1005,
+				"buffer_size": 1512,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "view_the_review/templates/vtr/base.html",
+			"file": "view_the_review/static/css/style.css",
 			"settings":
 			{
-				"buffer_size": 2781,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"contents": "\n    <div class= \"footer\">\n      <div class= \"container\">\n        <div class = \"row\">\n          <div class = \"col-sm-9\">\n            <p>\n              All content on this site is under a <b><a rel=\"license\" href=\"http://creativecommons.org/licenses/by/4.0/\" target = \"_blank\" style=\"color:white;text-decoration:underline;\">Creative Commons License.</a></b> Feel free to copy and share.<br>\n              Made with <span class=\"glyphicon glyphicon-heart\"></span> & <a style=\"color:white;text-decoration:underline;\" href = \"http://getbootstrap.com/\" target = \"_blank\">Bootstrap</a>\n            </p>\n          </div>\n          <div class = \"col-sm-3\">\n            <p>\n              <a href = \"#\" target = \"_blank\"><i class=\"footerIcon fa fa-facebook-square\"></i>\n              </a>\n              <a href = \"#\" target = \"_blank\"><i class=\"footerIcon fa fa-twitter-square\"></i>\n              </a>\n              <a href = \"#\" target = \"_blank\"><i class=\"footerIcon fa fa-pinterest-square\"></i>\n              </a>\n            </p>\n          </div>\n        </div>  <!-- row -->\n      </div>  <!-- container -->\n    </div>  <!-- footer -->\n",
-			"settings":
-			{
-				"buffer_size": 1131,
+				"buffer_size": 1960,
 				"line_ending": "Unix"
 			}
 		},
@@ -495,23 +475,7 @@
 			"file": "view_the_review/templates/vtr/index.html",
 			"settings":
 			{
-				"buffer_size": 2333,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "view_the_review/templates/vtr/query.html",
-			"settings":
-			{
-				"buffer_size": 2440,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "view_the_review/templates/vtr/branch.html",
-			"settings":
-			{
-				"buffer_size": 2477,
+				"buffer_size": 2529,
 				"line_ending": "Unix"
 			}
 		}
@@ -556,23 +520,25 @@
 	[
 		"/home/manish/Documents/view_the_review",
 		"/home/manish/Documents/view_the_review/view_the_review",
+		"/home/manish/Documents/view_the_review/view_the_review/static",
+		"/home/manish/Documents/view_the_review/view_the_review/static/css",
 		"/home/manish/Documents/view_the_review/view_the_review/templates",
-		"/home/manish/Documents/view_the_review/view_the_review/templates/comments",
 		"/home/manish/Documents/view_the_review/view_the_review/templates/vtr",
-		"/home/manish/Documents/view_the_review/view_the_review/view_the_review",
-		"/home/manish/Documents/view_the_review/view_the_review/vtr"
+		"/home/manish/Documents/view_the_review/view_the_review/view_the_review"
 	],
 	"file_history":
 	[
 		"/home/manish/Documents/view_the_review/view_the_review/templates/vtr/index.html",
-		"/home/manish/Documents/view_the_review/view_the_review/vtr/views.py",
 		"/home/manish/Documents/view_the_review/view_the_review/templates/vtr/branch.html",
+		"/home/manish/Documents/view_the_review/view_the_review/vtr/urls.py",
+		"/home/manish/Documents/view_the_review/view_the_review/vtr/views.py",
 		"/home/manish/Documents/view_the_review/view_the_review/view_the_review/urls.py",
-		"/home/manish/Documents/view_the_review/view_the_review/templates/vtr/query.html",
-		"/home/manish/Documents/view_the_review/view_the_review/vtr/models.py",
+		"/home/manish/Documents/view_the_review/view_the_review/vtr/footer.html",
 		"/home/manish/Documents/view_the_review/view_the_review/templates/comments/posted.html",
-		"/home/manish/Documents/view_the_review/view_the_review/templates/vtr/register.html",
+		"/home/manish/Documents/view_the_review/view_the_review/templates/vtr/query.html",
 		"/home/manish/Documents/view_the_review/view_the_review/templates/vtr/base.html",
+		"/home/manish/Documents/view_the_review/view_the_review/vtr/models.py",
+		"/home/manish/Documents/view_the_review/view_the_review/templates/vtr/register.html",
 		"/home/manish/Documents/view_the_review/view_the_review/static/css/style.css",
 		"/home/manish/Documents/view_the_review/view_the_review/templates/comments/list.html",
 		"/home/manish/Documents/view_the_review/view_the_review/templates/vtr/login.html",
@@ -592,7 +558,6 @@
 		"/home/manish/Documents/view_the_review/view_the_review/templates/vtr/add_query.html",
 		"/home/manish/Documents/view_the_review/view_the_review/templates/vtr/contact.html",
 		"/home/manish/Desktop/Wayapp-master/wayapp_project/templates/blog/post.html",
-		"/home/manish/Documents/view_the_review/view_the_review/vtr/urls.py",
 		"/home/manish/Documents/view_the_review/view_the_review/vtr/forms.py",
 		"/home/manish/Documents/letsbegenuine/README.md",
 		"/media/manish/EC584FAA584F727E/Users/Manish/Documents/letsbegenuine/index.html",
@@ -690,8 +655,7 @@
 		"/home/manish/Documents/RealPython/front-end/main.js",
 		"/home/manish/GoogleAppEngineLauncher.py",
 		"/home/manish/Documents/Activity/python/fib.py",
-		"/media/manish/New Volume/study/Python/Scripts/largest_of_three.py",
-		"/home/manish/Documents/Activity/html_css/resume.css"
+		"/media/manish/New Volume/study/Python/Scripts/largest_of_three.py"
 	],
 	"find":
 	{
@@ -733,57 +697,59 @@
 			[
 				{
 					"buffer": 0,
-					"file": "view_the_review/vtr/urls.py",
+					"file": "view_the_review/templates/vtr/base.html",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 669,
+						"buffer_size": 2784,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								579,
-								579
+								1969,
+								1969
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/Python/Python.tmLanguage"
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 416.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 8,
+					"stack_index": 1,
 					"type": "text"
 				},
 				{
 					"buffer": 1,
-					"file": "view_the_review/vtr/views.py",
+					"file": "view_the_review/templates/vtr/login.html",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 6450,
+						"buffer_size": 1512,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								6304,
-								6304
+								453,
+								453
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/Python/Python.tmLanguage",
+							"syntax": "Packages/HTML/HTML.tmLanguage",
 							"tab_size": 4,
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 1059.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
@@ -791,27 +757,29 @@
 				},
 				{
 					"buffer": 2,
-					"file": "view_the_review/templates/comments/posted.html",
+					"file": "view_the_review/static/css/style.css",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 287,
+						"buffer_size": 1960,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								287,
-								287
+								1958,
+								1958
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/HTML/HTML.tmLanguage"
+							"syntax": "Packages/CSS/CSS.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 1523.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 3,
@@ -819,19 +787,19 @@
 				},
 				{
 					"buffer": 3,
-					"file": "view_the_review/templates/vtr/login.html",
-					"semi_transient": true,
+					"file": "view_the_review/templates/vtr/index.html",
+					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1005,
+						"buffer_size": 2529,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								0,
-								0
+								216,
+								216
 							]
 						],
 						"settings":
@@ -845,155 +813,6 @@
 						"zoom_level": 1.0
 					},
 					"stack_index": 2,
-					"type": "text"
-				},
-				{
-					"buffer": 4,
-					"file": "view_the_review/templates/vtr/base.html",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 2781,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								2781,
-								2781
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/HTML/HTML.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 509.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 6,
-					"type": "text"
-				},
-				{
-					"buffer": 5,
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1131,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1131,
-								1131
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/HTML/HTML.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 7,
-					"type": "text"
-				},
-				{
-					"buffer": 6,
-					"file": "view_the_review/templates/vtr/index.html",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 2333,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								2247,
-								2247
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/HTML/HTML.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 4,
-					"type": "text"
-				},
-				{
-					"buffer": 7,
-					"file": "view_the_review/templates/vtr/query.html",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 2440,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1461,
-								1461
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/HTML/HTML.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 383.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 8,
-					"file": "view_the_review/templates/vtr/branch.html",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 2477,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								2394,
-								2394
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/HTML/HTML.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 603.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 5,
 					"type": "text"
 				}
 			]

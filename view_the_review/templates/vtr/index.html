@@ -2,6 +2,11 @@
 {% block title %}Home{% endblock %}
 {% block body_block %}
     <div class="row">
+    <center>
+        <div id="stories">
+        <p>Top stories for you</p>
+        </div>
+      </center>
         <div class="col-lg-3" id="left">
             <ul>
                 <h3>{{ user.username}}</h3>
@@ -17,7 +22,7 @@
         <div class="col-lg-6" id="middle">
             <ul>
                 {% for query in allquery %}
-                    <h3><a href="{{ query.slug }}">{{ query.title }}</a></h3>
+                   <h3><a href="{{ query.slug }}"><b>{{ query.title }}</b></a></h3>
                     <br>
                     <p>{{ query.content }}</p>
                     <br>
@@ -32,7 +37,8 @@
         </div>
         <div class="col-lg-3" id="right">
             <div>
-                <h3>Trending Query</h3>
+                
+                <h3 class="shead"><span class="icon"></span>Trending Query</h3>
                 <ul style="list-style-type: none">
                     {% for query in popular_query %}
                         <li>
@@ -44,15 +50,18 @@
             </div>
             <br>
             <div>
-                <h3>Branch Catagories<h3/>
-                <ul style="list-style-type: none" class="blist">
+                <h3 class="shead">Branch Catagories<h3/>
+                <ul class="blist">
                     <li><a href="{% url 'branchcs' %}" name='CSE'>Computer Science</a></li>
+                    
                     <li><a href="{% url 'branchit' %}" name='IT'>Information Technology</a></li>
                     <li><a href="{% url 'branchec' %}" name='ECE'>Electronics and Communications</a></li>
                     <li><a href="{% url 'branchme' %}" name='ME'>Mechanical Engineering</a></li>
                     <li><a href="{% url 'branchee' %}" name='EE'>Electrical Engineering</a></li>
                     <li><a href="{% url 'branchce' %}" name='CE'>Civil Engineering</a></li>
+                    
                 </ul>
+
             </div>    
         </div>
     </div>

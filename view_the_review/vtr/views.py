@@ -102,7 +102,7 @@ def branchcs(request):
         'userprofile': userprofile,
         'popular_query': popular_query,
     }
-    return render(request, 'vtr/branch.html', context_dict)   
+    return render(request, 'vtr/branch.html', context_dict)
 
 def branchec(request):
     branch_query = Query.objects.filter(tag='ECE')
@@ -113,7 +113,7 @@ def branchec(request):
         'userprofile': userprofile,
         'popular_query': popular_query,
     }
-    return render(request, 'vtr/branch.html', context_dict)   
+    return render(request, 'vtr/branch.html', context_dict)
 
 def branchme(request):
     branch_query = Query.objects.filter(tag='ME')
@@ -124,7 +124,7 @@ def branchme(request):
         'userprofile': userprofile,
         'popular_query': popular_query,
     }
-    return render(request, 'vtr/branch.html', context_dict)   
+    return render(request, 'vtr/branch.html', context_dict)
 
 def branchee(request):
     branch_query = Query.objects.filter(tag='EE')
@@ -135,7 +135,7 @@ def branchee(request):
         'userprofile': userprofile,
         'popular_query': popular_query,
     }
-    return render(request, 'vtr/branch.html', context_dict)   
+    return render(request, 'vtr/branch.html', context_dict)
 
 def branchit(request):
     branch_query = Query.objects.filter(tag='IT')
@@ -146,7 +146,7 @@ def branchit(request):
         'userprofile': userprofile,
         'popular_query': popular_query,
     }
-    return render(request, 'vtr/branch.html', context_dict)   
+    return render(request, 'vtr/branch.html', context_dict)
 
 def branchce(request):
     branch_query = Query.objects.filter(tag='CE')
@@ -157,4 +157,4 @@ def branchce(request):
         'userprofile': userprofile,
         'popular_query': popular_query,
     }
-    return render(request, 'vtr/branch.html', context_dict)   
+    return render(request, 'vtr/branch.html', context_dict)

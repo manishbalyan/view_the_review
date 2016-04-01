@@ -6,10 +6,12 @@
     background-color: green;
 
 }
+
 .footer p{
     color: white;
 
 }
+
 .footerIcon{
     font-size: 40px;
     padding-top: 5px;
@@ -19,29 +21,104 @@
 .form-control{
     max-width: 300px;
 }
+
 body{
     padding-top: 60px;
+    background-image: url('{{ STATIC_URL }}/img/quora.png');
 }
+
 #left{
     border:1px solid black;
+    box-shadow: 50px;
+    background-color: grey;
 }
+
 li{
     font-size: 15px;
+    list-style: outside;
+    padding: 1px;
 }
+
 #query_form textarea{
     max-height: 100px;
 }
+
 .qform{
     display: flex;
     align-items: center;
     justify-content: center;
 }
+
 #id_comment{
     height: 100px;
     width: 400px;
     
 }
+
 #lbtn{
     width: 26.5%;
     position: relative;
 }
+
+#navv{
+    background: #FFF none repeat scroll 0% 0%;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    min-height: 53px;
+    z-index: 800;
+    font-size: px;
+    color: #FFF;
+    border-top: 2px solid #B92B27;
+    border-top-width: 2px;
+    border-top-style: solid;
+    border-top-color: #B92B27;
+    border-bottom: 1px solid #DDD;
+    box-shadow: 0px 3px 2px -2px rgba(200, 200, 200, 0.2);
+
+}
+
+#tlink li a{
+    font-size: 16px;
+    font-weight: 1000;
+    color: #999;
+    line-height: 20px;
+}
+
+#stories{
+    color: #333;
+    font-weight: 600;
+    position: relative;
+    border-bottom: 1px solid #E2E2E2;
+    margin-bottom: 16px;
+    padding-bottom: 8px;
+    font-size: 18px;
+    letter-spacing: 0px;
+    background: #ECECEC none repeat scroll 0% 0%;
+    
+}
+
+.shead{
+    
+    color: #666;
+    border-radius: 3px;
+    font-weight: 400;
+    cursor: default;
+}
+
+#logo{
+    width: 60px;
+}
+
+.icon{
+    display: inline-block;
+    width: 11px;
+    height: 11px;
+    background-size: 11px auto;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-image: url("//qsf.is.quoracdn.net/-images.icons.trending_purple.svg894fb8666fba57fb.svg");
+}
+
+
