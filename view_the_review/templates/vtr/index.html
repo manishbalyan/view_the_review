@@ -20,23 +20,26 @@
             </ul>
         </div>
         <div class="col-lg-6" id="middle">
+            
             <ul>
+            
                 {% for query in allquery %}
-                   <h3><a href="{{ query.slug }}"><b>{{ query.title }}</b></a></h3>
+                <div class="mid">
+                <hr>
+                   <h3><a href="{{ query.slug }}">{{ query.title }}</a></h3>
+                    <b>(from <a href="javascript:alert('show user profile/stats')">{{ user.username }}</a> -{{ query.created_at }})</b>
                     <br>
-                    <p>{{ query.content }}</p>
-                    <br>
-                    <p>{{ query.tag }}</p>
-                    <br>
-                    <p>{{ query.views }}</p>  
-                    <br>
-                    <p>{{ query.created_at }}</p>                 
-                    <br><br>
+                    <b>View</b>:{{ query.views }} <b>Tag</b>:{{ query.tag }}
+                    <hr>                 
+                    
+                </div>
                 {% endfor %}
+
             </ul>
+            
         </div>
         <div class="col-lg-3" id="right">
-            <div>
+            <div class="tquery">
                 
                 <h3 class="shead"><span class="icon"></span>Trending Query</h3>
                 <ul style="list-style-type: none">
@@ -49,15 +52,15 @@
                 </ul>
             </div>
             <br>
-            <div>
+            <div class="bquery">
                 <h3 class="shead">Branch Catagories<h3/>
                 <ul class="blist">
-                    <li><a href="{% url 'branchcs' %}" name='CSE'>Computer Science</a></li>
+                    <li><a href="{% url 'branchcs' %}" name='CSE'>Computer Science</a></li><br>
                     
-                    <li><a href="{% url 'branchit' %}" name='IT'>Information Technology</a></li>
-                    <li><a href="{% url 'branchec' %}" name='ECE'>Electronics and Communications</a></li>
-                    <li><a href="{% url 'branchme' %}" name='ME'>Mechanical Engineering</a></li>
-                    <li><a href="{% url 'branchee' %}" name='EE'>Electrical Engineering</a></li>
+                    <li><a href="{% url 'branchit' %}" name='IT'>Information Technology</a></li><br>
+                    <li><a href="{% url 'branchec' %}" name='ECE'>Electronics and Communications</a></li><br>
+                    <li><a href="{% url 'branchme' %}" name='ME'>Mechanical Engineering</a></li><br>
+                    <li><a href="{% url 'branchee' %}" name='EE'>Electrical Engineering</a></li><br>
                     <li><a href="{% url 'branchce' %}" name='CE'>Civil Engineering</a></li>
                     
                 </ul>

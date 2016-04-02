@@ -1,24 +1,17 @@
 {% extends 'vtr/base.html' %}
+{% load static %}
 {% block title %}Login{% endblock %}
 {% block body_block %}
+<div  style="background-image: url({% static "img/bg.jpg" %}");>
+<br><br>
 <center>
-    <div id="box">
-    <div id="box-content">
-            <div id="close"><a title="click to minimize">_</a></div>
-        <div id="blurb">
-            Stack Overflow is a community of 4.7 million programmers, just like you, helping each other.
-            <br/>
-                <br/>Join them; it only takes a minute:<br/>
-            <br/>
-            <a href="{% url 'register' %}">Register</a>
-        </div>
-        
-        <div style="clear: both"></div>
-    </div>
-    </div>
-    </center>
-    <link href="http://getbootstrap.com/examples/signin/signin.css" rel="stylesheet">
-    <center>
+    <p>View The Review is a community of IPEC Students, helping each other.</p>
+    <p>Join them; it only takes a minute:</p>  
+    <a href="{% url 'register' %}" class="btn btn-lg btn-primary btn-block" id="lbtn" >Register</a>
+    <h3>OR</h3>
+</center>
+<link href="http://getbootstrap.com/examples/signin/signin.css" rel="stylesheet">
+<center>
     <form class="form-signin" role="form" method="post" action="{% url 'login' %}">
         {% csrf_token %}
         <h2 class="form-signin-heading">Please sign in</h2>
@@ -30,4 +23,5 @@
             <p class = "label label-danger">Your username and password didn't match. Please try again.</p>
         {% endif %}
     </form></center>
+    </div>
 {% endblock %}
