@@ -1,0 +1,64 @@
+{% extends 'vtr/base.html' %}
+{% block title %}Home{% endblock %}
+{% block body_block %}
+<body>
+    <section id="myCarousel" class="carousel slide" data-ride="carousel">
+    <!-- Indicators -->
+        <ol class="carousel-indicators">
+            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+            <li data-target="#myCarousel" data-slide-to="1"></li>
+            <li data-target="#myCarousel" data-slide-to="2"></li>
+        </ol>
+        <div class="carousel-inner">
+            <figure class="item active">
+                <img src="/media/images/main1.jpg" alt="VTR">
+                <figcaption class="carousel-caption">
+                    <h1>View The Review is a Community of IPEC Student, Helping Each Other.</h1>
+                    <p>If you want study in different style then this is the place for you.</p>
+                    <p><a class="btn btn-lg btn-primary" href="{% url 'login' %}" role="button">Login </a></p>
+                </figcaption>
+            </figure>
+            <figure class="item">
+                <img src="/media/images/main2.jpg" alt="View Posts">
+                <figcaption class="carousel-caption">
+                    <h1>Join them; It only takes a Minute:</h1>
+                    <p>Students Can Register Here</p>
+                    <p><a class="btn btn-lg btn-primary" href="{% url 'registerS' %}" role="button">Student Registration</a></p>
+                </figcaption>
+            </figure>
+            <figure class="item">
+                <img src="/media/images/main3.jpg" alt="Meet People">
+                <figcaption class="carousel-caption">
+                    <h1>Notes and Teacher's Help is also Available</h1>
+                    <p>Faculty Members can Register Here</p>
+                    <p><a class="btn btn-lg btn-primary" href="{% url 'registerF' %}" role="button">Faculty Registration</a></p>
+                </figcaption>
+            </figure>
+        </div>
+        <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+        <span class="glyphicon glyphicon-chevron-left"></span></a>
+        <a class="right carousel-control" href="#myCarousel" data-slide="next">
+        <span class="glyphicon glyphicon-chevron-right"></span></a>
+    </section>
+    <section class="container marketing">
+        <!-- Three columns of text below the carousel -->
+        <div class="row">
+            <div class="col-lg-4">
+                <img class="img-circle" src="/media/images/c1.jpg" width=140 height=140 alt="Query1">
+                <h2>Ask Your Queries</h2>
+                <p>Any VTR Member Can Ask the Questions And Tag Them With Related Issues/Stubects</p>
+            </div><!-- /.col-lg-4 -->
+            <div class="col-lg-4">
+                <img class="img-circle" src="/media/images/c2.jpg" width=140 height=140 alt="Query2">
+                <h2>Comment On Other's Queries</h2>
+                <p>Any VTR Member can Reply Or Comment On Other Member's Queries</p>
+            </div><!-- /.col-lg-4 -->
+            <div class="col-lg-4">
+                <img class="img-circle" src="/media/images/c3.jpg" width=140 height=140 alt="Query3">
+                <h2>Hostel Queries</h2>
+                <p>Special Section Is Provided to Hostler's For There Queries</p>
+            </div><!-- /.col-lg-4 -->
+        </div><!-- /.col-lg-4 -->
+    </section>
+</body>
+{% endblock %}

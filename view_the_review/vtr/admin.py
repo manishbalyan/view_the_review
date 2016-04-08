@@ -1,5 +1,5 @@
 from django.contrib import admin
-from vtr.models import UserProfile, Query
+from vtr.models import UserProfileS, QueryS
 # Register your models here.
-admin.site.register(UserProfile)
-admin.site.register(Query)
+admin.site.register(UserProfileS)
+admin.site.register(QueryS)

@@ -1,35 +1,54 @@
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import get_object_or_404, redirect
-from vtr.forms import UserForm, UserProfileForm, QueryForm
-from vtr.models import UserProfile, Query
+from vtr.forms import UserForm, UserProfileFormS, QueryFormS, SearchForm
+from vtr.models import UserProfileS, QueryS
+from faculty.models import UserProfileF
+from django.db.models import Q
+from faculty.views import index as indexf
 
 
 # Create your views here.
 
+def home(request):
+    if UserProfileS.objects.filter(user=request.user.id):
+        return index(request)
+    elif UserProfileF.objects.filter(user=request.user.id):
+        userprofile = UserProfileF.objects.filter(user=request.user.id)
+
+#       if userprofile[0].department == 'ADMINISTRATION':
+#           return administration.views.index(request)
+#       else:
+        return indexf(request)
+    else:
+        return render(request, 'vtr/home.html')
+
+
+
+
 @login_required
 def index(request):
-    userprofile = UserProfile.objects.filter(user=request.user.id)
-    allquery = Query.objects.all().order_by('-created_at')
-    popular_query = Query.objects.order_by('-views')[:5]
+    userprofile = UserProfileS.objects.filter(user=request.user.id)
+    allquery = QueryS.objects.all().order_by('-created_at')
+    popular_query = QueryS.objects.order_by('-views')[:5]
+    branch = ['CSE','IT','ECE','ME','CE','EN']
+    title='All QUERIES'
     context_dict = {
-        'userprofile': userprofile,
-        'allquery': allquery,
-        'popular_query': popular_query,
+    'userprofile': userprofile,
+    'allquery': allquery,
+    'popular_query': popular_query,
+    'branch': branch,
+    'title': title
     }
     return render(request, 'vtr/index.html', context_dict)
 
 
-def register(request):
-    # A boolean value for telling the template whether the registration was successful.
-    # Set to False initially. Code changes value to True when registration succeeds.
-    registered = False
-    # If it's a HTTP POST, we're interested in processing form data.
+def registerS(request):
     if request.method == 'POST':
         # Attempt to grab information from the raw form information.
         # Note that we make use of both UserForm and UserProfileForm.
         user_form = UserForm(data=request.POST)
-        profile_form = UserProfileForm(data=request.POST)
+        profile_form = UserProfileFormS(data=request.POST)
         # If the two forms are valid...
         if user_form.is_valid() and profile_form.is_valid():
             # Save the user's form data to the database.
@@ -45,12 +64,11 @@ def register(request):
             profile.user = user
             # Did the user provide a profile picture?
             # If so, we need to get it from the input form and put it in the UserProfile model.
-            if 'picture' in request.FILES:
-                profile.picture = request.FILES['picture']
             # Now we save the UserProfile model instance.
             profile.save()
-            # Update our variable to tell the template registration was successful.
-            registered = True
+
+            return render(request, 'vtr/login.html')
+            
         # Invalid form or forms - mistakes or something else?
         # Print problems to the terminal.
         # They'll also be shown to the user.
@@ -60,101 +78,112 @@ def register(request):
     # These forms will be blank, ready for user input.
     else:
         user_form = UserForm()
-        profile_form = UserProfileForm()
+        profile_form = UserProfileFormS()
+
     # Render the template depending on the context.
-    return render(request, 'vtr/register.html', {'user_form': user_form, 'profile_form': profile_form, 'registered': registered})
+    return render(request, 'vtr/register.html', {'user_form': user_form, 'profile_form': profile_form})
 
 
 @login_required
 def query(request, slug):
-    userprofile = UserProfile.objects.filter(user=request.user.id)
-    single_query = get_object_or_404(Query, slug=slug)
-    popular_query = Query.objects.order_by('-views')[:5]
+    userprofile = UserProfileS.objects.filter(user=request.user.id)
+    single_query = get_object_or_404(QueryS, slug=slug)
+    popular_query = QueryS.objects.order_by('-views')[:5]
+    branch = ['CSE','IT','ECE','ME','CE','EN']
     single_query.views += 1  # increment the no of views
-    single_query.save()  # save it
+    single_query.save()
     context_dict = {
+        'userprofile': userprofile,
         'single_query': single_query,
         'popular_query': popular_query,
-        'userprofile': userprofile
-    }
+        'branch': branch
+        }
+
     return render(request, 'vtr/query.html', context_dict)
 
 
 @login_required
-def add_query(request):
+def add_queryS(request):
     if request.method == 'POST':
-        query_form = QueryForm(request.POST, request.FILES)
-        if query_form.is_valid():  # is the form valid
-            query_form.save(commit=True)  # yes and save to db
-            return redirect(index)
+        query_form = QueryFormS(request.POST, request.FILES)
+
+        if query_form.is_valid():# is the form valid
+            query= query_form.save(commit=False)
+            if UserProfileF.objects.filter(user=request.user.id):
+                query.branch=UserProfileF.objects.only('department').get(user=request.user).department
+            else:
+                query.branch=UserProfileS.objects.only('branch').get(user=request.user).branch
+            query.user=request.user
+            query.save()
+
+            
+            return redirect(home)
         else:
             print query_form.errors  # no, display error to end user
     else:
-        query_form = QueryForm()
+        query_form = QueryFormS()
     return render(request, 'vtr/add_query.html', {'query_form': query_form},)
 
-def branchcs(request):
-    branch_query = Query.objects.filter(tag='CSE')
-    userprofile = UserProfile.objects.filter(user=request.user.id)
-    popular_query = Query.objects.order_by('-views')[:5]
-    context_dict = {
-        'branch_query': branch_query,
-        'userprofile': userprofile,
-        'popular_query': popular_query,
-    }
-    return render(request, 'vtr/branch.html', context_dict)
 
-def branchec(request):
-    branch_query = Query.objects.filter(tag='ECE')
-    userprofile = UserProfile.objects.filter(user=request.user.id)
-    popular_query = Query.objects.order_by('-views')[:5]
+@login_required
+def branch(request, branch_name):
+    userprofile = UserProfileS.objects.filter(user=request.user.id)
+    allquery = QueryS.objects.filter(branch= branch_name).order_by('-created_at')
+    popular_query = QueryS.objects.order_by('-views')[:5]
+    branch = ['CSE','IT','ECE','ME','CE','EN']
+    title= branch_name + ' Queries'
     context_dict = {
-        'branch_query': branch_query,
         'userprofile': userprofile,
+        'allquery': allquery,
         'popular_query': popular_query,
-    }
-    return render(request, 'vtr/branch.html', context_dict)
+        'branch': branch,
+        'title': title
+        }
 
-def branchme(request):
-    branch_query = Query.objects.filter(tag='ME')
-    userprofile = UserProfile.objects.filter(user=request.user.id)
-    popular_query = Query.objects.order_by('-views')[:5]
-    context_dict = {
-        'branch_query': branch_query,
-        'userprofile': userprofile,
-        'popular_query': popular_query,
-    }
-    return render(request, 'vtr/branch.html', context_dict)
+    return render(request, 'vtr/index.html', context_dict)  
 
-def branchee(request):
-    branch_query = Query.objects.filter(tag='EE')
-    userprofile = UserProfile.objects.filter(user=request.user.id)
-    popular_query = Query.objects.order_by('-views')[:5]
-    context_dict = {
-        'branch_query': branch_query,
-        'userprofile': userprofile,
-        'popular_query': popular_query,
-    }
-    return render(request, 'vtr/branch.html', context_dict)
 
-def branchit(request):
-    branch_query = Query.objects.filter(tag='IT')
-    userprofile = UserProfile.objects.filter(user=request.user.id)
-    popular_query = Query.objects.order_by('-views')[:5]
+@login_required
+def my_query(request):
+    userprofile = UserProfileS.objects.filter(user=request.user.id)
+    allquery = QueryS.objects.filter(user=request.user.id).order_by('-created_at')
+    popular_query = QueryS.objects.order_by('-views')[:5]
+    branch = ['CSE','IT','ECE','ME','CE','EN']
+    title= request.user.username + ' Queries'
     context_dict = {
-        'branch_query': branch_query,
         'userprofile': userprofile,
+        'allquery': allquery,
         'popular_query': popular_query,
-    }
-    return render(request, 'vtr/branch.html', context_dict)
+        'branch': branch,
+        'title':title
+        }
 
-def branchce(request):
-    branch_query = Query.objects.filter(tag='CE')
-    userprofile = UserProfile.objects.filter(user=request.user.id)
-    popular_query = Query.objects.order_by('-views')[:5]
-    context_dict = {
-        'branch_query': branch_query,
-        'userprofile': userprofile,
-        'popular_query': popular_query,
-    }
-    return render(request, 'vtr/branch.html', context_dict)
+    return render(request, 'vtr/index.html', context_dict)  
+
+
+
+
+def search_page(request):
+    form = SearchForm()
+    Query = []
+    show_results = False
+    if request.GET.has_key('query'):
+        show_results = True
+        query = request.GET['query'].strip()
+        if query:
+            keywords = query.split()
+            q = Q()
+            for keyword in keywords:
+                q = q & Q(title__icontains=keyword)
+            form = SearchForm({'query' : query})
+            Query = QueryS.objects.filter(q)[:10]
+    variables = {
+        'form': form,
+        'Query': Query,
+        'show_results': show_results,
+        }
+    if request.GET.has_key('ajax'):
+        return render(request,'vtr/index.html', variables)
+    else:
+        return render(request,'vtr/search.html', variables)
+

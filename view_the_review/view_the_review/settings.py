@@ -48,9 +48,14 @@ INSTALLED_APPS = (
     'fluent_comments',
     'crispy_forms',
     'django_comments',
+    'taggit',
     # local apps
     'vtr',
+    'hostel',
+    'faculty',
+    'administration',
     'debug_toolbar',
+
 )
 FLUENT_COMMENTS_EXCLUDE_FIELDS = ('name', 'email', 'url')
 COMMENTS_APP = "fluent_comments"
@@ -116,6 +121,11 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+
+MEDIA_URL = '/media/'
+
 
 STATIC_URL = '/static/'
 
@@ -137,6 +147,6 @@ EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 DEFAULT_FROM_EMAIL = 'balyan05.manish@gmail.com'
 
-AUTH_PROFILE_MODULE = 'vtr.UserProfile'
+AUTH_USER_MODULE = 'auth.User'
 SITE_ID = 1
 USE_I18N = True

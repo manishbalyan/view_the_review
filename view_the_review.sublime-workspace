@@ -4,6 +4,18 @@
 		"selected_items":
 		[
 			[
+				"p",
+				"p	Tag"
+			],
+			[
+				"s",
+				"solid"
+			],
+			[
+				"pa",
+				"padding-top"
+			],
+			[
 				"T",
 				"TextInput"
 			],
@@ -22,14 +34,6 @@
 			[
 				"back",
 				"background-image"
-			],
-			[
-				"pa",
-				"padding"
-			],
-			[
-				"p",
-				"position"
 			],
 			[
 				"wi",
@@ -284,10 +288,6 @@
 				"IntegrityError"
 			],
 			[
-				"s",
-				"sqlalchemy"
-			],
-			[
 				"o",
 				"open_tasks"
 			],
@@ -456,35 +456,11 @@
 	"buffers":
 	[
 		{
-			"file": "view_the_review/vtr/models.py",
+			"file": "/home/manish/Documents/letsbegenuine/index.html",
 			"settings":
 			{
-				"buffer_size": 1075,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "view_the_review/vtr/forms.py",
-			"settings":
-			{
-				"buffer_size": 851,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "view_the_review/vtr/urls.py",
-			"settings":
-			{
-				"buffer_size": 665,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "view_the_review/vtr/views.py",
-			"settings":
-			{
-				"buffer_size": 6432,
-				"line_ending": "Unix"
+				"buffer_size": 11998,
+				"line_ending": "Windows"
 			}
 		}
 	],
@@ -530,27 +506,29 @@
 		"/home/manish/Documents/view_the_review/view_the_review",
 		"/home/manish/Documents/view_the_review/view_the_review/static",
 		"/home/manish/Documents/view_the_review/view_the_review/templates",
-		"/home/manish/Documents/view_the_review/view_the_review/view_the_review",
+		"/home/manish/Documents/view_the_review/view_the_review/templates/vtr",
 		"/home/manish/Documents/view_the_review/view_the_review/vtr"
 	],
 	"file_history":
 	[
-		"/home/manish/Documents/view_the_review/view_the_review/templates/vtr/base.html",
 		"/home/manish/Documents/view_the_review/view_the_review/static/css/style.css",
+		"/home/manish/Documents/view_the_review/view_the_review/templates/vtr/add_query.html",
 		"/home/manish/Documents/view_the_review/view_the_review/templates/vtr/index.html",
+		"/home/manish/Documents/view_the_review/view_the_review/templates/vtr/base.html",
 		"/home/manish/Documents/view_the_review/view_the_review/templates/vtr/login.html",
+		"/home/manish/Documents/view_the_review/view_the_review/templates/vtr/branch.html",
+		"/home/manish/Documents/view_the_review/view_the_review/vtr/views.py",
+		"/home/manish/Documents/view_the_review/view_the_review/vtr/models.py",
+		"/home/manish/Documents/view_the_review/view_the_review/vtr/urls.py",
+		"/home/manish/Documents/view_the_review/view_the_review/vtr/forms.py",
 		"/home/manish/Documents/django-bloggy/wayapp_project/templates/blog/post.html",
 		"/home/manish/Documents/django-bloggy/wayapp_project/templates/base.html",
 		"/home/manish/Documents/django-bloggy/wayapp_project/templates/blog/index.html",
 		"/home/manish/Documents/django_ecommerce/django_ecommerce/templates/main/index.html",
-		"/home/manish/Documents/view_the_review/view_the_review/templates/vtr/branch.html",
-		"/home/manish/Documents/view_the_review/view_the_review/vtr/urls.py",
-		"/home/manish/Documents/view_the_review/view_the_review/vtr/views.py",
 		"/home/manish/Documents/view_the_review/view_the_review/view_the_review/urls.py",
 		"/home/manish/Documents/view_the_review/view_the_review/vtr/footer.html",
 		"/home/manish/Documents/view_the_review/view_the_review/templates/comments/posted.html",
 		"/home/manish/Documents/view_the_review/view_the_review/templates/vtr/query.html",
-		"/home/manish/Documents/view_the_review/view_the_review/vtr/models.py",
 		"/home/manish/Documents/view_the_review/view_the_review/templates/vtr/register.html",
 		"/home/manish/Documents/view_the_review/view_the_review/templates/comments/list.html",
 		"/home/manish/Documents/view_the_review/view_the_review/vtr/admin.py",
@@ -566,10 +544,8 @@
 		"/home/manish/.local/share/Trash/files/threadedcomments/forms.py",
 		"/home/manish/Downloads/django-threadedcomments-master/threadedcomments/models.py",
 		"/home/manish/Downloads/django-threadedcomments-master/threadedcomments/forms.py",
-		"/home/manish/Documents/view_the_review/view_the_review/templates/vtr/add_query.html",
 		"/home/manish/Documents/view_the_review/view_the_review/templates/vtr/contact.html",
 		"/home/manish/Desktop/Wayapp-master/wayapp_project/templates/blog/post.html",
-		"/home/manish/Documents/view_the_review/view_the_review/vtr/forms.py",
 		"/home/manish/Documents/letsbegenuine/README.md",
 		"/media/manish/EC584FAA584F727E/Users/Manish/Documents/letsbegenuine/index.html",
 		"/home/manish/Documents/view_the_review/view_the_review/templates/forums/topic_detail.html",
@@ -704,71 +680,11 @@
 			[
 				{
 					"buffer": 0,
-					"file": "view_the_review/vtr/models.py",
+					"file": "/home/manish/Documents/letsbegenuine/index.html",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1075,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1075,
-								1075
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Python/Python.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "view_the_review/vtr/forms.py",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 851,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								851,
-								851
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Python/Python.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "view_the_review/vtr/urls.py",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 665,
+						"buffer_size": 11998,
 						"regions":
 						{
 						},
@@ -781,43 +697,13 @@
 						],
 						"settings":
 						{
-							"syntax": "Packages/Python/Python.tmLanguage"
+							"syntax": "Packages/HTML/HTML.tmLanguage"
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 3,
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": "view_the_review/vtr/views.py",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 6432,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								209,
-								209
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Python/Python.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 2,
+					"stack_index": 0,
 					"type": "text"
 				}
 			]

@@ -1,0 +1,26 @@
+{% extends 'vtr/base.html' %}
+{% load bootstrap %}
+{% block title %}Register{% endblock %}
+{% block body_block %}
+        <br><br><br>
+        <div class="container">
+           <div class="row">            
+      
+            <strong>Registration Form for Faculty</strong>           
+                <form id="user_form"  class="form-group"action="{% url 'registerF' %}" method="post" enctype="multipart/form-data">
+                
+                    {% csrf_token %}
+                    {{ user_form|bootstrap_horizontal }}
+                    {{ profile_form|bootstrap_horizontal }}
+                
+                    <br>
+                <div>
+                    <input class="btn btn-primary" type="submit" name="submit" value="Register"/>
+                </div>
+                </form>
+            </div>
+            
+        </div>
+        
+        
+{% endblock %}

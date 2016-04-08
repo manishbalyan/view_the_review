@@ -1,27 +1,25 @@
 {% extends 'vtr/base.html' %}
-{% load static %}
 {% block title %}Login{% endblock %}
 {% block body_block %}
-<div  style="background-image: url({% static "img/bg.jpg" %}");>
-<br><br>
-<center>
-    <p>View The Review is a community of IPEC Students, helping each other.</p>
-    <p>Join them; it only takes a minute:</p>  
-    <a href="{% url 'register' %}" class="btn btn-lg btn-primary btn-block" id="lbtn" >Register</a>
-    <h3>OR</h3>
-</center>
-<link href="http://getbootstrap.com/examples/signin/signin.css" rel="stylesheet">
-<center>
-    <form class="form-signin" role="form" method="post" action="{% url 'login' %}">
-        {% csrf_token %}
-        <h2 class="form-signin-heading">Please sign in</h2>
-        <input class="form-control" placeholder="Username" id="id_username" maxlength="254" name="username" type="text" required autofocus=""/>
-        <input type="password" class="form-control" placeholder="Password" id="id_password" name="password" type="password" required />
-        <button class="btn btn-lg btn-primary btn-block" type="submit" value="Submit" id="lbtn" />Sign in</button>
-        <input type="hidden" name="next" vlaue="{{next}}" />
-        {% if form.errors %}
-            <p class = "label label-danger">Your username and password didn't match. Please try again.</p>
-        {% endif %}
-    </form></center>
-    </div>
+<body class="bgimg">
+    <link href="http://getbootstrap.com/examples/signin/signin.css" rel="stylesheet">
+    <center>
+        <form class="form-signin" role="form" method="post" action="{% url 'login' %}">
+            {% csrf_token %}
+            <h2 class="form-signin-heading">Please sign in</h2>
+            <input class="form-control" placeholder="Username" id="id_username" maxlength="254" name="username" type="text" required autofocus=""/>
+            <input type="password" class="form-control" placeholder="Password" id="id_password" name="password" type="password" required />
+            <button class="btn btn-lg btn-primary btn-block" type="submit" value="Submit" id="lbtn" />Sign in</button>
+            <input type="hidden" name="next" vlaue="{{next}}" />
+            {% if form.errors %}
+                <p class = "label label-danger">Your username and password didn't match. Please try again.</p>
+            {% endif %}
+        </form>
+        <P><h1>OR</h1></P>
+        <P><h1>REGISTER YOURSELF</h1></P>
+        <P><h1>It only takes a Minute:</h1></P>
+        <p><a class="btn btn-lg btn-primary" href="{% url 'registerS' %}" role="button">Student Registration</a></p>
+        <p><a class="btn btn-lg btn-primary" href="{% url 'registerF' %}" role="button">Faculty Registration</a></p>
+    </center>
+</body>
 {% endblock %}

@@ -2,15 +2,13 @@ from django.conf.urls import patterns, url
 from vtr import views
 
 
-urlpatterns = patterns('', url(r'^$', views.index, name='index'),
-    url(r'^register/$', views.register, name='register'),
-    url(r'^add_query/$', views.add_query, name='add_query'),
-    url(r'^branchcs/$', views.branchcs, name='branchcs'),
-    url(r'^branchit/$', views.branchcs, name='branchit'),
-    url(r'^branchec/$', views.branchcs, name='branchec'),
-    url(r'^branchme/$', views.branchcs, name='branchme'),
-    url(r'^branchee/$', views.branchcs, name='branchee'),
-    url(r'^branchce/$', views.branchcs, name='branchce'),
+urlpatterns = patterns('', url(r'^$', views.home, name='home'),
+    url(r'^registerS/$', views.registerS, name='registerS'),
+    url(r'^search_page/$', views.search_page, name='search_page'),
+    url(r'^add_queryS/$', views.add_queryS, name='add_queryS'),
+    url(r'^my_query/$', views.my_query, name='my_query'),
     url(r'^(?P<slug>[\w|\-]+)/$', views.query, name='query'),
-
+    url(r'^my_query/(?P<slug>[\w|\-]+)/$', views.query, name='query'),
+    url(r'^branch/(?P<branch_name>\w+)/$', views.branch, name='branch'),
+    
 )

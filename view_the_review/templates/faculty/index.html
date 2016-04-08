@@ -1,0 +1,79 @@
+{% extends 'faculty/base.html' %}
+{% block title %}Title{% endblock %}
+{% load i18n comments %}
+{% load markup_tags %}
+{% block body_block %}
+    <div class="row">
+        <div class="col-lg-3" id="left">
+            <ul>
+                <h3>
+                {{ user.username}}</h3><br><br>
+                {% for users in userprofile %}
+                    {% if users.profile_pic %}
+                    <img src="/media/{{ users.profile_pic }}">
+                    {% endif %}<br><br>
+                    {{ users.faculty_id }}
+                    <br><br>
+                    {{ users.department }}
+                    <p><a class="btn btn-lg btn-primary" href="{% url 'my_queryf' %}" role="button">MY QUERIES</a></p>
+                                    
+                {% endfor %}
+            </ul>
+            
+                    
+        </div>
+        <div class="col-lg-6" id="middle">
+        <h1><font size="7"><center>{{title}}</center></font></h1>
+            <ul>
+                {% for query in allquery %}
+                    <h3><a href="/faculty/{{query.slug}}">{{ query.title }}</a></h3>
+                    <br>
+                    <p>{{ query.content }}</p>
+                    <br>
+                    <p>Views: {{ query.views }}</p>
+                    <br>
+                    <p>{{ query.created_at }}</p>  
+                    <br>
+                    <p>Tags:<ul class="tags">
+                    {% for tag in query.tags.all %}
+                    <li>{{ tag.name}}</li>
+                    {% endfor %}
+                    </ul>
+                    
+                    </p>
+                    <p>
+                    {% if query.show_user %}
+                    Posted by: {{ query.user.username }}
+                    {% endif %} </p>               
+                    <br><br>
+                {% endfor %}
+            </ul>
+        </div>
+        <div class="col-lg-3" id="right">
+            <div>
+                <h3>Trending Query</h3>
+                <ul style="list-style-type: none">
+                    {% for query in popular_query %}
+                        <li>
+                            <a href="/faculty/{{query.slug}}">{{ query.title }}</a>
+                        </li> 
+                        <br>
+                    {% endfor %}    
+                </ul>
+            </div>
+            <br>
+            {% if user.department == 'WARDEN' %}
+            
+            <div>
+                <h3>Branch Catagories<h3/>
+                <ul style="list-style-type: none" class="blist">
+
+                    {% for b in branch%}
+                    <li><a href="/faculty/branch/{{b}}" >{{b}}</a></li><br>
+                    {% endfor %}
+                </ul>
+            </div>
+             {% endif %}    
+        </div>
+    </div>
+{% endblock %}

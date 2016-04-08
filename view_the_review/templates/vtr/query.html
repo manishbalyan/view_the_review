@@ -6,25 +6,50 @@
     <div class="row">
         <div class="col-lg-3" id="left">
             <ul>
-                <h3>{{ user.username }}</h3>
+                <h3>
+                {{ user.username}}</h3><br><br>
                 {% for users in userprofile %}
+                    {% if users.profile_pic %}
+                    <img src="/media/{{ users.profile_pic }}">
+                    {% endif %}
+                    <br><br>
                     {{ users.rollnumber }}
                     <br><br>
                     {{ users.year }}
                     <br><br>
                     {{ users.branch }}
+                    <p><a class="btn btn-lg btn-primary" href="{% url 'my_query' %}" role="button">MY QUERIES</a></p>
+
+                    {% if users.hostler %}
+                    <p><a class="btn btn-lg btn-primary" href="{% url 'hostelQ' %}" role="button">ALL HOSTEL QUERIES</a></p>
+                     <p><a class="btn btn-lg btn-primary" href="{% url 'my_hostelQ' %}" role="button"> MY HOSTEL QUERIES</a></p>
+                    {% endif %}
+                    
                 {% endfor %}
             </ul>
+            
+                    
         </div>
         <div class="col-lg-6">
+            
             <h2>{{ single_query.title }}</h2>
-            <ul>
-                <p><em>{{ single_query.created_at }}</em></p>
+            
+                <b>({{ single_query.created_at }})</b>
+                    <br>
                 <p>{{ single_query.content }}</p>
-                <p>Tag: {{ single_query.tag }}</p>
+                <p>Tag: :<ul class="tags">
+                    {% for tag in single_query.tags.all %}
+                    <li>{{ tag.name}}</li>
+                    {% endfor %}
+                    </ul>
+                    
                 <p>Views: {{ single_query.views}}</p>
+                 <p>
+                    {% if query.show_user %}
+                    Posted by: {{ query.user.username }} 
+                    {% endif %} </p>
                 <br>
-            </ul>
+            
             <h2>Comments</h2>
             {% load comments %}
             
@@ -35,30 +60,27 @@
 
                 
         </div>
-        <div class="col-lg-3">  
-            <div>    
-                <h3>Trending Query</h3>
+        <div class="col-lg-3" id="right">
+            <div class="tquery">
+                <h3 class="shead"><span class="icon"></span>Trending Query</h3>
                 <ul style="list-style-type: none">
                     {% for query in popular_query %}
-                    <li>
-                        <a href="/vtr/{{query.slug}}">{{ query.title }} </a>
-                    </li>
-                    <br>
+                        <li>
+                            <a href="/vtr/{{query.slug}}">{{ query.title }}</a>
+                        </li> 
+                        <br>
                     {% endfor %}    
                 </ul>
             </div>
             <br>
             <div>
-                <h3>Branch Catagories<h3/>
-                <ul style="list-style-type: none" class="blist">
-                    <li><a href="{% url 'branchcs' %}" name='CSE'>Computer Science</a></li>
-                    <li><a href="{% url 'branchit' %}" name='IT'>Information Technology</a></li>
-                    <li><a href="{% url 'branchec' %}" name='ECE'>Electronics and Communications</a></li>
-                    <li><a href="{% url 'branchme' %}" name='ME'>Mechanical Engineering</a></li>
-                    <li><a href="{% url 'branchee' %}" name='EE'>Electrical Engineering</a></li>
-                    <li><a href="{% url 'branchce' %}" name='CE'>Civil Engineering</a></li>
+                <h3 class="shead">Branch Catagories<h3/>
+                <ul class="blist">
+                    {% for b in branch%}
+                    <li><a href="/vtr/branch/{{b}}" >{{b}}</a></li><br>
+                    {% endfor %}
                 </ul>
-            </div> 
+            </div>    
         </div>
     </div>
 {% endblock %}
