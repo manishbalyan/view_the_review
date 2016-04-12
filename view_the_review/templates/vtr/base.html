@@ -40,7 +40,7 @@
               
               <li><a href="{% url 'logout' %}">{{user.username | title}} Logout</a></li>
               <li><a href="{% url 'add_queryS'%}">Query</a></li>
-              <li><a href="{% url 'search_page'%}">search</a></li>
+              <li><a href="{% url 'haystack_search'%}">search</a></li>
             {% endif %}
               <li><a href="#">About</a></li>
               <li><a href="#">Contact</a></li>

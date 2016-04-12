@@ -13,6 +13,13 @@ https://docs.djangoproject.com/en/1.8/ref/settings/
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
 
+HAYSTACK_CONNECTIONS = {
+    'default': {
+        'ENGINE': 'haystack.backends.whoosh_backend.WhooshEngine',
+        'PATH': os.path.join(os.path.dirname(__file__), 'whoosh_index'),
+    },
+}
+
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
@@ -45,16 +52,18 @@ INSTALLED_APPS = (
     'bootstrapform',
     'django.contrib.sites',
     'django_markup',
+    'debug_toolbar',
     'fluent_comments',
     'crispy_forms',
     'django_comments',
     'taggit',
+    'haystack',
     # local apps
     'vtr',
     'hostel',
     'faculty',
     'administration',
-    'debug_toolbar',
+
 
 )
 FLUENT_COMMENTS_EXCLUDE_FIELDS = ('name', 'email', 'url')

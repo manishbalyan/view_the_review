@@ -4,6 +4,8 @@ from django.shortcuts import get_object_or_404, redirect
 from hostel.forms import QueryFormH
 from hostel.models import QueryH
 from vtr.models import UserProfileS
+from faculty.models import UserProfileF
+from faculty.views import index as indexf
 # Create your views here.
 
 
@@ -15,8 +17,9 @@ def add_queryH(request):
             query=query_form.save(commit=False)
             query.user=request.user
             query.save()
+            query_form.save_m2m()
             if UserProfileF.objects.filter(user=request.user.id):
-                return faculty.views.index(request)
+                return indexf(request)
             else:
                 return redirect(hostelQ)
         else:

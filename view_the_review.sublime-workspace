@@ -4,6 +4,26 @@
 		"selected_items":
 		[
 			[
+				"U",
+				"UserProfileF"
+			],
+			[
+				"user",
+				"UserProfileF"
+			],
+			[
+				"Q",
+				"QueryS"
+			],
+			[
+				"Mar",
+				"MarkdownWidget"
+			],
+			[
+				"ba",
+				"background-color"
+			],
+			[
 				"p",
 				"p	Tag"
 			],
@@ -46,10 +66,6 @@
 			[
 				"col",
 				"border-collapse"
-			],
-			[
-				"ba",
-				"box-shadow"
 			],
 			[
 				"b",
@@ -116,14 +132,6 @@
 				"width"
 			],
 			[
-				"Q",
-				"QueryForm"
-			],
-			[
-				"user",
-				"userprofile"
-			],
-			[
 				"con",
 				"context_dict"
 			],
@@ -166,10 +174,6 @@
 			[
 				"model",
 				"models"
-			],
-			[
-				"U",
-				"UserProfile"
 			],
 			[
 				"pro",
@@ -455,14 +459,6 @@
 	},
 	"buffers":
 	[
-		{
-			"file": "/home/manish/Documents/letsbegenuine/index.html",
-			"settings":
-			{
-				"buffer_size": 11998,
-				"line_ending": "Windows"
-			}
-		}
 	],
 	"build_system": "",
 	"build_system_choices":
@@ -503,40 +499,71 @@
 	"expanded_folders":
 	[
 		"/home/manish/Documents/view_the_review",
+		"/home/manish/Documents/view_the_review/env",
+		"/home/manish/Documents/view_the_review/env/lib",
+		"/home/manish/Documents/view_the_review/env/lib/python2.7",
+		"/home/manish/Documents/view_the_review/env/lib/python2.7/site-packages",
+		"/home/manish/Documents/view_the_review/env/lib/python2.7/site-packages/django",
+		"/home/manish/Documents/view_the_review/env/lib/python2.7/site-packages/django/utils",
 		"/home/manish/Documents/view_the_review/view_the_review",
-		"/home/manish/Documents/view_the_review/view_the_review/static",
-		"/home/manish/Documents/view_the_review/view_the_review/templates",
-		"/home/manish/Documents/view_the_review/view_the_review/templates/vtr",
 		"/home/manish/Documents/view_the_review/view_the_review/vtr"
 	],
 	"file_history":
 	[
-		"/home/manish/Documents/view_the_review/view_the_review/static/css/style.css",
-		"/home/manish/Documents/view_the_review/view_the_review/templates/vtr/add_query.html",
+		"/home/manish/Documents/view_the_review/view_the_review/vtr/models.py",
+		"/home/manish/Documents/view_the_review/view_the_review/vtr/views.py",
+		"/home/manish/Documents/view_the_review/view_the_review/vtr/forms.py",
+		"/home/manish/Documents/view_the_review/view_the_review/vtr/urls.py",
+		"/home/manish/Documents/view_the_review/view_the_review/view_the_review/settings.py",
 		"/home/manish/Documents/view_the_review/view_the_review/templates/vtr/index.html",
 		"/home/manish/Documents/view_the_review/view_the_review/templates/vtr/base.html",
+		"/home/manish/Documents/view_the_review/view_the_review/templates/search/search.html",
+		"/home/manish/Documents/view_the_review/view_the_review/templates/search/indexes/vtr/querys_text.txt",
+		"/home/manish/Documents/view_the_review/env/lib/python2.7/site-packages/haystack/forms.py",
+		"/home/manish/Documents/vtr/view_the_review/vtr/models.py",
+		"/home/manish/Documents/view_the_review/view_the_review/view_the_review/urls.py",
+		"/home/manish/Documents/view_the_review/env/lib/python2.7/site-packages/haystack/views.py",
+		"/home/manish/Documents/vtr/view_the_review/vtr/views.py",
+		"/home/manish/Documents/view_the_review/view_the_review/view_the_review/search_sites.py",
+		"/home/manish/Documents/view_the_review/view_the_review/vtr/search_indexes.py",
+		"/home/manish/Documents/view_the_review/view_the_review/faculty/views.py",
+		"/home/manish/Documents/view_the_review/view_the_review/faculty/urls.py",
+		"/home/manish/Downloads/views_1460293901839.py",
+		"/home/manish/Downloads/views_1460293901840.py",
+		"/home/manish/Documents/view_the_review/view_the_review/hostel/views.py",
+		"/home/manish/Documents/view_the_review/view_the_review/templates/search/indexes/vtr/quesys_text.txt",
+		"/home/manish/Documents/view_the_review/env/lib/python2.7/site-packages/django/template/loader.py",
+		"/home/manish/Documents/view_the_review/view_the_review/hostel/forms.py",
+		"/home/manish/Documents/view_the_review/view_the_review/hostel/models.py",
+		"/home/manish/Documents/view_the_review/view_the_review/hostel/migrations/0001_initial.py",
+		"/home/manish/Documents/view_the_review/view_the_review/vtr/migrations/0001_initial.py",
+		"/home/manish/Documents/view_the_review/view_the_review/templates/vtr/add_query.html",
+		"/home/manish/Documents/view_the_review/view_the_review/templates/vtr/home.html",
+		"/home/manish/Documents/view_the_review/view_the_review/static/css/style.css",
+		"/home/manish/Documents/view_the_review/view_the_review/templates/hostel/base.html",
+		"/home/manish/Documents/view_the_review/view_the_review/templates/hostel/index.html",
+		"/home/manish/Documents/view_the_review/view_the_review/templates/faculty/base.html",
+		"/home/manish/Documents/view_the_review/view_the_review/templates/vtr/register.html",
+		"/home/manish/Documents/view_the_review/view_the_review/templates/vtr/query.html",
+		"/home/manish/Documents/view_the_review/view_the_review/templates/faculty/query.html",
+		"/home/manish/Documents/view_the_review/view_the_review/templates/faculty/index.html",
 		"/home/manish/Documents/view_the_review/view_the_review/templates/vtr/login.html",
+		"/home/manish/Documents/django-quick-start/view_the_review/templates/vtr/index.html",
+		"/home/manish/Documents/django-quick-start/view_the_review/static/css/style.css",
+		"/home/manish/Documents/letsbegenuine/index.html",
 		"/home/manish/Documents/view_the_review/view_the_review/templates/vtr/branch.html",
-		"/home/manish/Documents/view_the_review/view_the_review/vtr/views.py",
-		"/home/manish/Documents/view_the_review/view_the_review/vtr/models.py",
-		"/home/manish/Documents/view_the_review/view_the_review/vtr/urls.py",
-		"/home/manish/Documents/view_the_review/view_the_review/vtr/forms.py",
 		"/home/manish/Documents/django-bloggy/wayapp_project/templates/blog/post.html",
 		"/home/manish/Documents/django-bloggy/wayapp_project/templates/base.html",
 		"/home/manish/Documents/django-bloggy/wayapp_project/templates/blog/index.html",
 		"/home/manish/Documents/django_ecommerce/django_ecommerce/templates/main/index.html",
-		"/home/manish/Documents/view_the_review/view_the_review/view_the_review/urls.py",
 		"/home/manish/Documents/view_the_review/view_the_review/vtr/footer.html",
 		"/home/manish/Documents/view_the_review/view_the_review/templates/comments/posted.html",
-		"/home/manish/Documents/view_the_review/view_the_review/templates/vtr/query.html",
-		"/home/manish/Documents/view_the_review/view_the_review/templates/vtr/register.html",
 		"/home/manish/Documents/view_the_review/view_the_review/templates/comments/list.html",
 		"/home/manish/Documents/view_the_review/view_the_review/vtr/admin.py",
 		"/home/manish/Documents/view_the_review/view_the_review/templates/django_comment_xtd/comment.html",
 		"/home/manish/Documents/view_the_review/view_the_review/templates/comments/preview.html",
 		"/home/manish/Documents/letsbegenuine/contact.html",
 		"/home/manish/Documents/view_the_review/view_the_review/templates/comments/form.html",
-		"/home/manish/Documents/view_the_review/view_the_review/view_the_review/settings.py",
 		"/home/manish/Documents/letsbegenuine/graphic-designing.html",
 		"/home/manish/Downloads/django-threadedcomments-master/examples/core/templates/comments/core/form.html",
 		"/home/manish/Downloads/django-threadedcomments-master/examples/example/urls.py",
@@ -610,35 +637,7 @@
 		"/home/manish/Documents/haarcascade_frontalface_default.xml",
 		"/home/manish/Documents/django-quick-start/hello_world_project/templates/betterhello.html",
 		"/home/manish/Documents/django-quick-start/hello_world_project/hello_world_project/urls.py",
-		"/home/manish/Documents/django-quick-start/hello_world_project/hello_world/urls.py",
-		"/home/manish/Documents/django-quick-start/hello_world_project/hello_world/views.py",
-		"/home/manish/Documents/django-quick-start/hello_world_project/hello_world_project/settings.py",
-		"/home/manish/Documents/RealPython/flask-blog/blog.py",
-		"/home/manish/Documents/RealPython/flasktaskr/project/run.py",
-		"/home/manish/Documents/RealPython/flasktaskr/project/views.py",
-		"/home/manish/Documents/RealPython/flasktaskr/project/forms.py",
-		"/home/manish/Documents/RealPython/flasktaskr/project/models.py",
-		"/home/manish/Documents/RealPython/flasktaskr/project/_config.py",
-		"/home/manish/Documents/RealPython/flasktaskr/project/test.py",
-		"/home/manish/Documents/RealPython/flasktaskr/project/db_create.py",
-		"/home/manish/Documents/RealPython/flasktaskr/project/db_migrate.py",
-		"/home/manish/Documents/RealPython/flasktaskr/project/static/css/main.css",
-		"/home/manish/Documents/RealPython/flasktaskr/project/templates/tasks.html",
-		"/home/manish/Documents/RealPython/flasktaskr/project/templates/register.html",
-		"/home/manish/Documents/RealPython/flasktaskr/project/templates/login.html",
-		"/home/manish/Documents/RealPython/flasktaskr/project/templates/_base.html",
-		"/home/manish/Desktop/ram.html",
-		"/home/manish/Documents/raman.html",
-		"/media/manish/New Volume/guddu/Projects/SomeConnect/SoMe/New folder/SoMe/index.html",
-		"/media/manish/New Volume/study/bootstrap/galaxy s6/l.html",
-		"/media/manish/New Volume/study/bootstrap/galaxy s6/Galaxy S6a.html",
-		"/media/manish/New Volume/study/bootstrap/galaxy s6/Galaxy S6c.html",
-		"/media/manish/New Volume/study/bootstrap/JavaScript · Bootstrap_files/bootstrap",
-		"/home/manish/Documents/RealPython/front-end/index.html",
-		"/home/manish/Documents/RealPython/front-end/main.css",
-		"/home/manish/Documents/RealPython/front-end/main.js",
-		"/home/manish/GoogleAppEngineLauncher.py",
-		"/home/manish/Documents/Activity/python/fib.py"
+		"/home/manish/Documents/django-quick-start/hello_world_project/hello_world/urls.py"
 	],
 	"find":
 	{
@@ -675,37 +674,8 @@
 	"groups":
 	[
 		{
-			"selected": 0,
 			"sheets":
 			[
-				{
-					"buffer": 0,
-					"file": "/home/manish/Documents/letsbegenuine/index.html",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 11998,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/HTML/HTML.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
-					"type": "text"
-				}
 			]
 		}
 	],
@@ -715,7 +685,7 @@
 	},
 	"input":
 	{
-		"height": 0.0
+		"height": 33.0
 	},
 	"layout":
 	{
@@ -786,7 +756,7 @@
 	"show_open_files": true,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 217.0,
+	"side_bar_width": 332.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{

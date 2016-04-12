@@ -43,14 +43,11 @@
                 <hr>
                     <h3><a href="/vtr/{{query.slug}}">{{ query.title }}</a></h3>
                     <b>({{ query.created_at }})</b>
-                    <br>
-                    <p>Tags:<ul class="tags">
+                    <b>Tags:
                     {% for tag in query.tags.all %}
-                    <li>{{ tag.name}}</li>
+                    {{ tag.name}}
                     {% endfor %}
-                    </ul>
-                    
-                    </p>
+                    </b>
                     <p>
                     {% if query.show_user %}
                     Posted by: {{ query.user.username }} 

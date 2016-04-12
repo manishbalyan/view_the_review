@@ -4,6 +4,7 @@ from django.template.defaultfilters import slugify
 import os
 import uuid
 from taggit.managers import TaggableManager
+import datetime
 
 
 def upload_to(instance, filename):
@@ -22,11 +23,16 @@ class UserProfileS(models.Model):
     rollnumber = models.PositiveIntegerField(blank=True, null=True)
     year = models.IntegerField(blank=True, null=True)
     branch = models.CharField(max_length=30, blank=True, null=True)
-    hostler = models.BooleanField()
-    profile_pic = models.ImageField(upload_to="images", blank=True, null=True)
+    hostler = models.BooleanField(default=0)
+    profile_pic = models.ImageField(upload_to="images", blank=True, null=True, default='images/@@@@.jpg')
+    activation_key = models.CharField(max_length=40, blank=True, null=True)
+    key_expires = models.DateTimeField(default=datetime.date.today(), null=True)
 
     def __unicode__(self):
         return self.user.username
+
+    class Meta:
+        verbose_name_plural = u'User profiles'
 
 
 class QueryS(models.Model):

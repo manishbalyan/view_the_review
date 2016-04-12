@@ -41,12 +41,12 @@
                     
                 <p>Views: {{ single_query.views}}</p>
                  <p>
-                    {% if query.show_user %}
-                    Posted by: {{ query.user.username }} 
+                    {% if single_query.show_user %}
+                    Posted by: {{ single_query.user.username }} 
                     {% endif %} </p>
                     <p>
-    {% if query.image %}
-            <img src="/media/{{ query.image }}">
+    {% if single_query.image %}
+            <img id="qimage" src="/media/{{ single_query.image }}">
     {% endif %}
  </p>
                 <br>
