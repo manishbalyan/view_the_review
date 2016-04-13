@@ -38,7 +38,7 @@ class UserProfileS(models.Model):
 class QueryS(models.Model):
     title = models.CharField(max_length=100, unique=True)
     created_at = models.DateTimeField(auto_now_add=True)
-    content = models.TextField()
+    content = models.TextField(null=True)
     show_user = models.BooleanField(default=0, null=False)
     branch = models.CharField(max_length=20, blank=True, null=True)
     views = models.IntegerField(default=0)

@@ -10,18 +10,17 @@
             </div>
         </center>
         <div class="col-lg-3" id="left">
-            <ul>
-                <h3>
-                {{ user.username}}</h3><br>
+            
+                <h3>{{ user.username}}</h3><br>
                 {% for users in userprofile %}
                     {% if users.profile_pic %}
                     <img src="/media/{{users.profile_pic}}">
                     {% endif %}<br><br>
-                    {{ users.rollnumber }}
-                    <br><br>
-                    {{ users.year }}
-                    <br><br>
-                    {{ users.branch }}
+                    Rollnumber:{{ users.rollnumber }}
+                    <br>
+                    Year:{{ users.year }}
+                    <br>
+                    Branch:{{ users.branch }}<br><br>
                     <p><a class="btn btn-lg btn-primary" href="{% url 'my_query' %}" role="button">MY QUERIES</a></p>
 
                     {% if users.hostler %}
@@ -31,31 +30,39 @@
 
                     
                 {% endfor %}
-            </ul>
+    
             
                     
         </div>
         <div class="col-lg-6" id="middle">
         
-            <ul>
+            
                 {% for query in allquery %}
                 <div class="mid">
                 <hr>
-                    <h3><a href="/vtr/{{query.slug}}">{{ query.title }}</a></h3>
-                    <b>({{ query.created_at }})</b>
-                    <b>Tags:
+                    <h4><a href="/vtr/{{query.slug}}">{{ query.title }}</a></h4>
+                    <b><span class="tags">({{ query.created_at }})
+                    &nbsp;Tags:
                     {% for tag in query.tags.all %}
-                    {{ tag.name}}
-                    {% endfor %}
-                    </b>
+                    <span class="tagname">{{ tag.name }}</span>
+                    {% endfor %}</span></b>
+                    <p>
+                    {% get_comment_count for query as comment_count %}
+                    {% load comments %}
+                    {% get_comment_count for query as comment_count %}
                     <p>
                     {% if query.show_user %}
-                    Posted by: {{ query.user.username }} 
-                    {% endif %} </p>               
-                    <br>
+                    Posted by <span class="count">{{ query.user.username }}</span>
+                    {% endif %} &nbsp; Views <span class="count">{{ query.views}}</span> &nbsp;Comments <span class="count">{{ comment_count }}</span></p> </p>              
+                    
+                    
+                    
+                    <p id="cmt">
+                    {% render_comment_form for query %}
+                    </p>
                     </div>
                 {% endfor %}
-            </ul>
+            
         </div>
         <div class="col-lg-3" id="right">
             <div class="tquery">
@@ -63,9 +70,9 @@
                 <ul style="list-style-type: none">
                     {% for query in popular_query %}
                         <li>
-                            <a href="/vtr/{{query.slug}}">{{ query.title }}</a>
+                            <span class="bullet">•</span>&nbsp;<a href="/vtr/{{query.slug}}">{{ query.title }}</a>
                         </li> 
-                        <br>
+                        
                     {% endfor %}    
                 </ul>
             </div>

@@ -68,6 +68,7 @@ INSTALLED_APPS = (
 )
 FLUENT_COMMENTS_EXCLUDE_FIELDS = ('name', 'email', 'url')
 COMMENTS_APP = "fluent_comments"
+FLUENT_COMMENTS_USE_EMAIL_NOTIFICATION = True
 
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',

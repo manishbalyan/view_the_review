@@ -9,6 +9,7 @@ body{
     border-radius: 4px;
     box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.05);;
     background-color: #F5F5F5;
+    padding-left: 50px;
 }
 
 .icon{
@@ -124,7 +125,7 @@ a{
 }
 
 .tquery{
-    background-color: #D9EDF7;
+    background-color: #F5F5F5;
     border: 1px solid transparent;
     border-radius: 4px;
     box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.05);
@@ -149,3 +150,80 @@ a{
     margin: 0px 0px 20px;
     padding-left: 0px;
 }
+
+#id_comment {
+    height: 50px;
+    width: 400px;
+}
+
+.count{
+    background: #EEE none repeat scroll 0% 0%;
+    color: #999;
+    font-weight: bold;
+    border-radius: 2px;
+    min-width: 10px;
+    text-align: center;
+    display: inline-block;
+    float: none;
+    font-size: 15px;
+    padding: 1px 3px;
+    margin: -3px 0px 0px 4px;
+
+}
+
+.qtext{
+    font-family: Georgia,Times,"Times New Roman",serif;
+    font-size: 15px;
+    line-height: 1.4;
+}
+
+.qtitle{
+        color: #333;
+        line-height: 1.25;
+        font-weight: bold;
+        letter-spacing: -1px;
+        font-size: 24px;
+}
+
+.tags{
+    color: #808393;
+
+}
+
+.bullet {
+    color: #999;
+    font-size: 27px;
+}
+
+.tagname{
+    border-color: transparent;
+    background-color: #E1ECF4;
+    position: relative;
+    display: inline-block;
+    padding: 0.4em 0.5em;
+    margin: 2px 2px 2px 0px;
+    font-size: 12px;
+    line-height: 1;
+    white-space: nowrap;
+    text-decoration: none;
+    text-align: center;
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 0px;
+}
+/*
+hr {
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+    margin-left: auto;
+    margin-right: auto;
+    border-style: inset;
+    
+}
+*/
+
+#middle{
+    padding-left: 30px;
+    padding-right: 20px;
+}
+

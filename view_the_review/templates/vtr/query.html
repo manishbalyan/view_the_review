@@ -1,6 +1,6 @@
 {% extends 'vtr/base.html' %}
 {% block title %}Title{% endblock %}
-{% load i18n comments %}
+{% load i18n comments fluent_comments_tags %}
 {% load markup_tags %}
 {% block body_block %}
     <div class="row">
@@ -32,28 +32,24 @@
         </div>
         <div class="col-lg-6">
             
-            <h2>{{ single_query.title }}</h2>
+            <h2><span class="qtitle">{{ single_query.title }}</span></h2>
             
-                <b>({{ single_query.created_at }})</b>
-                    <br>
-                <p>{{ single_query.content }}</p>
-                <p>Tag: :<ul class="tags">
+                <b>({{ single_query.created_at }})</b><b>&nbsp;Tags:
                     {% for tag in single_query.tags.all %}
-                    <li>{{ tag.name}}</li>
-                    {% endfor %}
-                    </ul>
+                    <span class="tagname">{{ tag.name }}</span>
+                    {% endfor %}</b>
+                    <br><br>
+                <p class="qtext">{{ single_query.content }}</p>
                     
-                <p>Views: {{ single_query.views}}</p>
-                 <p>
-                    {% if query.show_user %}
-                    Posted by: {{ query.user.username }} 
-                    {% endif %} </p>
-                <br>
-            
-            <h2>Comments</h2>
-            {% load comments %}
-            
-            {% get_comment_count for single_query as comment_count %}
+                {% load comments %}
+                    {% get_comment_count for single_query as comment_count %}
+                    <p>
+                    {% if single_query.show_user %}
+                    Posted by <span class="count">{{ single_query.user.username }} </span>
+                    {% endif %} &nbsp; Views <span class="count">{{ single_query.views}}</span> &nbsp;Comments <span class="count">{{ comment_count }}</span></p>
+            <br>
+            <h4>Comments</h4>
+    
             {% render_comment_list for single_query %}
             {% render_comment_form for single_query %}
                 
@@ -66,9 +62,9 @@
                 <ul style="list-style-type: none">
                     {% for query in popular_query %}
                         <li>
-                            <a href="/vtr/{{query.slug}}">{{ query.title }}</a>
+                            <span class="bullet">•</span>&nbsp;<a href="/vtr/{{query.slug}}">{{ query.title }}</a>
                         </li> 
-                        <br>
+                        
                     {% endfor %}    
                 </ul>
             </div>

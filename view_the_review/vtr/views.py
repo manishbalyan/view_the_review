@@ -65,6 +65,10 @@ def registerS(request):
             # Once hashed, we can update the user object.
             username = user_form.cleaned_data['username']
             email = user_form.cleaned_data['email']
+            rollnumber = profile_form.data['rollnumber']
+            year = profile_form.data['year']
+            branch = profile_form.data['branch']
+            hostler = profile_form.data['hostler']
             salt = hashlib.sha1(str(random.random())).hexdigest()[:5]
             activation_key = hashlib.sha1(salt+email).hexdigest()
             key_expires = datetime.datetime.today() + datetime.timedelta(2)
@@ -78,13 +82,12 @@ def registerS(request):
             # Did the user provide a profile picture?
             # If so, we need to get it from the input form and put it in the UserProfile model.
             # Now we save the UserProfile model instance.
-            profile = UserProfileS(user=user, activation_key=activation_key, key_expires=key_expires)
+            profile = UserProfileS(user=user, rollnumber=rollnumber, year=year, branch=branch, hostler=hostler, activation_key=activation_key, key_expires=key_expires,)
             profile.save()
 
              # Send email with activation key
             email_subject = 'Account confirmation'
-            email_body = "Hey %s, thanks for signing up. To activate your account, click this link within \
-            48hours http://127.0.0.1:8000/vtr/confirm/%s" % (username, activation_key)
+            email_body = "Hey %s, thanks for signing up. To activate your account, click this link within 48hours http://127.0.0.1:8000/confirm/%s" % (username, activation_key)
 
             send_mail(email_subject, email_body, 'balyan05.manish@gmail.com', [email], fail_silently=False)
             return render(request, 'vtr/home.html')
@@ -201,27 +204,4 @@ def my_query(request):
 
 
 
-def search_page(request):
-    form = SearchForm()
-    Query = []
-    show_results = False
-    if request.GET.has_key('query'):
-        show_results = True
-        query = request.GET['query'].strip()
-        if query:
-            keywords = query.split()
-            q = Q()
-            for keyword in keywords:
-                q = q & Q(title__icontains=keyword)
-            form = SearchForm({'query' : query})
-            Query = QueryS.objects.filter(q)[:10]
-    variables = {
-        'form': form,
-        'Query': Query,
-        'show_results': show_results,
-        }
-    if request.GET.has_key('ajax'):
-        return render(request,'vtr/index.html', variables)
-    else:
-        return render(request,'vtr/search.html', variables)
 

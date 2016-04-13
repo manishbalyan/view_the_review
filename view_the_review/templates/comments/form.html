@@ -5,7 +5,7 @@
     <div><input type="hidden" name="next" value="{{ next }}"/></div>{% endif %}
   {% for field in form %}
     {% if field.is_hidden %}
-      <div>{{ field }}</div>
+      <div id="cfield">{{ field }}</div>
     {% else %}
     {% if field.name != "name" and field.name != "email" and field.name != "url" %}
       
@@ -17,9 +17,8 @@
       </p>
     {% endif %}
   {% endfor %}
-  <p class="submit">
-    <input type="submit" name="post" class="submit-post" value="{% trans "Post" %}"/>
-    <input type="submit" name="preview" class="submit-preview" value="{% trans "Preview" %}"/>
+  <p class="submit" id="cmt">
+    <input type="submit" class="btn btn-primary" name="post" class="submit-post" value="{% trans "comment" %}"/>
   </p>
 </form>
 {% else %}
