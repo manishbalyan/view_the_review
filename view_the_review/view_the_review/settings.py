@@ -58,10 +58,13 @@ INSTALLED_APPS = (
     'django_comments',
     'taggit',
     'haystack',
+    'voting',
+
     # local apps
     'vtr',
     'hostel',
     'faculty',
+    'probtune',
     'administration',
 
 

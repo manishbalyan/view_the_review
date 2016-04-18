@@ -1,22 +1,27 @@
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
-from django.shortcuts import get_object_or_404, redirect
+from django.http import HttpResponseRedirect, HttpResponse
+from django.shortcuts import get_object_or_404, redirect, render_to_response
+from django.core.context_processors import csrf
 from faculty.forms import UserForm, UserProfileFormF
 from vtr.models import QueryS
 from hostel.models import QueryH
 from faculty.models import UserProfileF
 from django.db.models import Q
+from django.core.mail import send_mail
+import hashlib, datetime, random
+from django.utils import timezone
 
 
 @login_required
 def index(request):
     userprofile = UserProfileF.objects.filter(user=request.user.id)
     if (userprofile[0].department == 'WARDEN'):
-    	allquery = QueryH.objects.all().order_by('-created_at')
-    	popular_query = QueryH.objects.order_by('-views')[:5]
+        allquery = QueryH.objects.all().order_by('-created_at')
+        popular_query = QueryH.objects.order_by('-views')[:5]
     else:
-    	allquery = QueryS.objects.all().order_by('-created_at')
-    	popular_query = QueryS.objects.order_by('-views')[:5]
+        allquery = QueryS.objects.all().order_by('-created_at')
+        popular_query = QueryS.objects.order_by('-views')[:5]
     branch = ['CSE','IT','ECE','ME','CE','EN']
     title='All QUERIES'
     context_dict = {
@@ -30,17 +35,29 @@ def index(request):
 
 
 def registerF(request):
+    args = {}
+    args.update(csrf(request))
     if request.method == 'POST':
         # Attempt to grab information from the raw form information.
         # Note that we make use of both UserForm and UserProfileForm.
         user_form = UserForm(data=request.POST)
         profile_form = UserProfileFormF(data=request.POST)
         # If the two forms are valid...
+        args['form'] = user_form
         if user_form.is_valid() and profile_form.is_valid():
             # Save the user's form data to the database.
             user = user_form.save()
             # Now we hash the password with the set_password method.
             # Once hashed, we can update the user object.
+            username = user_form.cleaned_data['username']
+            email = user_form.cleaned_data['email']
+            rollnumber = profile_form.data['rollnumber']
+            year = profile_form.data['year']
+            branch = profile_form.data['branch']
+            hostler = profile_form.data['hostler']
+            salt = hashlib.sha1(str(random.random())).hexdigest()[:5]
+            activation_key = hashlib.sha1(salt+email).hexdigest()
+            key_expires = datetime.datetime.today() + datetime.timedelta(2)
             user.set_password(user.password)
             user.save()
             # Now sort out the UserProfile instance.
@@ -51,9 +68,15 @@ def registerF(request):
             # Did the user provide a profile picture?
             # If so, we need to get it from the input form and put it in the UserProfile model.
             # Now we save the UserProfile model instance.
+            profile = UserProfileF(user=user, rollnumber=rollnumber, year=year, branch=branch, hostler=hostler, activation_key=activation_key, key_expires=key_expires,)
             profile.save()
 
-            return render(request, 'vtr/login.html')
+             # Send email with activation key
+            email_subject = 'Account confirmation'
+            email_body = "Hey %s, thanks for signing up. To activate your account, click this link within 48hours http://127.0.0.1:8000/confirm/%s" % (username, activation_key)
+
+            send_mail(email_subject, email_body, 'balyan05.manish@gmail.com', [email], fail_silently=False)
+            return render(request, 'vtr/home.html')
             
         # Invalid form or forms - mistakes or something else?
         # Print problems to the terminal.
@@ -68,6 +91,24 @@ def registerF(request):
 
     # Render the template depending on the context.
     return render(request, 'faculty/register.html', {'user_form': user_form, 'profile_form': profile_form})
+
+
+def register_confirm(request, activation_key):
+    # check if user is already logged in and if he is redirect him to some other url, e.g. home
+    if request.user.is_authenticated():
+        HttpResponseRedirect('/home')
+
+    # check if there is UserProfile which matches the activation key (if not then display 404)
+    user_profile = get_object_or_404(UserProfileF, activation_key=activation_key)
+
+    #check if the activation key has expired, if it hase then render confirm_expired.html
+    if user_profile.key_expires < timezone.now():
+        return render_to_response('vtr/confirm_expired.html')
+    #if the key hasn't expired save user and set him as active and render some template to confirm activation
+    user = user_profile.user
+    user.is_active = True
+    user.save()
+    return render_to_response('faculty/confirm.html')
 
 
 @login_required
@@ -132,33 +173,4 @@ def my_queryf(request):
         'title':title
         }
 
-    return render(request, 'faculty/index.html', context_dict)  
-
-
-
-
-def search_page(request):
-    form = SearchForm()
-    Query = []
-    show_results = False
-    if request.GET.has_key('query'):
-        show_results = True
-        query = request.GET['query'].strip()
-        if query:
-            keywords = query.split()
-            q = Q()
-            for keyword in keywords:
-                q = q & Q(title__icontains=keyword)
-            form = SearchForm({'query' : query})
-            Query = QueryS.objects.filter(q)[:10]
-    variables = {
-        'form': form,
-        'Query': Query,
-        'show_results': show_results,
-        }
-    if request.GET.has_key('ajax'):
-        return render(request,'faculty/index.html', variables)
-    else:
-        return render(request,'faculty/search.html', variables)
-
-
+    return render(request, 'faculty/index.html', context_dict)

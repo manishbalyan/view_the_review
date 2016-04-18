@@ -14,15 +14,15 @@
                 <img src="/media/images/main1.jpg" alt="VTR">
                 <figcaption class="carousel-caption">
                     <h1>View The Review is a Community of IPEC Student, Helping Each Other.</h1>
-                    <p>If you want study in different style then this is the place for you.</p>
+                    <h3>If you want to study by sharing with others then this is the place for you.</h3>
                     <p><a class="btn btn-lg btn-primary" href="{% url 'login' %}" role="button">Login </a></p>
                 </figcaption>
             </figure>
             <figure class="item">
                 <img src="/media/images/main2.jpg" alt="View Posts">
                 <figcaption class="carousel-caption">
-                    <h1>Join them; It only takes a Minute:</h1>
-                    <p>Students Can Register Here</p>
+                    <h1>Join Us; It only takes a Minute:</h1>
+                    <h2>Students Can Register Here</h2>
                     <p><a class="btn btn-lg btn-primary" href="{% url 'registerS' %}" role="button">Student Registration</a></p>
                 </figcaption>
             </figure>
@@ -30,7 +30,7 @@
                 <img src="/media/images/main3.jpg" alt="Meet People">
                 <figcaption class="carousel-caption">
                     <h1>Notes and Teacher's Help is also Available</h1>
-                    <p>Faculty Members can Register Here</p>
+                    <h2>Faculty Members can Register Here</h2>
                     <p><a class="btn btn-lg btn-primary" href="{% url 'registerF' %}" role="button">Faculty Registration</a></p>
                 </figcaption>
             </figure>
@@ -44,19 +44,25 @@
         <!-- Three columns of text below the carousel -->
         <div class="row">
             <div class="col-lg-4">
+            <center>
                 <img class="img-circle" src="/media/images/c1.jpg" width=140 height=140 alt="Query1">
-                <h2>Ask Your Queries</h2>
-                <p>Any VTR Member Can Ask the Questions And Tag Them With Related Issues/Stubects</p>
+                <a href="{% url 'login' %}"><h2>Lets Discuss</h2></a>
+                <p>Here students will discuss their problems with other students by putting their queries and other students and faculty member help them with their views and reference.</p>
+                </center>
             </div><!-- /.col-lg-4 -->
             <div class="col-lg-4">
+            <center>
                 <img class="img-circle" src="/media/images/c2.jpg" width=140 height=140 alt="Query2">
-                <h2>Comment On Other's Queries</h2>
-                <p>Any VTR Member can Reply Or Comment On Other Member's Queries</p>
+                <a href="{% url 'login' %}"><h2>Problem Tuner</h2></a>
+                <p> Here students will add their problems and faculty and administration body need to review and provide desired solution.</p>
+                </center>
             </div><!-- /.col-lg-4 -->
             <div class="col-lg-4">
+            <center>
                 <img class="img-circle" src="/media/images/c3.jpg" width=140 height=140 alt="Query3">
-                <h2>Hostel Queries</h2>
-                <p>Special Section Is Provided to Hostler's For There Queries</p>
+                <a href="{% url 'login' %}"><h2>Hostel Queries</h2></a>
+                <p>Here Hostel Students can put their hostel queries and desired solution is provides by the concern authorities. Which makes automation of hostel activity.</p>
+                </center>
             </div><!-- /.col-lg-4 -->
         </div><!-- /.col-lg-4 -->
     </section>

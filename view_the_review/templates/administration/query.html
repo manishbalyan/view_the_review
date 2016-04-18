@@ -1,0 +1,63 @@
+{% extends 'administration/base.html' %}
+{% block title %}Title{% endblock %}
+{% load i18n comments %}
+{% load markup_tags %}
+{% block body_block %}
+    <div class="row">
+        <div class="col-lg-3" id="left">
+            <ul>
+                <h3>
+                {{ user.username}}</h3><br><br>
+                {% for users in userprofile %}
+                    {% if users.profile_pic %}
+                    <img src="/media/{{ users.profile_pic }}">
+                    {% endif %}<br><br>
+                    {{ users.faculty_id }}
+                    <br><br>
+                    {{ users.department }}
+                                                        
+                {% endfor %}
+            </ul>
+            
+                    
+        </div>
+        <div class="col-lg-6">
+            <center><p><a class="btn btn-lg btn-primary" href="{% url 'index' %}" role="button">GENERAL QUERIES</a>
+        <a class="btn btn-lg btn-primary" href="{% url 'hostel' %}" role="button">HOSTEL QUERIES</a>
+        <a class="btn btn-lg btn-primary" href="{% url 'academic' %}" role="button">ACADEMIC QUERIES</a></p>
+        </center>
+            <h2>{{ single_query.title }}</h2>
+            <ul>
+                <p><em>{{ single_query.created_at }}</em></p>
+                <p>{{ single_query.content }}</p>
+                <p>Tag: :<ul class="tags">
+                    {% for tag in single_query.tags.all %}
+                    <li>{{ tag.name}}</li>
+                    {% endfor %}
+                    </ul>
+                    
+                <p>Views: {{ single_query.views}}</p>
+                 <p>
+                    {% if query.show_user %}
+                    Posted by: {{ query.user.username }} 
+                    {% endif %} </p>
+                    <p>
+    {% if query.image %}
+        <img src="/media/{{ query.image }}">
+    {% endif %}
+ </p>
+                <br>
+            </ul>
+            <h2>Comments</h2>
+            {% load comments %}
+            
+            {% get_comment_count for single_query as comment_count %}
+            {% render_comment_list for single_query %}
+            {% render_comment_form for single_query %}
+                
+
+                
+        </div>
+       
+    </div>
+{% endblock %}

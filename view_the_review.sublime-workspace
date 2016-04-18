@@ -4,8 +4,56 @@
 		"selected_items":
 		[
 			[
+				"all",
+				"allquery"
+			],
+			[
+				"time",
+				"timedelta"
+			],
+			[
+				"t",
+				"title	Attr"
+			],
+			[
+				"color",
+				"color"
+			],
+			[
+				"padd",
+				"padding-top"
+			],
+			[
+				"ma",
+				"margin-top"
+			],
+			[
+				"in",
+				"inline-block"
+			],
+			[
+				"query",
+				"query_remove"
+			],
+			[
 				"f",
-				"False"
+				"font-style"
+			],
+			[
+				"fon",
+				"font-weight"
+			],
+			[
+				"pa",
+				"padding-left"
+			],
+			[
+				"ho",
+				"hostler"
+			],
+			[
+				"p",
+				"profile_form"
 			],
 			[
 				"re",
@@ -32,16 +80,8 @@
 				"background-color"
 			],
 			[
-				"p",
-				"p	Tag"
-			],
-			[
 				"s",
 				"solid"
-			],
-			[
-				"pa",
-				"padding-top"
 			],
 			[
 				"T",
@@ -66,10 +106,6 @@
 			[
 				"wi",
 				"width"
-			],
-			[
-				"color",
-				"background-color"
 			],
 			[
 				"col",
@@ -122,10 +158,6 @@
 			[
 				"def",
 				"default"
-			],
-			[
-				"fon",
-				"font-family"
 			],
 			[
 				"text",
@@ -308,10 +340,6 @@
 				"font-size"
 			],
 			[
-				"padd",
-				"padding-top"
-			],
-			[
 				"max",
 				"max-width"
 			],
@@ -412,10 +440,6 @@
 				"task_id"
 			],
 			[
-				"t",
-				"task_id"
-			],
-			[
 				"u",
 				"url_for"
 			],
@@ -444,10 +468,6 @@
 				"methods"
 			],
 			[
-				"in",
-				"input"
-			],
-			[
 				"Pa",
 				"PASSWORD"
 			],
@@ -464,42 +484,10 @@
 	"buffers":
 	[
 		{
-			"file": "view_the_review/templates/vtr/base.html",
-			"settings":
-			{
-				"buffer_size": 3039,
-				"line_ending": "Unix"
-			}
-		},
-		{
 			"file": "view_the_review/templates/vtr/index.html",
 			"settings":
 			{
-				"buffer_size": 3556,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "view_the_review/templates/vtr/query.html",
-			"settings":
-			{
-				"buffer_size": 3292,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "view_the_review/templates/comments/form.html",
-			"settings":
-			{
-				"buffer_size": 916,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "view_the_review/static/css/style.css",
-			"settings":
-			{
-				"buffer_size": 3564,
+				"buffer_size": 4280,
 				"line_ending": "Unix"
 			}
 		},
@@ -507,18 +495,15 @@
 			"file": "view_the_review/vtr/models.py",
 			"settings":
 			{
-				"buffer_size": 2126,
+				"buffer_size": 2294,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"contents": "from django.shortcuts import render\nfrom django.contrib.auth.decorators import login_required\nfrom django.http import HttpResponseRedirect, HttpResponse\nfrom django.shortcuts import get_object_or_404, redirect, render_to_response\nfrom django.core.context_processors import csrf\nfrom vtr.forms import UserForm, UserProfileFormS, QueryFormS, SearchForm\nfrom vtr.models import UserProfileS, QueryS\nfrom faculty.models import UserProfileF\nfrom django.db.models import Q\nfrom faculty.views import index as indexf\nfrom django.core.mail import send_mail\nimport hashlib, datetime, random\nfrom django.utils import timezone\n\n\n# Create your views here.\n\ndef home(request):\n    if UserProfileS.objects.filter(user=request.user.id):\n        return index(request)\n    elif UserProfileF.objects.filter(user=request.user.id):\n        userprofile = UserProfileF.objects.filter(user=request.user.id)\n\n#       if userprofile[0].department == 'ADMINISTRATION':\n#           return administration.views.index(request)\n#       else:\n        return indexf(request)\n    else:\n        return render(request, 'vtr/home.html')\n\n\n\n\n@login_required\ndef index(request):\n    userprofile = UserProfileS.objects.filter(user=request.user.id)\n    allquery = QueryS.objects.all().order_by('-created_at')\n    popular_query = QueryS.objects.order_by('-views')[:5]\n    branch = ['CSE','IT','ECE','ME','CE','EN']\n    title='All QUERIES'\n    context_dict = {\n    'userprofile': userprofile,\n    'allquery': allquery,\n    'popular_query': popular_query,\n    'branch': branch,\n    'title': title\n    }\n    return render(request, 'vtr/index.html', context_dict)\n\n\ndef registerS(request):\n    args = {}\n    args.update(csrf(request))\n    if request.method == 'POST':\n        # Attempt to grab information from the raw form information.\n        # Note that we make use of both UserForm and UserProfileForm.\n        user_form = UserForm(data=request.POST)\n        profile_form = UserProfileFormS(data=request.POST)\n        # If the two forms are valid...\n        args['form'] = user_form\n        if user_form.is_valid() and profile_form.is_valid():\n            # Save the user's form data to the database.\n            user = user_form.save()\n            # Now we hash the password with the set_password method.\n            # Once hashed, we can update the user object.\n            username = user_form.cleaned_data['username']\n            email = user_form.cleaned_data['email']\n            salt = hashlib.sha1(str(random.random())).hexdigest()[:5]\n            activation_key = hashlib.sha1(salt+email).hexdigest()\n            key_expires = datetime.datetime.today() + datetime.timedelta(2)\n            user.set_password(user.password)\n            user.save()\n            # Now sort out the UserProfile instance.\n            # Since we need to set the user attribute ourselves, we set commit=False.\n            # This delays saving the model until we're ready to avoid integrity problems.\n            profile = profile_form.save(commit=False)\n            profile.user = user\n            # Did the user provide a profile picture?\n            # If so, we need to get it from the input form and put it in the UserProfile model.\n            # Now we save the UserProfile model instance.\n            profile = UserProfileS(user=user, activation_key=activation_key, key_expires=key_expires,)\n            profile.save()\n\n             # Send email with activation key\n            email_subject = 'Account confirmation'\n            email_body = \"Hey %s, thanks for signing up. To activate your account, click this link within 48hours http://127.0.0.1:8000/confirm/%s\" % (username, activation_key)\n\n            send_mail(email_subject, email_body, 'balyan05.manish@gmail.com', [email], fail_silently=False)\n            return render(request, 'vtr/home.html')\n            \n        # Invalid form or forms - mistakes or something else?\n        # Print problems to the terminal.\n        # They'll also be shown to the user.\n        else:\n            print user_form.errors, profile_form.errors\n    # Not a HTTP POST, so we render our form using two ModelForm instances.\n    # These forms will be blank, ready for user input.\n    else:\n        user_form = UserForm()\n        profile_form = UserProfileFormS()\n\n    # Render the template depending on the context.\n    return render(request, 'vtr/register.html', {'user_form': user_form, 'profile_form': profile_form})\n\n\ndef register_confirm(request, activation_key):\n    # check if user is already logged in and if he is redirect him to some other url, e.g. home\n    if request.user.is_authenticated():\n        HttpResponseRedirect('/home')\n\n    # check if there is UserProfile which matches the activation key (if not then display 404)\n    user_profile = get_object_or_404(UserProfileS, activation_key=activation_key)\n\n    #check if the activation key has expired, if it hase then render confirm_expired.html\n    if user_profile.key_expires < timezone.now():\n        return render_to_response('vtr/confirm_expired.html')\n    #if the key hasn't expired save user and set him as active and render some template to confirm activation\n    user = user_profile.user\n    user.is_active = True\n    user.save()\n    return render_to_response('vtr/confirm.html')\n\n@login_required\ndef query(request, slug):\n    userprofile = UserProfileS.objects.filter(user=request.user.id)\n    single_query = get_object_or_404(QueryS, slug=slug)\n    popular_query = QueryS.objects.order_by('-views')[:5]\n    branch = ['CSE','IT','ECE','ME','CE','EN']\n    single_query.views += 1  # increment the no of views\n    single_query.save()\n    context_dict = {\n        'userprofile': userprofile,\n        'single_query': single_query,\n        'popular_query': popular_query,\n        'branch': branch\n        }\n\n    return render(request, 'vtr/query.html', context_dict)\n\n\n@login_required\ndef add_queryS(request):\n    if request.method == 'POST':\n        query_form = QueryFormS(request.POST, request.FILES)\n\n        if query_form.is_valid():# is the form valid\n            query= query_form.save(commit=False)\n            if UserProfileF.objects.filter(user=request.user.id):\n                query.branch=UserProfileF.objects.only('department').get(user=request.user).department\n            else:\n                query.branch=UserProfileS.objects.only('branch').get(user=request.user).branch\n            query.user=request.user\n            query.save()\n            query_form.save_m2m()\n\n            \n            return redirect(home)\n        else:\n            print query_form.errors  # no, display error to end user\n    else:\n        query_form = QueryFormS()\n    return render(request, 'vtr/add_query.html', {'query_form': query_form},)\n\n\n@login_required\ndef branch(request, branch_name):\n    userprofile = UserProfileS.objects.filter(user=request.user.id)\n    allquery = QueryS.objects.filter(branch= branch_name).order_by('-created_at')\n    popular_query = QueryS.objects.order_by('-views')[:5]\n    branch = ['CSE','IT','ECE','ME','CE','EN']\n    title= branch_name + ' Queries'\n    context_dict = {\n        'userprofile': userprofile,\n        'allquery': allquery,\n        'popular_query': popular_query,\n        'branch': branch,\n        'title': title\n        }\n\n    return render(request, 'vtr/index.html', context_dict)  \n\n\n@login_required\ndef my_query(request):\n    userprofile = UserProfileS.objects.filter(user=request.user.id)\n    allquery = QueryS.objects.filter(user=request.user.id).order_by('-created_at')\n    popular_query = QueryS.objects.order_by('-views')[:5]\n    branch = ['CSE','IT','ECE','ME','CE','EN']\n    title= request.user.username + ' Queries'\n    context_dict = {\n        'userprofile': userprofile,\n        'allquery': allquery,\n        'popular_query': popular_query,\n        'branch': branch,\n        'title':title\n        }\n\n    return render(request, 'vtr/index.html', context_dict)  \n\n\n\n\n\n",
 			"file": "view_the_review/vtr/views.py",
-			"file_size": 7901,
-			"file_write_time": 131050039309103874,
 			"settings":
 			{
-				"buffer_size": 7878,
+				"buffer_size": 10874,
 				"line_ending": "Unix"
 			}
 		},
@@ -526,7 +511,7 @@
 			"file": "view_the_review/vtr/urls.py",
 			"settings":
 			{
-				"buffer_size": 600,
+				"buffer_size": 797,
 				"line_ending": "Unix"
 			}
 		}
@@ -570,26 +555,61 @@
 	"expanded_folders":
 	[
 		"/home/manish/Documents/view_the_review",
+		"/home/manish/Documents/view_the_review/env",
+		"/home/manish/Documents/view_the_review/env/lib",
+		"/home/manish/Documents/view_the_review/env/lib/python2.7",
+		"/home/manish/Documents/view_the_review/env/lib/python2.7/site-packages",
+		"/home/manish/Documents/view_the_review/env/lib/python2.7/site-packages/django_comments",
 		"/home/manish/Documents/view_the_review/view_the_review",
-		"/home/manish/Documents/view_the_review/view_the_review/templates",
-		"/home/manish/Documents/view_the_review/view_the_review/templates/vtr",
+		"/home/manish/Documents/view_the_review/view_the_review/static",
+		"/home/manish/Documents/view_the_review/view_the_review/view_the_review",
 		"/home/manish/Documents/view_the_review/view_the_review/vtr"
 	],
 	"file_history":
 	[
-		"/home/manish/Documents/view_the_review/view_the_review/view_the_review/settings.py",
-		"/home/manish/Documents/view_the_review/view_the_review/templates/comments/comment_notification_email.txt",
+		"/home/manish/Documents/view_the_review/env/lib/python2.7/site-packages/django_comments/models.py",
+		"/home/manish/Documents/view_the_review/env/lib/python2.7/site-packages/django_comments/views/comments.py",
 		"/home/manish/Documents/view_the_review/view_the_review/vtr/models.py",
-		"/home/manish/Documents/view_the_review/view_the_review/templates/vtr/index.html",
 		"/home/manish/Documents/view_the_review/view_the_review/vtr/views.py",
-		"/home/manish/Documents/view_the_review/view_the_review/vtr/forms.py",
-		"/home/manish/Documents/view_the_review/view_the_review/templates/vtr/confirm.html",
 		"/home/manish/Documents/view_the_review/view_the_review/static/css/style.css",
+		"/home/manish/Documents/view_the_review/view_the_review/view_the_review/urls.py",
+		"/home/manish/Documents/view_the_review/view_the_review/templates/vtr/home.html",
+		"/home/manish/view_the_review/view_the_review/urls.py",
+		"/home/manish/Documents/view_the_review/view_the_review/view_the_review/settings.py",
+		"/home/manish/view_the_review/view_the_review/settings.py",
+		"/home/manish/Documents/view_the_review/view_the_review/templates/vtr/index.html",
+		"/home/manish/Documents/view_the_review/view_the_review/vtr/urls.py",
+		"/home/manish/Documents/vtr/view_the_review/vtr/views.py",
+		"/home/manish/Documents/view_the_review/view_the_review/templates/faculty/base.html",
+		"/home/manish/Documents/view_the_review/view_the_review/hostel/forms.py",
+		"/home/manish/Documents/view_the_review/view_the_review/templates/hostel/index.html",
+		"/home/manish/Documents/view_the_review/view_the_review/templates/vtr/query.html",
+		"/home/manish/Documents/view_the_review/view_the_review/templates/hostel/query.html",
+		"/home/manish/Documents/view_the_review/view_the_review/templates/vtr/base.html",
+		"/home/manish/Documents/view_the_review/view_the_review/templates/hostel/base.html",
+		"/home/manish/Documents/view_the_review/view_the_review/templates/vtr/add_query.html",
+		"/home/manish/Documents/view_the_review/view_the_review/templates/hostel/add_query.html",
+		"/home/manish/Documents/view_the_review/view_the_review/hostel/views.py",
+		"/home/manish/Documents/view_the_review/view_the_review/templates/faculty/query.html",
+		"/home/manish/Documents/view_the_review/view_the_review/templates/faculty/index.html",
+		"/home/manish/Documents/view_the_review/view_the_review/vtr/search_indexes.py",
+		"/home/manish/Documents/view_the_review/view_the_review/faculty/search_indexes.py",
+		"/home/manish/Documents/view_the_review/view_the_review/vtr/forms.py",
+		"/home/manish/Documents/view_the_review/view_the_review/faculty/models.py",
+		"/home/manish/Documents/view_the_review/view_the_review/faculty/urls.py",
+		"/home/manish/Documents/view_the_review/view_the_review/faculty/forms.py",
+		"/home/manish/Documents/view_the_review/view_the_review/faculty/views.py",
+		"/home/manish/Documents/view_the_review/view_the_review/templates/faculty/confirm.html",
+		"/home/manish/Documents/view_the_review/view_the_review/templates/comments/posted.html",
+		"/home/manish/Documents/view_the_review/view_the_review/templates/comments/form.html",
+		"/home/manish/Documents/view_the_review/view_the_review/static/css/bootstrap.css",
+		"/home/manish/Documents/view_the_review/view_the_review/templates/vtr/login.html",
+		"/home/manish/Documents/view_the_review/view_the_review/templates/comments/list.html",
+		"/home/manish/Documents/bootstrap-3.2.0-dist/css/styles.css",
+		"/home/manish/Documents/view_the_review/view_the_review/templates/comments/comment_notification_email.txt",
+		"/home/manish/Documents/view_the_review/view_the_review/templates/vtr/confirm.html",
 		"/home/manish/Documents/view_the_review/view_the_review/templates/vtr/contact.html",
 		"/home/manish/Documents/view_the_review/view_the_review/vtr/admin.py",
-		"/home/manish/Documents/view_the_review/view_the_review/vtr/urls.py",
-		"/home/manish/Documents/view_the_review/view_the_review/view_the_review/urls.py",
-		"/home/manish/Documents/view_the_review/view_the_review/templates/vtr/base.html",
 		"/home/manish/Documents/django_ecommerce/view_the_review/view_the_review/urls.py",
 		"/home/manish/Documents/django_ecommerce/view_the_review/templates/vtr/base.html",
 		"/home/manish/Documents/view_the_review/view_the_review/templates/search/search.html",
@@ -597,30 +617,15 @@
 		"/home/manish/Documents/view_the_review/env/lib/python2.7/site-packages/haystack/forms.py",
 		"/home/manish/Documents/vtr/view_the_review/vtr/models.py",
 		"/home/manish/Documents/view_the_review/env/lib/python2.7/site-packages/haystack/views.py",
-		"/home/manish/Documents/vtr/view_the_review/vtr/views.py",
 		"/home/manish/Documents/view_the_review/view_the_review/view_the_review/search_sites.py",
-		"/home/manish/Documents/view_the_review/view_the_review/vtr/search_indexes.py",
-		"/home/manish/Documents/view_the_review/view_the_review/faculty/views.py",
-		"/home/manish/Documents/view_the_review/view_the_review/faculty/urls.py",
 		"/home/manish/Downloads/views_1460293901839.py",
 		"/home/manish/Downloads/views_1460293901840.py",
-		"/home/manish/Documents/view_the_review/view_the_review/hostel/views.py",
 		"/home/manish/Documents/view_the_review/view_the_review/templates/search/indexes/vtr/quesys_text.txt",
 		"/home/manish/Documents/view_the_review/env/lib/python2.7/site-packages/django/template/loader.py",
-		"/home/manish/Documents/view_the_review/view_the_review/hostel/forms.py",
 		"/home/manish/Documents/view_the_review/view_the_review/hostel/models.py",
 		"/home/manish/Documents/view_the_review/view_the_review/hostel/migrations/0001_initial.py",
 		"/home/manish/Documents/view_the_review/view_the_review/vtr/migrations/0001_initial.py",
-		"/home/manish/Documents/view_the_review/view_the_review/templates/vtr/add_query.html",
-		"/home/manish/Documents/view_the_review/view_the_review/templates/vtr/home.html",
-		"/home/manish/Documents/view_the_review/view_the_review/templates/hostel/base.html",
-		"/home/manish/Documents/view_the_review/view_the_review/templates/hostel/index.html",
-		"/home/manish/Documents/view_the_review/view_the_review/templates/faculty/base.html",
 		"/home/manish/Documents/view_the_review/view_the_review/templates/vtr/register.html",
-		"/home/manish/Documents/view_the_review/view_the_review/templates/vtr/query.html",
-		"/home/manish/Documents/view_the_review/view_the_review/templates/faculty/query.html",
-		"/home/manish/Documents/view_the_review/view_the_review/templates/faculty/index.html",
-		"/home/manish/Documents/view_the_review/view_the_review/templates/vtr/login.html",
 		"/home/manish/Documents/django-quick-start/view_the_review/templates/vtr/index.html",
 		"/home/manish/Documents/django-quick-start/view_the_review/static/css/style.css",
 		"/home/manish/Documents/letsbegenuine/index.html",
@@ -630,12 +635,9 @@
 		"/home/manish/Documents/django-bloggy/wayapp_project/templates/blog/index.html",
 		"/home/manish/Documents/django_ecommerce/django_ecommerce/templates/main/index.html",
 		"/home/manish/Documents/view_the_review/view_the_review/vtr/footer.html",
-		"/home/manish/Documents/view_the_review/view_the_review/templates/comments/posted.html",
-		"/home/manish/Documents/view_the_review/view_the_review/templates/comments/list.html",
 		"/home/manish/Documents/view_the_review/view_the_review/templates/django_comment_xtd/comment.html",
 		"/home/manish/Documents/view_the_review/view_the_review/templates/comments/preview.html",
 		"/home/manish/Documents/letsbegenuine/contact.html",
-		"/home/manish/Documents/view_the_review/view_the_review/templates/comments/form.html",
 		"/home/manish/Documents/letsbegenuine/graphic-designing.html",
 		"/home/manish/Downloads/django-threadedcomments-master/examples/core/templates/comments/core/form.html",
 		"/home/manish/Downloads/django-threadedcomments-master/examples/example/urls.py",
@@ -692,19 +694,7 @@
 		"/home/manish/Documents/django-bloggy/wayapp_project/blog/migrations/0003_post_slug.py",
 		"/media/manish/New Volume/guddu/zuntru/personal/bootstrap-3.2.0-dist/index.html",
 		"/home/manish/Documents/django-bloggy/bloggy_project/bloggy_project/settings.py",
-		"/home/manish/Documents/django-bloggy/bloggy_project/bloggy_project/urls.py",
-		"/home/manish/Documents/django-bloggy/bloggy_project/blog/urls.py",
-		"/home/manish/Documents/django-bloggy/bloggy_project/blog/models.py",
-		"/home/manish/Documents/django-bloggy/bloggy_project/blog/tests.py",
-		"/home/manish/Documents/django-bloggy/bloggy_project/blog/admin.py",
-		"/home/manish/Documents/django-bloggy/bloggy_project/blog/views.py",
-		"/home/manish/Documents/django-bloggy/bloggy_project/blog/forms.py",
-		"/home/manish/Documents/django-bloggy/bloggy_project/templates/base.html",
-		"/home/manish/Documents/django-bloggy/bloggy_project/templates/blog/index.html",
-		"/home/manish/Documents/django-bloggy/bloggy_project/templates/blog/post.html",
-		"/home/manish/Documents/django-bloggy/bloggy_project/templates/blog/add_post.html",
-		"/home/manish/Documents/django-bloggy/bloggy_project/blog/migrations/0003_post_slug.py",
-		"/home/manish/Documents/face_detect.py"
+		"/home/manish/Documents/django-bloggy/bloggy_project/bloggy_project/urls.py"
 	],
 	"find":
 	{
@@ -722,6 +712,7 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"%}\"",
 			"p",
 			"lg"
 		],
@@ -741,54 +732,24 @@
 	"groups":
 	[
 		{
-			"selected": 6,
+			"selected": 1,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "view_the_review/templates/vtr/base.html",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 3039,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								2224,
-								2224
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/HTML/HTML.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 399.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 7,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
 					"file": "view_the_review/templates/vtr/index.html",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 3556,
+						"buffer_size": 4280,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								641,
-								641
+								1644,
+								1644
 							]
 						],
 						"settings":
@@ -798,117 +759,27 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 22.0,
+						"translation.y": 450.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 2,
 					"type": "text"
 				},
 				{
-					"buffer": 2,
-					"file": "view_the_review/templates/vtr/query.html",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 3292,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								2855,
-								2855
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/HTML/HTML.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 807.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 5,
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": "view_the_review/templates/comments/form.html",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 916,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								687,
-								687
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/HTML/HTML.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 6,
-					"type": "text"
-				},
-				{
-					"buffer": 4,
-					"file": "view_the_review/static/css/style.css",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 3564,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								3391,
-								3391
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/CSS/CSS.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 2916.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 4,
-					"type": "text"
-				},
-				{
-					"buffer": 5,
+					"buffer": 1,
 					"file": "view_the_review/vtr/models.py",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 2126,
+						"buffer_size": 2294,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1711,
-								1711
+								1949,
+								1949
 							]
 						],
 						"settings":
@@ -918,57 +789,57 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 297.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 6,
-					"file": "view_the_review/vtr/views.py",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 7878,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								3247,
-								3248
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Python/Python.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 40.0,
-						"translation.y": 999.0,
+						"translation.y": 331.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
 					"type": "text"
 				},
 				{
-					"buffer": 7,
-					"file": "view_the_review/vtr/urls.py",
+					"buffer": 2,
+					"file": "view_the_review/vtr/views.py",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 600,
+						"buffer_size": 10874,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								202,
-								202
+								10356,
+								10356
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 4284.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "view_the_review/vtr/urls.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 797,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								797,
+								797
 							]
 						],
 						"settings":

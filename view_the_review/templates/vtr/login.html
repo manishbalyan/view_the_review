@@ -1,6 +1,7 @@
 {% extends 'vtr/base.html' %}
 {% block title %}Login{% endblock %}
 {% block body_block %}
+<br>
 <body class="bgimg">
     <link href="http://getbootstrap.com/examples/signin/signin.css" rel="stylesheet">
     <center>
@@ -15,11 +16,12 @@
                 <p class = "label label-danger">Your username and password didn't match. Please try again.</p>
             {% endif %}
         </form>
-        <P><h1>OR</h1></P>
-        <P><h1>REGISTER YOURSELF</h1></P>
-        <P><h1>It only takes a Minute:</h1></P>
-        <p><a class="btn btn-lg btn-primary" href="{% url 'registerS' %}" role="button">Student Registration</a></p>
-        <p><a class="btn btn-lg btn-primary" href="{% url 'registerF' %}" role="button">Faculty Registration</a></p>
+        <h2>OR</h2>
+        <h2>REGISTER YOURSELF</h2>
+        <h2>It only takes a Minute:</h2>
+        <a class="btn btn-lg btn-primary" href="{% url 'registerS' %}" role="button">Student Registration</a>&nbsp;&nbsp;&nbsp;&nbsp;
+        <a class="btn btn-lg btn-primary" href="{% url 'registerF' %}" role="button">Faculty Registration</a>
     </center>
+    <br><br><br>
 </body>
 {% endblock %}

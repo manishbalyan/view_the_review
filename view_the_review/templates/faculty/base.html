@@ -45,7 +45,7 @@
               {% else %}
               <li><a href="{% url 'add_queryS'%}">Query</a></li>
               {% endif %}
-              <li><a href="{% url 'search_page'%}">search</a></li>
+              
             {% endif %}
               <li><a href="#">About</a></li>
               <li><a href="#">Contact</a></li>
@@ -57,7 +57,29 @@
       {% block body_block %}{% endblock %}
     </div>
      
-    <!-- footer -->    
+    <!-- footer -->  
+    <div class= "footer">
+            <div class= "container">
+              <div class = "row">
+                <div class = "col-sm-9"
+                  <p>
+                    All content on this site is under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/" target = "_blank">Creative Commons License</a><br>
+                    Feel free to copy and share. 
+                  </p>
+                </div>
+                <div class = "col-sm-3">
+                  <p>
+                    <a href = "https://www.facebook.com/letsbegenuine" target = "_blank"><i class="footerIcon fa fa-facebook-square"></i>
+                    </a>
+                    <a href = "https://twitter.com/letsbegenuine" target = "_blank"><i class="footerIcon fa fa-twitter-square"></i>
+                    </a>
+                    <a href = "https://www.pinterest.com/letsbegenuine/" target = "_blank"><i class="footerIcon fa fa-pinterest-square"></i>
+                    </a>
+                  </p>
+                </div>
+                </div>
+            </div>
+        </div>   
     
   <!-- Bootstrap core JavaScript
     ================================================== -->

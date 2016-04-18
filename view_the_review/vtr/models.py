@@ -1,6 +1,8 @@
 from django.contrib.auth.models import User
 from django.db import models
 from django.template.defaultfilters import slugify
+from django_comments.models import Comment
+from django.contrib.contenttypes import generic
 import os
 import uuid
 from taggit.managers import TaggableManager
@@ -47,6 +49,7 @@ class QueryS(models.Model):
     user = models.ForeignKey(User, null=True)
     slug = models.SlugField(unique=True)
     tags = TaggableManager()
+    comments = generic.GenericRelation(Comment, object_id_field="object_pk")
 
     @property
     def total_votes(self):

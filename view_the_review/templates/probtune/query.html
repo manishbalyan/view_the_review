@@ -1,0 +1,96 @@
+{% extends 'hostel/base.html' %}
+{% block title %}Title{% endblock %}
+{% load i18n comments %}
+{% load markup_tags %}
+{% block body_block %}
+    <div class="row">
+        <div class="col-lg-3" id="left">
+        {% if u %}
+        <ul>
+                <h3>
+                {{ user.username}}</h3><br><br>
+                {% for users in userprofile %}
+                    {% if users.profile_pic %}
+                    <img src="/media/{{ users.profile_pic }}">
+                    {% endif %}<br><br>
+                    {{ users.faculty_id }}
+                    <br><br>
+                    {{ users.department }}
+                    <p><a class="btn btn-lg btn-primary" href="{% url 'my_problQF' %}" role="button">MY GENERAL QUERIES</a></p>
+                                    
+                {% endfor %}
+            </ul>
+            {% else %}
+            <ul>
+                <h3>
+                {{ user.username}}</h3><br><br>
+                {% for users in userprofile %}
+                    {% if users.profile_pic %}
+                    <img src="/media/{{ users.profile_pic }}">
+                    {% endif %}<br><br>
+                    {{ users.rollnumber }}
+                    <br><br>
+                    {{ users.year }}
+                    <br><br>
+                    {{ users.branch }}
+
+                    <p><a class="btn btn-lg btn-primary" href="{% url 'my_problQS' %}" role="button">MY GENERAL QUERIES</a></p>
+
+                    
+                {% endfor %}
+            </ul>
+            {% endif %}
+                    <p><a class="btn btn-lg btn-primary" href="{% url 'home' %}" role="button">ALL COLLEGE QUERIES</a></p>
+                     <p><a class="btn btn-lg btn-primary" href="{% url 'my_query' %}" role="button"> MY COLLEGE QUERIES</a></p>
+                    
+        </div>
+        <div class="col-lg-6">
+            <h2>{{ single_query.title }}</h2>
+            <ul>
+                <p><em>{{ single_query.created_at }}</em></p>
+                <p>{{ single_query.content }}</p>
+                <p>Tag: :<ul class="tags">
+                    {% for tag in single_query.tags.all %}
+                    <li>{{ tag.name}}</li>
+                    {% endfor %}
+                    </ul>
+                    
+                <p>Views: {{ single_query.views}}</p>
+                 <p>
+                    {% if single_query.show_user %}
+                    Posted by: {{ single_query.user.username }} 
+                    {% endif %} </p>
+                    <p>
+    {% if single_query.image %}
+            <img src="/media/{{ single_query.image }}">
+    {% endif %}
+ </p>
+                <br>
+            </ul>
+            <h2>Comments</h2>
+            {% load comments %}
+            
+            {% get_comment_count for single_query as comment_count %}
+            {% render_comment_list for single_query %}
+            {% render_comment_form for single_query %}
+                
+
+                
+        </div>
+        <div class="col-lg-3">  
+            <div>    
+                <h3>Trending Query</h3>
+                <ul style="list-style-type: none">
+                    {% for query in popular_query %}
+                    <li>
+                        <a href="/probtune/{{query.slug}}">{{ query.title }} </a>
+                    </li>
+                    <br>
+                    {% endfor %}    
+                </ul>
+            </div>
+            <br>
+            
+        </div>
+    </div>
+{% endblock %}

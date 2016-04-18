@@ -3,15 +3,14 @@
 {% load i18n comments %}
 {% load markup_tags %}
 {% block body_block %}
+<br><br>
     <div class="row">
-        <center>
-            <div id="stories">
-            <p>Top stories for you</p>
-            </div>
-        </center>
-        <div class="col-lg-3" id="left">
-            
-                <h3>{{ user.username}}</h3><br>
+    &nbsp;
+       
+        <div class="col-lg-3" >
+
+            <div id="left">
+                <h3>{{ user.username}}</h3>
                 {% for users in userprofile %}
                     {% if users.profile_pic %}
                     <img src="/media/{{users.profile_pic}}">
@@ -20,22 +19,34 @@
                     <br>
                     Year:{{ users.year }}
                     <br>
-                    Branch:{{ users.branch }}<br><br>
-                    <p><a class="btn btn-lg btn-primary" href="{% url 'my_query' %}" role="button">MY QUERIES</a></p>
-
+                    Branch:{{ users.branch }}<br>
+                {% endfor %}
+            </div><br>
+            <div>
+            <h3 class="shead">User Activity</h3>
+                    <p><a href="{% url 'my_query' %}">MY QUERIES</a></p>
                     {% if users.hostler %}
                     <p><a class="btn btn-lg btn-primary" href="{% url 'hostelQ' %}" role="button">ALL HOSTEL QUERIES</a></p>
                      <p><a class="btn btn-lg btn-primary" href="{% url 'my_hostelQ' %}" role="button"> MY HOSTEL QUERIES</a></p>
                     {% endif %}
-
-                    
-                {% endfor %}
-    
-            
-                    
+            </div>         
         </div>
-        <div class="col-lg-6" id="middle">
+        <div class="col-lg-6">
         
+        <ul class="nav nav-tabs" >
+            <li class="active"><a href="{% url 'home' %}" title="Queries which are latest added">Recent</a></li>
+            <li><a href="#" title="Queries with most votes"> Votes</a></li>
+            <li><a href="{% url 'views' %}" title="Queries with most views"> Views</a></li>
+            <li><a href="{% url 'comment' %}" title="Queries with most comments"> Comments</a></li>
+            <li><a href="{% url 'week' %}" title="Queries added this week"> Week</a></li>
+            <li><a href="{% url 'month' %}" title="Queries added this month"> Month</a></li>
+            
+        </ul>
+        
+            
+            
+            
+                
             
                 {% for query in allquery %}
                 <div class="mid">
@@ -46,6 +57,8 @@
                     {% for tag in query.tags.all %}
                     <span class="tagname">{{ tag.name }}</span>
                     {% endfor %}</span></b>
+                    <p>
+
                     <p>
                     {% get_comment_count for query as comment_count %}
                     {% load comments %}
@@ -81,7 +94,11 @@
                 <h3 class="shead">Branch Catagories<h3/>
                 <ul class="blist">
                     {% for b in branch%}
-                    <li><a href="/vtr/branch/{{b}}" >{{b}}</a></li><br>
+                     
+                    <li><a href="/vtr/branch/{{b}}" >{{ b }}</a></li><br>
+                    {% endfor %}
+                    {% for b in bquery%}
+                     <li>{{ b }}</li>
                     {% endfor %}
                 </ul>
             </div>    

@@ -17,7 +17,8 @@ urlpatterns = [
     url(r'^vtr/', include('vtr.urls')),
     url(r'^hostel/', include('hostel.urls')),
     url(r'^faculty/', include('faculty.urls')),
-    #url(r'^administration/, include('administration.urls')),
-    url(r'^media/(?P<path>.*)$', 'django.views.static.serve',{'document_root': MEDIA_ROOT}),
+    url(r'^probtune/', include('probtune.urls')),
+    url(r'^administration/', include('administration.urls')),
+    url(r'^media/(?P<path>.*)$', 'django.views.static.serve', {'document_root': MEDIA_ROOT}),
     url(r'^comments/', include('fluent_comments.urls'))
 ]

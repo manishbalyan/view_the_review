@@ -3,24 +3,19 @@
 {% load i18n comments %}
 {% load markup_tags %}
 {% block body_block %}
+    &nbsp;&nbsp;
     <div class="row">
         <div class="col-lg-3" id="left">
-            <ul>
-                <h3>
-                {{ user.username}}</h3><br><br>
+            <h3>{{ user.username}}</h3>
                 {% for users in userprofile %}
                     {% if users.profile_pic %}
-                    <img src="/media/{{ users.profile_pic }}">
+                    <img src="/media/{{users.profile_pic}}">
                     {% endif %}<br><br>
-                    {{ users.rollnumber }}
-                    <br><br>
-                    {{ users.year }}
-                    <br><br>
-                    {{ users.branch }}
-
-                    
-                {% endfor %}
-            </ul>
+                    Rollnumber:{{ users.rollnumber }}
+                    <br>
+                    Year:{{ users.year }}
+                    <br>
+                    Branch:{{ users.branch }}<br><br>
             
                     <p><a class="btn btn-lg btn-primary" href="{% url 'my_hostelQ' %}" role="button">MY HOSTEL QUERIES</a></p>
 
@@ -29,52 +24,43 @@
                     
         </div>
         <div class="col-lg-6">
-            <h2>{{ single_query.title }}</h2>
-            <ul>
-                <p><em>{{ single_query.created_at }}</em></p>
-                <p>{{ single_query.content }}</p>
-                <p>Tag: :<ul class="tags">
-                    {% for tag in single_query.tags.all %}
-                    <li>{{ tag.name}}</li>
-                    {% endfor %}
-                    </ul>
-                    
-                <p>Views: {{ single_query.views}}</p>
-                 <p>
-                    {% if single_query.show_user %}
-                    Posted by: {{ single_query.user.username }} 
-                    {% endif %} </p>
-                    <p>
-    {% if single_query.image %}
-            <img id="qimage" src="/media/{{ single_query.image }}">
-    {% endif %}
- </p>
-                <br>
-            </ul>
-            <h2>Comments</h2>
-            {% load comments %}
             
-            {% get_comment_count for single_query as comment_count %}
+            <h2><span class="qtitle">{{ single_query.title }}</span></h2>
+            
+                <b><span class="tags">({{ single_query.created_at }})&nbsp;Tags:
+                    {% for tag in single_query.tags.all %}
+                    <span class="tagname">{{ tag.name }}</span>
+                    {% endfor %}</span></b>
+                    <br><br>
+                <p class="qtext">{{ single_query.content }}</p>
+                    
+                {% load comments %}
+                    {% get_comment_count for single_query as comment_count %}
+                    <p>
+                    {% if single_query.show_user %}
+                    Posted by <span class="count">{{ single_query.user.username }} </span>
+                    {% endif %} &nbsp; Views <span class="count">{{ single_query.views}}</span> &nbsp;Comments <span class="count">{{ comment_count }}</span></p>
+            
+            <h3>Comments</h3>
+    
             {% render_comment_list for single_query %}
+            <hr>
             {% render_comment_form for single_query %}
-                
-
-                
         </div>
-        <div class="col-lg-3">  
-            <div>    
-                <h3>Trending Query</h3>
+        <div class="col-lg-3" id="right">
+            <div class="tquery">
+                <h3 class="shead"><span class="icon"></span>Trending Query</h3>
                 <ul style="list-style-type: none">
                     {% for query in popular_query %}
-                    <li>
-                        <a href="/hostel/{{query.slug}}">{{ query.title }} </a>
-                    </li>
-                    <br>
+                        <li>
+                            <span class="bullet">•</span>&nbsp;<a href="/hostel/{{query.slug}}">{{ query.title }}</a>
+                        </li> 
+                        
                     {% endfor %}    
                 </ul>
             </div>
             <br>
-            
+    
         </div>
     </div>
 {% endblock %}

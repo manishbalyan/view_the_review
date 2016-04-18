@@ -10,7 +10,11 @@ from django.db.models import Q
 from faculty.views import index as indexf
 from django.core.mail import send_mail
 import hashlib, datetime, random
+from datetime import timedelta
 from django.utils import timezone
+from django.db.models import Count
+from django_comments.models import Comment
+from datetime import *
 
 
 # Create your views here.
@@ -141,6 +145,13 @@ def query(request, slug):
 
     return render(request, 'vtr/query.html', context_dict)
 
+"""
+@login_required
+def query_remove(request, pk):
+    queryd = get_object_or_404(QueryS, pk=pk)
+    queryd.delete()
+    return render('vtr/index.html')
+"""
 
 @login_required
 def add_queryS(request):
@@ -181,7 +192,7 @@ def branch(request, branch_name):
         'title': title
         }
 
-    return render(request, 'vtr/index.html', context_dict)  
+    return render(request, 'vtr/index.html', context_dict)
 
 
 @login_required
@@ -199,9 +210,75 @@ def my_query(request):
         'title':title
         }
 
-    return render(request, 'vtr/index.html', context_dict)  
+    return render(request, 'vtr/index.html', context_dict)
 
 
+@login_required
+def week(request):
+    userprofile = UserProfileS.objects.filter(user=request.user.id)
+    one_week_ago = datetime.today() - timedelta(days=7)
+    allquery = QueryS.objects.filter(created_at__gte=one_week_ago).order_by('-created_at')
+    popular_query = QueryS.objects.order_by('-views')[:5]
+    branch = ['CSE','IT','ECE','ME','CE','EN']
+    title= request.user.username + ' Queries'
+    context_dict = {
+        'userprofile': userprofile,
+        'allquery': allquery,
+        'popular_query': popular_query,
+        'branch': branch,
+        'title':title
+        }
+    return render(request, 'vtr/index.html', context_dict)
 
 
+@login_required
+def month(request):
+    userprofile = UserProfileS.objects.filter(user=request.user.id)
+    one_month_ago = datetime.today() - timedelta(days=30)
+    allquery = QueryS.objects.filter(created_at__gte=one_month_ago).order_by('-created_at')
+    popular_query = QueryS.objects.order_by('-views')[:5]
+    branch = ['CSE','IT','ECE','ME','CE','EN']
+    title= request.user.username + ' Queries'
+    context_dict = {
+        'userprofile': userprofile,
+        'allquery': allquery,
+        'popular_query': popular_query,
+        'branch': branch,
+        'title':title
+        }
 
+    return render(request, 'vtr/index.html', context_dict)
+
+
+def views(request):
+    userprofile = UserProfileS.objects.filter(user=request.user.id)
+    allquery = QueryS.objects.order_by('-views')
+    popular_query = QueryS.objects.order_by('-views')[:5]
+    branch = ['CSE','IT','ECE','ME','CE','EN']
+    title= request.user.username + ' Queries'
+    context_dict = {
+        'userprofile': userprofile,
+        'allquery': allquery,
+        'popular_query': popular_query,
+        'branch': branch,
+        'title':title
+        }
+
+    return render(request, 'vtr/index.html', context_dict)
+
+
+def comment(request):
+    userprofile = UserProfileS.objects.filter(user=request.user.id)
+    allquery = QueryS.objects.annotate(comment_count=Count('comments')).filter(comment_count__gt=0).order_by('-comment_count')
+    popular_query = QueryS.objects.order_by('-views')[:5]
+    branch = ['CSE','IT','ECE','ME','CE','EN']
+    title= request.user.username + ' Queries'
+    context_dict = {
+        'userprofile': userprofile,
+        'allquery': allquery,
+        'popular_query': popular_query,
+        'branch': branch,
+        'title':title
+        }
+
+    return render(request, 'vtr/index.html', context_dict)

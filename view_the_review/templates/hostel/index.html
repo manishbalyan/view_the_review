@@ -4,71 +4,94 @@
 {% load markup_tags %}
 {% block body_block %}
     <div class="row">
-        <div class="col-lg-3" id="left">
-            <ul>
-                <h3>
-                {{ user.username}}</h3><br><br>
+    &nbsp;
+        <center>
+            <div id="stories">
+            <p>Top stories for you</p>
+
+            </div>
+        </center>
+        <div class="col-lg-3" >
+            <div id="left">
+                <h3>{{ user.username}}</h3>
                 {% for users in userprofile %}
                     {% if users.profile_pic %}
-                    <img src="/media/{{ users.profile_pic }}">
+                    <img src="/media/{{users.profile_pic}}">
                     {% endif %}<br><br>
-                    {{ users.rollnumber }}
-                    <br><br>
-                    {{ users.year }}
-                    <br><br>
-                    {{ users.branch }}
-
-                    
+                    Rollnumber:{{ users.rollnumber }}
+                    <br>
+                    Year:{{ users.year }}
+                    <br>
+                    Branch:{{ users.branch }}<br>
                 {% endfor %}
-            </ul>
-            
-                    <p><a class="btn btn-lg btn-primary" href="{% url 'my_hostelQ' %}" role="button">MY HOSTEL QUERIES</a></p>
-
-                    <p><a class="btn btn-lg btn-primary" href="{% url 'index' %}" role="button">ALL COLLEGE QUERIES</a></p>
-                     <p><a class="btn btn-lg btn-primary" href="{% url 'my_query' %}" role="button"> MY COLLEGE QUERIES</a></p>
-                    
+            </div><br>
+            <div>
+            <h3 class="shead">User Activity</h3>
+                    <p><a href="{% url 'my_query' %}">MY QUERIES</a></p>
+                    {% if users.hostler %}
+                    <p><a class="btn btn-lg btn-primary" href="{% url 'hostelQ' %}" role="button">ALL HOSTEL QUERIES</a></p>
+                     <p><a class="btn btn-lg btn-primary" href="{% url 'my_hostelQ' %}" role="button"> MY HOSTEL QUERIES</a></p>
+                    {% endif %}
+            </div>         
         </div>
         <div class="col-lg-6" id="middle">
-        <h1><font size="7"><center>{{title}}</center></font></h1>
-            <ul>
+        
+            
                 {% for query in allquery %}
-                    <h3><a href="/hostel/{{ query.slug }}">{{ query.title }}</a></h3>
-                    <br>
-                    <p>{{ query.content }}</p>
-                    <br>
-                    <p>Views: {{ query.views }}</p>
-                    <br>
-                    <p>{{ query.created_at }}</p>  
-                    <br>
-                    <p>Tags:<ul class="tags">
+                <div class="mid">
+                <hr>
+                    <h4><a href="/hostel/{{query.slug}}">{{ query.title }}</a></h4>
+                    <b><span class="tags">({{ query.created_at }})
+                    &nbsp;Tags:
                     {% for tag in query.tags.all %}
-                    <li>{{ tag.name}}</li>
-                    {% endfor %}
-                    </ul>
-                    
-                    </p>
+                    <span class="tagname">{{ tag.name }}</span>
+                    {% endfor %}</span></b>
+                    <p>
+                    {% get_comment_count for query as comment_count %}
+                    {% load comments %}
+                    {% get_comment_count for query as comment_count %}
                     <p>
                     {% if query.show_user %}
-                    Posted by: {{ query.user.username }} 
-                    {% endif %} </p>               
-                    <br><br>
+                    Posted by <span class="count">{{ query.user.username }}</span>
+                    {% endif %} &nbsp; Views <span class="count">{{ query.views}}</span> &nbsp;Comments <span class="count">{{ comment_count }}</span></p> </p>              
+                    
+                    
+                    
+                    <p id="cmt">
+                    {% render_comment_form for query %}
+                    </p>
+                    </div>
                 {% endfor %}
-            </ul>
+            
         </div>
-        <div class="col-lg-3" id="right">
-            <div>
-                <h3>Trending Query</h3>
+       <div class="col-lg-3" id="right">
+            <div class="tquery">
+                <h3 class="shead"><span class="icon"></span>Trending Query</h3>
                 <ul style="list-style-type: none">
                     {% for query in popular_query %}
                         <li>
-                            <a href="/hostel/{{ query.slug }}">{{ query.title }}</a>
+                            <span class="bullet">•</span>&nbsp;<a href="/hostel/{{query.slug}}">{{ query.title }}</a>
                         </li> 
-                        <br>
+                        
                     {% endfor %}    
                 </ul>
             </div>
             <br>
-               
+            <div>
+                <h3 class="shead">Branch Catagories<h3/>
+                <ul class="blist">
+                    {% for b in branch%}
+                     
+                    <li><a href="/vtr/branch/{{b}}" >{{ b }}</a></li><br>
+                    {% endfor %}
+                    {% for b in bquery%}
+                     
+                    <li>{{ b }}</li>
+                    {% endfor %}
+                </ul>
+            </div>    
+        </div>
+    </div>               
         </div>
     </div>
 {% endblock %}
