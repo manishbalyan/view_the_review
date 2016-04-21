@@ -59,6 +59,7 @@ INSTALLED_APPS = (
     'taggit',
     'haystack',
     'voting',
+    'bootstrap_pagination',
 
     # local apps
     'vtr',

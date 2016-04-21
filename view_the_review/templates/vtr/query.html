@@ -3,10 +3,14 @@
 {% load i18n comments fluent_comments_tags %}
 {% load markup_tags %}
 {% block body_block %}
-&nbsp;&nbsp;
+<br><br>
     <div class="row">
-        <div class="col-lg-3" id="left">
-            <h3>{{ user.username}}</h3>
+    &nbsp;
+       
+        <div class="col-lg-3" >
+
+            <div id="left">
+                <h3>{{ user.username}}</h3>
                 {% for users in userprofile %}
                     {% if users.profile_pic %}
                     <img src="/media/{{users.profile_pic}}">
@@ -15,44 +19,44 @@
                     <br>
                     Year:{{ users.year }}
                     <br>
-                    Branch:{{ users.branch }}<br><br>
-                    <p><a class="btn btn-lg btn-primary" href="{% url 'my_query' %}" role="button">MY QUERIES</a></p>
-
+                    Branch:{{ users.branch }}<br>
+                {% endfor %}
+            </div><br>
+            <div>
+            <h3 class="shead">User Activity</h3>
+                    <p><a href="{% url 'my_query' %}">MY QUERIES</a></p>
                     {% if users.hostler %}
                     <p><a class="btn btn-lg btn-primary" href="{% url 'hostelQ' %}" role="button">ALL HOSTEL QUERIES</a></p>
                      <p><a class="btn btn-lg btn-primary" href="{% url 'my_hostelQ' %}" role="button"> MY HOSTEL QUERIES</a></p>
                     {% endif %}
-
-                    
-                {% endfor %}
-            
-                    
+            </div>         
         </div>
         <div class="col-lg-6">
             
-            <h2><span class="qtitle">{{ single_query.title }}</span></h2>
+            <h2><span class="qtitle">{{ single_query.title|linebreaks }}</span></h2>
             
                 <b><span class="tags">({{ single_query.created_at }})&nbsp;Tags:
                     {% for tag in single_query.tags.all %}
                     <span class="tagname">{{ tag.name }}</span>
                     {% endfor %}</span></b>
                     <br><br>
-                <p class="qtext">{{ single_query.content }}</p>
+                <span class="qtext">{{ single_query.content|linebreaks }}</span>
                     
                 {% load comments %}
                     {% get_comment_count for single_query as comment_count %}
                     <p>
                     {% if single_query.show_user %}
-                    Posted by <span class="count">{{ single_query.user.username }} </span>
-                    {% endif %} &nbsp; Views <span class="count">{{ single_query.views}}</span> &nbsp;Comments <span class="count">{{ comment_count }}</span></p>
+                    <span class="tname">Posted by</span> <span class="count">{{ single_query.user.username }} </span>
+                    {% endif %} <span class="tname">Views</span> <span class="count">{{ single_query.views}}</span> &nbsp;<span class="tname">Comments</span> <span class="count">{{ comment_count }}</span></p>
                     
 
 
                    
             
             <h3>Comments</h3>
-    
+            
             {% render_comment_list for single_query %}
+        
             <hr>
             {% render_comment_form for single_query %}
         </div>

@@ -4,6 +4,7 @@ from django.http import HttpResponseRedirect, HttpResponse
 from django.shortcuts import get_object_or_404, redirect, render_to_response
 from django.core.context_processors import csrf
 from vtr.forms import UserForm, UserProfileFormS, QueryFormS, SearchForm
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from vtr.models import UserProfileS, QueryS
 from faculty.models import UserProfileF
 from django.db.models import Q
@@ -39,6 +40,16 @@ def home(request):
 def index(request):
     userprofile = UserProfileS.objects.filter(user=request.user.id)
     allquery = QueryS.objects.all().order_by('-created_at')
+    paginator = Paginator(allquery, 10)# Show 25 contacts per page
+    page = request.GET.get('page')
+    try:
+        querys = paginator.page(page)
+    except PageNotAnInteger:
+        # If page is not an integer, deliver first page.
+        querys = paginator.page(1)
+    except EmptyPage:
+        # If page is out of range (e.g. 9999), deliver last page of results.
+        querys = paginator.page(paginator.num_pages)
     popular_query = QueryS.objects.order_by('-views')[:5]
     branch = ['CSE','IT','ECE','ME','CE','EN']
     title='All QUERIES'
@@ -47,7 +58,8 @@ def index(request):
     'allquery': allquery,
     'popular_query': popular_query,
     'branch': branch,
-    'title': title
+    'title': title,
+    'querys': querys
     }
     return render(request, 'vtr/index.html', context_dict)
 

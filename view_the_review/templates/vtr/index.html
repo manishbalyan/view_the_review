@@ -1,6 +1,7 @@
 {% extends 'vtr/base.html' %}
 {% block title %}Title{% endblock %}
 {% load i18n comments %}
+{% load bootstrap_pagination %}
 {% load markup_tags %}
 {% block body_block %}
 <br><br>
@@ -53,10 +54,10 @@
                 <hr>
                     <h4><a href="/vtr/{{query.slug}}">{{ query.title }}</a></h4>
                     <b><span class="tags">({{ query.created_at }})
-                    &nbsp;Tags:
+                    &nbsp;Tags:</b>
                     {% for tag in query.tags.all %}
                     <span class="tagname">{{ tag.name }}</span>
-                    {% endfor %}</span></b>
+                    {% endfor %}</span>
                     <p>
 
                     <p>
@@ -65,8 +66,8 @@
                     {% get_comment_count for query as comment_count %}
                     <p>
                     {% if query.show_user %}
-                    Posted by <span class="count">{{ query.user.username }}</span>
-                    {% endif %} &nbsp; Views <span class="count">{{ query.views}}</span> &nbsp;Comments <span class="count">{{ comment_count }}</span></p> </p>  
+                    <span class="tname"> Posted by</span> <span class="count">{{ query.user.username }}</span>
+                    {% endif %} &nbsp; <span class="tname">Views</span> <span class="count">{{ query.views}}</span> &nbsp;<span class="tname">Comments</span> <span class="count">{{ comment_count }}</span></p> </p>  
 
                     
                     
@@ -76,6 +77,7 @@
                     </p>
                     </div>
                 {% endfor %}
+
             
         </div>
         <div class="col-lg-3" id="right">
@@ -85,9 +87,11 @@
                     {% for query in popular_query %}
                         <li>
                             <span class="bullet">•</span>&nbsp;<a href="/vtr/{{query.slug}}">{{ query.title }}</a>
+                            
                         </li> 
                         
-                    {% endfor %}    
+                    {% endfor %}  
+
                 </ul>
             </div>
             <br>

@@ -2,6 +2,6 @@
 <hr>
    <div class="comment">
    <span class="count">{{ comment.user }}</span><br>
-      <span class="clist">{{ comment.comment }}</span>
+      <span class="ctext">{{ comment.comment|linebreaks }}</span>
    </div>
 {% endfor %}

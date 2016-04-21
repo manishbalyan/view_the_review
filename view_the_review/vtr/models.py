@@ -45,7 +45,7 @@ class QueryS(models.Model):
     branch = models.CharField(max_length=20, blank=True, null=True)
     views = models.IntegerField(default=0)
     #votes = models.ManyToManyField(User, related_name='votess')
-    abuses = models.ManyToManyField(User, related_name='abusess')
+    #abuses = models.ManyToManyField(User, related_name='abusess')
     user = models.ForeignKey(User, null=True)
     slug = models.SlugField(unique=True)
     tags = TaggableManager(related_name='tags')
