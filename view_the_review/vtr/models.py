@@ -44,11 +44,11 @@ class QueryS(models.Model):
     show_user = models.BooleanField(default=0, null=False)
     branch = models.CharField(max_length=20, blank=True, null=True)
     views = models.IntegerField(default=0)
-    votes = models.ManyToManyField(User, related_name='votess')
+    #votes = models.ManyToManyField(User, related_name='votess')
     abuses = models.ManyToManyField(User, related_name='abusess')
     user = models.ForeignKey(User, null=True)
     slug = models.SlugField(unique=True)
-    tags = TaggableManager()
+    tags = TaggableManager(related_name='tags')
     comments = generic.GenericRelation(Comment, object_id_field="object_pk")
 
     @property
@@ -67,3 +67,7 @@ class QueryS(models.Model):
         return self.title
 
 
+class Thread(models.Model):
+    # ...
+    userUpVotes = models.ManyToManyField(User, blank=True, related_name='threadUpVotes')
+    userDownVotes = models.ManyToManyField(User, blank=True, related_name='threadDownVotes')

@@ -145,6 +145,8 @@ def query(request, slug):
 
     return render(request, 'vtr/query.html', context_dict)
 
+
+
 """
 @login_required
 def query_remove(request, pk):
@@ -282,3 +284,39 @@ def comment(request):
         }
 
     return render(request, 'vtr/index.html', context_dict)
+
+
+"""
+def vote(request):
+    thread_id = int(request.POST.get('id'))
+    vote_type = request.POST.get('type')
+    vote_action = request.POST.get('action')
+
+    thread = get_object_or_404(Thread, pk=thread_id)
+
+    thisUserUpVote = thread.userUpVotes.filter(id=request.user.id).count()
+    thisUserDownVote = thread.userDownVotes.filter(id=request.user.id).count()
+
+    if (vote_action == 'vote'):
+        if (thisUserUpVote == 0) and (thisUserDownVote == 0):
+            if (vote_type == 'up'):
+                thread.userUpVotes.add(request.user)
+            elif (vote_type == 'down'):
+                thread.userDownVotes.add(request.user)
+            else:
+                return HttpResponse('error-unknown vote type')
+        else:
+            return HttpResponse('error - already voted', thisUserUpVote, thisUserDownVote)
+    elif (vote_action == 'recall-vote'):
+        if (vote_type == 'up') and (thisUserUpVote == 1):
+            thread.userUpVotes.remove(request.user)
+        elif (vote_type == 'down') and (thisUserDownVote == 1):
+            thread.userDownVotes.remove(request.user)
+        else:
+            return HttpResponse('error - unknown vote type or no vote to recall')
+    else:
+        return HttpResponse('error - bad action')
+    num_votes = thread.userUpVotes.count() - thread.userDownVotes.count()
+
+    return HttpResponse(num_votes)
+"""
