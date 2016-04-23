@@ -12,8 +12,10 @@ urlpatterns = patterns('', url(r'^$', views.home, name='home'),
     url(r'^month/$', views.month, name='month'),
     url(r'^views/$', views.views, name='views'),
     url(r'^comment/$', views.comment, name='comment'),
-    #url(r'^vote/$', views.vote, name='vote'),
     url(r'^(?P<slug>[\w|\-]+)/$', views.query, name='query'),
     #url(r'^query/(?P<slug>[\w|\-]+)/$', views.query, name='query'),
     url(r'^branch/(?P<branch_name>\w+)/$', views.branch, name='branch'),
+    url(r'^query_update/(?P<pk>\d+)$', views.query_update, name='query_update'),
+    url(r'^query_delete/(?P<pk>\d+)$', views.query_delete, name='query_delete')
+
 )

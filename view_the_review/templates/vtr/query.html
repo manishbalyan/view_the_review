@@ -48,8 +48,15 @@
                     {% if single_query.show_user %}
                     <span class="tname">Posted by</span> <span class="count">{{ single_query.user.username }} </span>
                     {% endif %} <span class="tname">Views</span> <span class="count">{{ single_query.views}}</span> &nbsp;<span class="tname">Comments</span> <span class="count">{{ comment_count }}</span></p>
-                    
 
+
+                    {% if request.user == single_query.user %}
+                    <a class="btn btn-primary" href="{% url 'query_update' single_query.id %}">Edit</a>
+                    &nbsp;
+                    <a class="btn btn-danger" href="{% url 'query_delete' single_query.id %}">Delete</a>
+                    {% endif%}
+                    
+                     
 
                    
             

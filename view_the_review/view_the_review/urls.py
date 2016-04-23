@@ -20,5 +20,7 @@ urlpatterns = [
     url(r'^probtune/', include('probtune.urls')),
     url(r'^administration/', include('administration.urls')),
     url(r'^media/(?P<path>.*)$', 'django.views.static.serve', {'document_root': MEDIA_ROOT}),
-    url(r'^comments/', include('fluent_comments.urls'))
+    url(r'^comments/', include('fluent_comments.urls')),
+
+
 ]

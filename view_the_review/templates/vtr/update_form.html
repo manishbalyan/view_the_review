@@ -1,0 +1,9 @@
+
+{% load bootstrap %}
+
+<h2>Update your Query</h2>
+<form method="post">
+    {% csrf_token %}
+    {{ form| bootstrap_horizontal }}
+    <input type="submit" value="Submit" />
+</form>

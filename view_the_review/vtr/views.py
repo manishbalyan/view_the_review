@@ -3,8 +3,11 @@ from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseRedirect, HttpResponse
 from django.shortcuts import get_object_or_404, redirect, render_to_response
 from django.core.context_processors import csrf
+from django.core.urlresolvers import reverse, reverse_lazy, resolve
 from vtr.forms import UserForm, UserProfileFormS, QueryFormS, SearchForm
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from django.core.exceptions import PermissionDenied
+from django.core.urlresolvers import reverse
 from vtr.models import UserProfileS, QueryS
 from faculty.models import UserProfileF
 from django.db.models import Q
@@ -159,14 +162,6 @@ def query(request, slug):
 
 
 
-"""
-@login_required
-def query_remove(request, pk):
-    queryd = get_object_or_404(QueryS, pk=pk)
-    queryd.delete()
-    return render('vtr/index.html')
-"""
-
 @login_required
 def add_queryS(request):
     if request.method == 'POST':
@@ -182,7 +177,6 @@ def add_queryS(request):
             query.save()
             query_form.save_m2m()
 
-            
             return redirect(home)
         else:
             print query_form.errors  # no, display error to end user
@@ -332,3 +326,20 @@ def vote(request):
 
     return HttpResponse(num_votes)
 """
+
+
+def query_delete(request, pk):
+    queryd = get_object_or_404(QueryS, pk=pk)
+    if request.method == 'POST':
+        queryd.delete()
+        return redirect('home')
+    return render(request, 'vtr/confirm_delete.html', {'object': queryd})
+
+
+def query_update(request, pk):
+    queryu = get_object_or_404(QueryS, pk=pk)
+    form = QueryFormS(request.POST or None, instance=queryu)
+    if form.is_valid():
+        form.save()
+        return redirect('home')
+    return render(request, 'vtr/update_form.html', {'form': form})

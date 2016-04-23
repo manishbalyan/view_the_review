@@ -4,6 +4,38 @@
 		"selected_items":
 		[
 			[
+				"query",
+				"queryd"
+			],
+			[
+				"ho",
+				"home"
+			],
+			[
+				"q",
+				"queryd"
+			],
+			[
+				"Quer",
+				"QueryS"
+			],
+			[
+				"re",
+				"request"
+			],
+			[
+				"padd",
+				"padding-left"
+			],
+			[
+				"quer",
+				"querys"
+			],
+			[
+				"back",
+				"background-color"
+			],
+			[
 				"di",
 				"display"
 			],
@@ -40,20 +72,12 @@
 				"color"
 			],
 			[
-				"padd",
-				"padding-top"
-			],
-			[
 				"ma",
 				"margin-top"
 			],
 			[
 				"in",
 				"inline-block"
-			],
-			[
-				"query",
-				"query_remove"
 			],
 			[
 				"f",
@@ -66,14 +90,6 @@
 			[
 				"pa",
 				"padding-left"
-			],
-			[
-				"ho",
-				"hostler"
-			],
-			[
-				"re",
-				"required"
 			],
 			[
 				"U",
@@ -109,10 +125,6 @@
 			],
 			[
 				"backg",
-				"background-image"
-			],
-			[
-				"back",
 				"background-image"
 			],
 			[
@@ -492,21 +504,42 @@
 	"buffers":
 	[
 		{
-			"contents": "{% extends 'vtr/base.html' %}\n{% block title %}Title{% endblock %}\n{% load i18n comments fluent_comments_tags %}\n{% load markup_tags %}\n{% block body_block %}\n&nbsp;&nbsp;\n    <div class=\"row\">\n        <div class=\"col-lg-3\" id=\"left\">\n            <h3>{{ user.username}}</h3>\n                {% for users in userprofile %}\n                    {% if users.profile_pic %}\n                    <img src=\"/media/{{users.profile_pic}}\">\n                    {% endif %}<br><br>\n                    Rollnumber:{{ users.rollnumber }}\n                    <br>\n                    Year:{{ users.year }}\n                    <br>\n                    Branch:{{ users.branch }}<br><br>\n                    <p><a class=\"btn btn-lg btn-primary\" href=\"{% url 'my_query' %}\" role=\"button\">MY QUERIES</a></p>\n\n                    {% if users.hostler %}\n                    <p><a class=\"btn btn-lg btn-primary\" href=\"{% url 'hostelQ' %}\" role=\"button\">ALL HOSTEL QUERIES</a></p>\n                     <p><a class=\"btn btn-lg btn-primary\" href=\"{% url 'my_hostelQ' %}\" role=\"button\"> MY HOSTEL QUERIES</a></p>\n                    {% endif %}\n\n                    \n                {% endfor %}\n            \n                    \n        </div>\n        <div class=\"col-lg-6\">\n            \n            <h2><span class=\"qtitle\">{{ single_query.title }}</span></h2>\n            \n                <b><span class=\"tags\">({{ single_query.created_at }})&nbsp;Tags:\n                    {% for tag in single_query.tags.all %}\n                    <span class=\"tagname\">{{ tag.name }}</span>\n                    {% endfor %}</span></b>\n                    <br><br>\n                <p class=\"qtext\">{{ single_query.content }}</p>\n                    \n                {% load comments %}\n                    {% get_comment_count for single_query as comment_count %}\n                    <p>\n                    {% if single_query.show_user %}\n                    Posted by <span class=\"count\">{{ single_query.user.username }} </span>\n                    {% endif %} &nbsp; Views <span class=\"count\">{{ single_query.views}}</span> &nbsp;Comments <span class=\"count\">{{ comment_count }}</span></p>\n                    \n\n\n                   \n            \n            <h3>Comments</h3>\n    \n            {% render_comment_list for single_query %}\n            <hr>\n            {% render_comment_form for single_query %}\n        </div>\n        <div class=\"col-lg-3\" id=\"right\">\n            <div class=\"tquery\">\n                <h3 class=\"shead\"><span class=\"icon\"></span>Trending Query</h3>\n                <ul style=\"list-style-type: none\">\n                    {% for query in popular_query %}\n                        <li>\n                            <span class=\"bullet\">•</span>&nbsp;<a href=\"/vtr/{{query.slug}}\">{{ query.title }}</a>\n                        </li> \n                        \n                    {% endfor %}    \n                </ul>\n            </div>\n            <br>\n            <div>\n                <h3 class=\"shead\">Branch Catagories<h3/>\n                <ul class=\"blist\">\n                    {% for b in branch%}\n                    <li><a href=\"/vtr/branch/{{b}}\" >{{b}}</a></li><br>\n                    {% endfor %}\n                </ul>\n            </div>    \n        </div>\n    </div>\n{% endblock %}",
-			"file": "view_the_review/templates/vtr/query.html",
-			"file_size": 3326,
-			"file_write_time": 131056967058183597,
+			"file": "view_the_review/vtr/models.py",
 			"settings":
 			{
-				"buffer_size": 3282,
+				"buffer_size": 2534,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "view_the_review/static/css/style.css",
+			"file": "view_the_review/vtr/views.py",
 			"settings":
 			{
-				"buffer_size": 4261,
+				"buffer_size": 13113,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "view_the_review/vtr/urls.py",
+			"settings":
+			{
+				"buffer_size": 789,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "view_the_review/view_the_review/urls.py",
+			"settings":
+			{
+				"buffer_size": 1214,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "view_the_review/templates/vtr/query.html",
+			"settings":
+			{
+				"buffer_size": 3566,
 				"line_ending": "Unix"
 			}
 		}
@@ -550,43 +583,39 @@
 	"expanded_folders":
 	[
 		"/home/manish/Documents/view_the_review",
-		"/home/manish/Documents/view_the_review/env/lib/python2.7",
-		"/home/manish/Documents/view_the_review/env/lib/python2.7/site-packages",
-		"/home/manish/Documents/view_the_review/env/lib/python2.7/site-packages/haystack",
 		"/home/manish/Documents/view_the_review/view_the_review",
 		"/home/manish/Documents/view_the_review/view_the_review/static",
-		"/home/manish/Documents/view_the_review/view_the_review/static/css",
 		"/home/manish/Documents/view_the_review/view_the_review/templates",
 		"/home/manish/Documents/view_the_review/view_the_review/templates/comments",
-		"/home/manish/Documents/view_the_review/view_the_review/templates/search/indexes",
-		"/home/manish/Documents/view_the_review/view_the_review/templates/search/indexes/vtr",
+		"/home/manish/Documents/view_the_review/view_the_review/templates/search",
 		"/home/manish/Documents/view_the_review/view_the_review/templates/vtr",
 		"/home/manish/Documents/view_the_review/view_the_review/view_the_review",
 		"/home/manish/Documents/view_the_review/view_the_review/vtr"
 	],
 	"file_history":
 	[
+		"/home/manish/Documents/view_the_review/view_the_review/view_the_review/urls.py",
+		"/home/manish/Documents/view_the_review/view_the_review/templates/search/search.html",
+		"/home/manish/Documents/view_the_review/view_the_review/templates/comments/posted.html",
 		"/home/manish/Documents/view_the_review/view_the_review/templates/comments/list.html",
+		"/home/manish/Documents/view_the_review/view_the_review/templates/vtr/index.html",
+		"/home/manish/Documents/view_the_review/view_the_review/templates/vtr/query.html",
+		"/home/manish/Documents/view_the_review/view_the_review/static/css/style.css",
+		"/home/manish/Documents/view_the_review/view_the_review/vtr/forms.py",
+		"/home/manish/Documents/view_the_review/view_the_review/view_the_review/settings.py",
+		"/home/manish/Documents/view_the_review/view_the_review/vtr/views.py",
 		"/home/manish/Documents/view_the_review/view_the_review/templates/vtr/home.html",
 		"/home/manish/Documents/view_the_review/view_the_review/templates/hostel/index.html",
-		"/home/manish/Documents/view_the_review/view_the_review/templates/search/search.html",
 		"/home/manish/Documents/view_the_review/view_the_review/vtr/models.py",
-		"/home/manish/Documents/view_the_review/view_the_review/view_the_review/settings.py",
 		"/home/manish/Documents/view_the_review/view_the_review/templates/search/indexes/vtr/querys_text.txt",
 		"/home/manish/Documents/view_the_review/view_the_review/vtr/search_indexes.py",
-		"/home/manish/Documents/view_the_review/view_the_review/static/css/style.css",
-		"/home/manish/Documents/view_the_review/view_the_review/vtr/views.py",
 		"/home/manish/Documents/view_the_review/view_the_review/vtr/urls.py",
-		"/home/manish/Documents/view_the_review/view_the_review/templates/vtr/query.html",
-		"/home/manish/Documents/view_the_review/view_the_review/templates/vtr/index.html",
-		"/home/manish/Documents/view_the_review/view_the_review/templates/comments/posted.html",
 		"/home/manish/Documents/view_the_review/view_the_review/templates/vtr/base.html",
 		"/home/manish/Documents/view_the_review/env/lib/python2.7/site-packages/django_comments/views/comments.py",
 		"/home/manish/Documents/view_the_review/view_the_review/templates/vtr/ query_confirm_delete.html",
 		"/home/manish/Documents/view_the_review/view_the_review/static/js/myjquery.js",
 		"/home/manish/Documents/view_the_review/view_the_review/static/js/bootstrap.min.js",
 		"/home/manish/Documents/view_the_review/env/lib/python2.7/site-packages/django_comments/models.py",
-		"/home/manish/Documents/view_the_review/view_the_review/view_the_review/urls.py",
 		"/home/manish/view_the_review/view_the_review/urls.py",
 		"/home/manish/view_the_review/view_the_review/settings.py",
 		"/home/manish/Documents/vtr/view_the_review/vtr/views.py",
@@ -600,7 +629,6 @@
 		"/home/manish/Documents/view_the_review/view_the_review/templates/faculty/query.html",
 		"/home/manish/Documents/view_the_review/view_the_review/templates/faculty/index.html",
 		"/home/manish/Documents/view_the_review/view_the_review/faculty/search_indexes.py",
-		"/home/manish/Documents/view_the_review/view_the_review/vtr/forms.py",
 		"/home/manish/Documents/view_the_review/view_the_review/faculty/models.py",
 		"/home/manish/Documents/view_the_review/view_the_review/faculty/urls.py",
 		"/home/manish/Documents/view_the_review/view_the_review/faculty/forms.py",
@@ -711,6 +739,8 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"#right",
+			"#left",
 			"%}\"",
 			"p",
 			"lg"
@@ -731,24 +761,144 @@
 	"groups":
 	[
 		{
-			"selected": 1,
+			"selected": 4,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "view_the_review/templates/vtr/query.html",
+					"file": "view_the_review/vtr/models.py",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 3282,
+						"buffer_size": 2534,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2244,
-								2244
+								1626,
+								1626
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 297.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "view_the_review/vtr/views.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 13113,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								13113,
+								13113
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 5286.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "view_the_review/vtr/urls.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 789,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								786,
+								786
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "view_the_review/view_the_review/urls.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1214,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								603,
+								603
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "view_the_review/templates/vtr/query.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3566,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2329,
+								2329
 							]
 						],
 						"settings":
@@ -758,37 +908,7 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 501.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "view_the_review/static/css/style.css",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 4261,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								2814,
-								2814
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/CSS/CSS.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 2537.0,
+						"translation.y": 629.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
