@@ -16,6 +16,8 @@ urlpatterns = patterns('', url(r'^$', views.home, name='home'),
     #url(r'^query/(?P<slug>[\w|\-]+)/$', views.query, name='query'),
     url(r'^branch/(?P<branch_name>\w+)/$', views.branch, name='branch'),
     url(r'^query_update/(?P<pk>\d+)$', views.query_update, name='query_update'),
-    url(r'^query_delete/(?P<pk>\d+)$', views.query_delete, name='query_delete')
+    url(r'^comment_update/(?P<pk>\d+)$', views.comment_update, name='comment_update'),
+    url(r'^query_delete/(?P<pk>\d+)$', views.query_delete, name='query_delete'),
+    url(r'^comment_delete/(?P<pk>\d+)$', views.comment_delete, name='comment_delete')
 
 )

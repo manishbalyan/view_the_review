@@ -9,6 +9,7 @@ from taggit.managers import TaggableManager
 import datetime
 
 
+
 def upload_to(instance, filename):
         ext = filename.split('.')[-1]
         filename = "%s.%s" % (uuid.uuid4(), ext)

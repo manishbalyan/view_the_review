@@ -1,5 +1,5 @@
 {% extends 'vtr/base.html' %}
-{% block title %}Title{% endblock %}
+{% block title %}Query{% endblock %}
 {% load i18n comments fluent_comments_tags %}
 {% load markup_tags %}
 {% block body_block %}
@@ -35,7 +35,7 @@
             
             <h2><span class="qtitle">{{ single_query.title|linebreaks }}</span></h2>
             
-                <b><span class="tags">({{ single_query.created_at }})&nbsp;Tags:
+                <b><span class="tags"><span class="glyphicon glyphicon-time gicons"></span>({{ single_query.created_at }})&nbsp;<span class="glyphicon glyphicon-tags gicons aria-hidden="true""></span>Tags:
                     {% for tag in single_query.tags.all %}
                     <span class="tagname">{{ tag.name }}</span>
                     {% endfor %}</span></b>
@@ -46,15 +46,16 @@
                     {% get_comment_count for single_query as comment_count %}
                     <p>
                     {% if single_query.show_user %}
-                    <span class="tname">Posted by</span> <span class="count">{{ single_query.user.username }} </span>
-                    {% endif %} <span class="tname">Views</span> <span class="count">{{ single_query.views}}</span> &nbsp;<span class="tname">Comments</span> <span class="count">{{ comment_count }}</span></p>
+                    <span class="tname">Posted by</span> <span class="count"><span class="glyphicon glyphicon-user gicons"></span>{{ single_query.user.username }} </span>
+                    {% endif %} <span class="tname">Views</span> <span class="count">{{ single_query.views}}</span> &nbsp;<span class="tname">Comments</span> <span class="count">{{ comment_count }}</span>
 
 
                     {% if request.user == single_query.user %}
-                    <a class="btn btn-primary" href="{% url 'query_update' single_query.id %}">Edit</a>
-                    &nbsp;
-                    <a class="btn btn-danger" href="{% url 'query_delete' single_query.id %}">Delete</a>
+                    <a class="btn btn-sm btn-link tname" href="{% url 'query_update' single_query.id %}">Edit</a>
+                        
+                    <a class="btn btn-sm btn-link tname" href="{% url 'query_delete' single_query.id %}">Delete</a>
                     {% endif%}
+                    </p>
                     
                      
 

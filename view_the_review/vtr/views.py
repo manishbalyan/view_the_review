@@ -18,6 +18,7 @@ from datetime import timedelta
 from django.utils import timezone
 from django.db.models import Count
 from django_comments.models import Comment
+from django_comments.forms import CommentDetailsForm
 from datetime import *
 
 
@@ -221,6 +222,7 @@ def my_query(request):
     return render(request, 'vtr/index.html', context_dict)
 
 
+
 @login_required
 def week(request):
     userprofile = UserProfileS.objects.filter(user=request.user.id)
@@ -339,6 +341,22 @@ def query_delete(request, pk):
 def query_update(request, pk):
     queryu = get_object_or_404(QueryS, pk=pk)
     form = QueryFormS(request.POST or None, instance=queryu)
+    if form.is_valid():
+        form.save()
+        return redirect('home')
+    return render(request, 'vtr/update_form.html', {'form': form})
+
+def comment_delete(request, pk):
+    commentd = get_object_or_404(Comment, pk=pk)
+    if request.method == 'POST':
+        commentd.delete()
+        return redirect('home')
+    return render(request, 'vtr/confirm_delete.html', {'object': commentd})
+
+
+def comment_update(request, pk):
+    commentu = get_object_or_404(Comment, pk=pk)
+    form = CommentDetailsForm(request.POST or None, instance=commentu)
     if form.is_valid():
         form.save()
         return redirect('home')

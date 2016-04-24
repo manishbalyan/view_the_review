@@ -1,7 +1,12 @@
 {% for comment in comment_list %}
 <hr>
    <div class="comment">
-   <span class="count">{{ comment.user }}</span><br>
+   <p><span class="count"><span class="glyphicon glyphicon-user gicons"></span>{{ comment.user }}</span>
+   {% if request.user == comment.user %}
+   <a class="btn btn-sm btn-link tname" href="{% url 'comment_update' comment.id %}">Edit</a>
+   <a class="btn btn-sm btn-link tname" href="{% url 'comment_delete' comment.id %}">Delete</a>
+    {% endif%}
+    </p>
       <span class="ctext">{{ comment.comment|linebreaks }}</span>
    </div>
 {% endfor %}

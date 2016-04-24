@@ -1,5 +1,5 @@
 {% extends 'vtr/base.html' %}
-{% block title %}Title{% endblock %}
+{% block title %}Home{% endblock %}
 {% load i18n comments %}
 {% load bootstrap_pagination %}
 {% load markup_tags %}
@@ -53,8 +53,9 @@
                 <div class="mid">
                 <hr>
                     <h4><a href="/vtr/{{query.slug}}">{{ query.title }}</a></h4>
-                    <b><span class="tags">({{ query.created_at }})
-                    &nbsp;Tags:</b>
+                    <b><span class="tags"><span class="glyphicon glyphicon-time gicons"></span>({{ query.created_at }})</b>
+                    &nbsp;<span class="glyphicon glyphicon-tags gicons aria-hidden="true""></span>
+                    <b><span class="tags">Tags</span></b>
                     {% for tag in query.tags.all %}
                     <span class="tagname">{{ tag.name }}</span>
                     {% endfor %}</span>
@@ -66,9 +67,15 @@
                     {% get_comment_count for query as comment_count %}
                     <p>
                     {% if query.show_user %}
-                    <span class="tname"> Posted by</span> <span class="count">{{ query.user.username }}</span>
-                    {% endif %} &nbsp; <span class="tname">Views</span> <span class="count">{{ query.views}}</span> &nbsp;<span class="tname">Comments</span> <span class="count">{{ comment_count }}</span></p> </p>  
+                    <span class="tname"> Posted by</span> <span class="count"><span class="glyphicon glyphicon-user gicons"></span>{{ query.user.username }}</span>
+                    {% endif %} &nbsp; <span class="tname">Views</span> <span class="count">{{ query.views}}</span> &nbsp;<span class="tname">Comments</span> <span class="count">{{ comment_count }}</span>  &nbsp; 
 
+                    {% if request.user == query.user %}
+                    <a class="btn btn-sm btn-link tname" href="{% url 'query_update' query.id %}">Edit</a>
+                    
+                    <a class="btn btn-sm btn-link tname" href="{% url 'query_delete' query.id %}">Delete</a>
+                    {% endif%}
+                    </p>
                     
                     
                     

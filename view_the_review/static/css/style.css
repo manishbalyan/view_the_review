@@ -202,7 +202,7 @@ a{
     display: inline-block;
     padding: 0.4em 0.5em;
     margin: 2px 2px 2px 0px;
-    font-size: 12px;
+    font-size: 13px;
     line-height: 1;
     white-space: nowrap;
     text-decoration: none;
@@ -267,7 +267,7 @@ hr {
 
 .navbar-brand > img {
   display: block;
-  width: 74px;
+  width: 75px;
 }
 
 .carousel-caption{
@@ -284,6 +284,7 @@ hr {
 
 .tname{
     color: #3B7D34;
+    font-size: 15px;
 }
 
 .col-lg-3{
@@ -293,3 +294,18 @@ hr {
 .col-lg-6{
     padding-left: 0px;
 }
+
+.cbutton{
+    background-image: url("//qsf.is.quoracdn.net/-images.new_grid.ask_blue.svgfff9cdcb8c4eb42c.svg");
+    background-repeat: no-repeat;
+    background-size: 15px 15px;
+    background-position: 6px center;  
+    padding-left: 26px;
+    color: #2B6DAD;
+}
+
+.gicons{
+    padding-right: 5px;
+    color: #2B6DAD;
+}
+
