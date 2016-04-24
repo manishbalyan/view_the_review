@@ -1,5 +1,5 @@
 body{
-    padding-top: 60px;
+    padding-top: 80px;
     
 }
 
@@ -7,11 +7,12 @@ body{
     
     border: 1px solid transparent;
     border-radius: 4px;
-    box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.05);;
-    background-color: #FFF8DC;
+    box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.05);
     border: 1px solid #E0DCBF;
-    padding-left: 50px;
-    width: 250px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-bottom: 20px;
+    max-width: 90%;
 }
 
 .icon{
@@ -100,7 +101,7 @@ li{
 }
 
 #logo{
-    width: 60px;
+    width: 95px;
 
 }
 
@@ -114,7 +115,6 @@ li{
     line-height: 1.4;
 
     
-}
 }
 
 a{
@@ -135,6 +135,7 @@ a{
     border: 1px solid #DDD;
     background: #FFF none repeat scroll 0% 0%;
 }
+
 .blist li{
     position: relative;
     display: block;
@@ -143,6 +144,7 @@ a{
     background-color: #FFF;
     border: 1px solid #DDD;
 }
+
 .blist{
     list-style: outside none none;
     margin: 0px 0px 20px;
@@ -212,16 +214,6 @@ a{
     border-radius: 0px;
     color: #39739D;
 }
-/*
-hr {
-    margin-top: 0.5em;
-    margin-bottom: 0.5em;
-    margin-left: auto;
-    margin-right: auto;
-    border-style: inset;
-    
-}
-*/
 
 #middle{
     padding-left: 30px;
@@ -236,24 +228,10 @@ hr {
     font-size: 17px;
 }
 
-@media (max-width: 767px) {
-    .navbar-nav > li > a {
-    line-height: 20px;
-    padding-top: 10px;
-    padding-bottom: 10px;}
-
-    #logoimage{
-    width: 10px;}
-}
-/*
-#logoimage{
-    width: 70px;
-}
-*/
 .footer{
     background: #ECECEC;
     font-family: Georgia,Times,"Times New Roman",serif;
-    font-size: 17px;
+    font-size: 16px;
     position: relative;
     bottom: 0px;
     width: 100%;
@@ -309,3 +287,22 @@ hr {
     color: #2B6DAD;
 }
 
+.clgname{
+    font-size: 20px;
+}
+
+.form-group{
+    width: 500px;
+    text-align: left;
+}
+
+.rform{
+    background-color: #F5F5F5;
+    width: 570px;
+    padding-top: 20px;
+    padding-bottom: 15px;
+}
+
+#reg{
+    padding-top: 10px;
+}

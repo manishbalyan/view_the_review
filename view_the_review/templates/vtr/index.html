@@ -11,11 +11,11 @@
         <div class="col-lg-3" >
 
             <div id="left">
-                <h3>{{ user.username}}</h3>
+                <h3>{{ user.username|capfirst }}</h3>
                 {% for users in userprofile %}
                     {% if users.profile_pic %}
-                    <img src="/media/{{users.profile_pic}}">
-                    {% endif %}<br><br>
+                    <img class="img-responsive img-rounded" src="/media/{{users.profile_pic}}">
+                    {% endif %}<br>
                     Rollnumber:{{ users.rollnumber }}
                     <br>
                     Year:{{ users.year }}
@@ -67,7 +67,7 @@
                     {% get_comment_count for query as comment_count %}
                     <p>
                     {% if query.show_user %}
-                    <span class="tname"> Posted by</span> <span class="count"><span class="glyphicon glyphicon-user gicons"></span>{{ query.user.username }}</span>
+                    <span class="tname"> Posted by</span> <span class="count"><span class="glyphicon glyphicon-user gicons"></span>{{ query.user.username|capfirst }}</span>
                     {% endif %} &nbsp; <span class="tname">Views</span> <span class="count">{{ query.views}}</span> &nbsp;<span class="tname">Comments</span> <span class="count">{{ comment_count }}</span>  &nbsp; 
 
                     {% if request.user == query.user %}
@@ -87,7 +87,7 @@
 
             
         </div>
-        <div class="col-lg-3" id="right">
+        <div class="col-lg-3">
             <div class="tquery">
                 <h3 class="shead"><span class="icon"></span>Trending Query</h3>
                 <ul style="list-style-type: none">

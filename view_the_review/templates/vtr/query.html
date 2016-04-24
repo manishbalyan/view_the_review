@@ -10,11 +10,11 @@
         <div class="col-lg-3" >
 
             <div id="left">
-                <h3>{{ user.username}}</h3>
+                <h3>{{ user.username|capfirst }}</h3>
                 {% for users in userprofile %}
                     {% if users.profile_pic %}
-                    <img src="/media/{{users.profile_pic}}">
-                    {% endif %}<br><br>
+                    <img class="img-responsive img-rounded" src="/media/{{users.profile_pic}}">
+                    {% endif %}<br>
                     Rollnumber:{{ users.rollnumber }}
                     <br>
                     Year:{{ users.year }}
@@ -46,7 +46,7 @@
                     {% get_comment_count for single_query as comment_count %}
                     <p>
                     {% if single_query.show_user %}
-                    <span class="tname">Posted by</span> <span class="count"><span class="glyphicon glyphicon-user gicons"></span>{{ single_query.user.username }} </span>
+                    <span class="tname">Posted by</span> <span class="count"><span class="glyphicon glyphicon-user gicons"></span>{{ single_query.user.username|capfirst }} </span>
                     {% endif %} <span class="tname">Views</span> <span class="count">{{ single_query.views}}</span> &nbsp;<span class="tname">Comments</span> <span class="count">{{ comment_count }}</span>
 
 

@@ -1,7 +1,8 @@
 {% for comment in comment_list %}
 <hr>
    <div class="comment">
-   <p><span class="count"><span class="glyphicon glyphicon-user gicons"></span>{{ comment.user }}</span>
+   <p><span class="count"><span class="glyphicon glyphicon-user gicons"></span>{{ comment.user|capfirst }}</span>&nbsp;
+   <b><span class="tags"><span class="glyphicon glyphicon-time gicons"></span>({{ comment.submit_date }})</b>
    {% if request.user == comment.user %}
    <a class="btn btn-sm btn-link tname" href="{% url 'comment_update' comment.id %}">Edit</a>
    <a class="btn btn-sm btn-link tname" href="{% url 'comment_delete' comment.id %}">Delete</a>

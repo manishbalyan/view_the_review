@@ -8,6 +8,7 @@ class QuerySIndex(indexes.SearchIndex, indexes.Indexable):
     #author = indexes.CharField(model_attr='user')
     created_at = indexes.DateTimeField(model_attr='created_at')
     content = indexes.CharField(model_attr='content')
+    tags = indexes.MultiValueField()
 
     def get_model(self):
         return QueryS

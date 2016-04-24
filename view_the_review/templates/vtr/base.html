@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+  <!DOCTYPE html>
 {% load static %}
 <html lang="en">
   <head>
@@ -32,7 +32,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="{% url 'home' %}"><img id="logoimage" src="{% static "img/vtr.png" %}"></a>
+          <a class="navbar-brand" href="{% url 'home' %}"><img id="logo" src="{% static "img/vtr.png" %}"></a>
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
@@ -41,7 +41,7 @@
               
               <li><a href="{% url 'logout' %}">{{user.username | title}} Logout</a></li>
               <li><a href="{% url 'add_queryS'%}">Add Query</a></li>
-              <li><a href="{% url 'haystack_search'%}"><span class="glyphicon glyphicon-search gicons"></span>Search</a></li>
+              <li><a href="{% url 'haystack_search'%}"><span class="glyphicon glyphicon-search gicons"></span>  Search</a></li>
             {% endif %}
               <li><a href="#">About</a></li>
               <li><a href="#">Contact</a></li>
@@ -57,11 +57,15 @@
     <div class= "footer">
             <div class= "container">
               <div class = "row">
-                <div class = "col-sm-9"
-                  <p>
-                    All content on this site is under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/" target = "_blank">Creative Commons License</a><br>
-                    Feel free to copy and share. 
-                  </p>
+                <div class = "col-sm-9">
+                  <address>
+                      <strong class="clgname">IPEC, Ghaziabad</strong><br>
+                      63 Site IV, Sahibabad Industrial Area,
+                      Surya Nagar Flyover Road Sahibabad,<br> Ghaziabad-U.P
+                      PIN Code-201010<br>
+                      <abbr title="Phone">Ph:</abbr> +91(120) 4535000, 2895135,136,137<br>
+                      <abbr title="Fax">Fax:</abbr> +91(120) 4535059,4535053,2895138
+                  </address>
                 </div>
                 <div class = "col-sm-3">
                   <p>
@@ -73,9 +77,9 @@
                     </a>
                   </p>
                 </div>
-                </div>
+              </div>
             </div>
-        </div>  
+    </div>  
     
   <!-- Bootstrap core JavaScript
     ================================================== -->
