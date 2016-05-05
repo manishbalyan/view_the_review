@@ -1,96 +1,138 @@
-{% extends 'hostel/base.html' %}
+{% extends 'probtune/base.html' %}
 {% block title %}Title{% endblock %}
 {% load i18n comments %}
 {% load markup_tags %}
 {% block body_block %}
+<br><br>
     <div class="row">
-        <div class="col-lg-3" id="left">
-        {% if u %}
-        <ul>
-                <h3>
-                {{ user.username}}</h3><br><br>
-                {% for users in userprofile %}
-                    {% if users.profile_pic %}
-                    <img src="/media/{{ users.profile_pic }}">
-                    {% endif %}<br><br>
-                    {{ users.faculty_id }}
-                    <br><br>
-                    {{ users.department }}
-                    <p><a class="btn btn-lg btn-primary" href="{% url 'my_problQF' %}" role="button">MY GENERAL QUERIES</a></p>
-                                    
-                {% endfor %}
-            </ul>
+        &nbsp;
+        <div class="col-lg-3">
+        <div id="left">
+            {% if u %}
+                <h3>{{ user.username|capfirst }}</h3><br>
+                    {% for users in userprofile %}
+                        {% if users.profile_pic %}
+                            <img class="img-responsive img-rounded" src="/media/{{ users.profile_pic }}">
+                        {% endif %}<br>
+                        Faculty ID:{{ users.faculty_id }}
+                        <br>    
+                        Department:{{ users.department }}
+                    {% endfor %}
+                    </div><br>
+            <div>
+                <h3 class="shead1">Important</h3>
+                <a class="btn btn-sm btn-link tname" href="{% url 'home' %}"> ACADEMIC QUERIES</a>
+                <a class="btn btn-sm btn-link tname" href="{% url 'probQF' %}" > PROBLEM QUERIES</a>
+                <h3 class="shead1">My Activity</h3>
+                <a class="btn btn-sm btn-link tname" href="{% url 'my_queryf' %}" > MY ACADEMIC QUERIES</a>
+                <a class="btn btn-sm btn-link tname" href="{% url 'my_probQF' %}" > MY PROBLEM QUERIES</a>
+            </div> 
             {% else %}
-            <ul>
-                <h3>
-                {{ user.username}}</h3><br><br>
-                {% for users in userprofile %}
-                    {% if users.profile_pic %}
-                    <img src="/media/{{ users.profile_pic }}">
-                    {% endif %}<br><br>
-                    {{ users.rollnumber }}
-                    <br><br>
-                    {{ users.year }}
-                    <br><br>
-                    {{ users.branch }}
-
-                    <p><a class="btn btn-lg btn-primary" href="{% url 'my_problQS' %}" role="button">MY GENERAL QUERIES</a></p>
-
-                    
-                {% endfor %}
-            </ul>
+                <h3>{{ user.username|capfirst }}</h3><br>
+                    {% for users in userprofile %}
+                        {% if users.profile_pic %}
+                            <img class="img-responsive img-rounded" src="/media/{{users.profile_pic}}">
+                        {% endif %}<br>
+                        Rollnumber:{{ users.rollnumber }}
+                        <br>
+                        Year:{{ users.year }}
+                        <br>
+                        Branch:{{ users.branch }}<br>
+                    {% endfor %}
+            </div><br>
+            <div>
+                <h3 class="shead1">Important</h3>
+                    <a class="btn btn-sm btn-link tname" href="{% url 'home' %}"> ACADEMIC QUERIES</a>
+                    <a class="btn btn-sm btn-link tname" href="{% url 'probQS' %}" >PROBLEM QUERIES</a>
+                <h3 class="shead1">My Activity</h3>
+                    <a class="btn btn-sm btn-link tname" href="{% url 'my_query' %}" > MY ACADEMIC QUERIES</a>
+                    <a class="btn btn-sm btn-link tname" href="{% url 'my_probQS' %}" > MY PROBLEM QUERIES</a>
+                    {% if users.hostler %}
+                        <a class="btn btn-sm btn-link tname" href="{% url 'hostelQ' %}" >ALL HOSTEL QUERIES</a>
+                        <a class="btn btn-sm btn-link tname" href="{% url 'my_hostelQ' %}" > MY HOSTEL QUERIES</a>
+                    {% endif %}
+            </div> 
             {% endif %}
-                    <p><a class="btn btn-lg btn-primary" href="{% url 'home' %}" role="button">ALL COLLEGE QUERIES</a></p>
-                     <p><a class="btn btn-lg btn-primary" href="{% url 'my_query' %}" role="button"> MY COLLEGE QUERIES</a></p>
-                    
+            <div>
+                <h3 class="shead1"> TAGS </h3>
+                {% load taggit_extras %}
+                {% get_taglist as tags for 'probtune.QueryP' %}
+                <ul class="blist">
+                    {% for tag in tags %}
+                    <li><span></span><a href="/probtune/tagp/{{ tag }}">{{ tag }} ({{tag.num_times}})</a></li>
+                    {% endfor %}
+                <ul>
+            </div>                   
         </div>
         <div class="col-lg-6">
-            <h2>{{ single_query.title }}</h2>
-            <ul>
-                <p><em>{{ single_query.created_at }}</em></p>
-                <p>{{ single_query.content }}</p>
-                <p>Tag: :<ul class="tags">
-                    {% for tag in single_query.tags.all %}
-                    <li>{{ tag.name}}</li>
-                    {% endfor %}
-                    </ul>
-                    
-                <p>Views: {{ single_query.views}}</p>
-                 <p>
-                    {% if single_query.show_user %}
-                    Posted by: {{ single_query.user.username }} 
-                    {% endif %} </p>
-                    <p>
-    {% if single_query.image %}
-            <img src="/media/{{ single_query.image }}">
-    {% endif %}
- </p>
-                <br>
-            </ul>
-            <h2>Comments</h2>
+            {% if u %}
+                <ul class="nav nav-tabs" >
+                    <li class="active"><a href="{% url 'probQF' %}" title="Queries which are latest added">Recent</a></li>
+                    <li><a href="#" title="Queries with most votes"> Votes</a></li>
+                    <li><a href="{% url 'viewspf' %}" title="Queries with most views"> Views</a></li>
+                    <li><a href="{% url 'commentpf' %}" title="Queries with most comments"> Comments</a></li>
+                    <li><a href="{% url 'weekpf' %}" title="Queries added this week"> Week</a></li>
+                    <li><a href="{% url 'monthpf' %}" title="Queries added this month"> Month</a></li>
+                </ul>
+            {% else %}
+                <ul class="nav nav-tabs" >
+                    <li class="active"><a href="{% url 'probQS' %}" title="Queries which are latest added">Recent</a></li>
+                    <li><a href="#" title="Queries with most votes"> Votes</a></li>
+                    <li><a href="{% url 'viewsps' %}" title="Queries with most views"> Views</a></li>
+                    <li><a href="{% url 'commentps' %}" title="Queries with most comments"> Comments</a></li>
+                    <li><a href="{% url 'weekps' %}" title="Queries added this week"> Week</a></li>
+                    <li><a href="{% url 'monthps' %}" title="Queries added this month"> Month</a></li>
+                </ul>
+            {% endif %}
+            <h2><span class="qtitle">{{ single_query.title|linebreaks }}</span></h2>
+            <b><span class="tags"><span class="glyphicon glyphicon-time gicons"></span>({{ single_query.created_at }})&nbsp;<span class="glyphicon glyphicon-tags gicons aria-hidden="true""></span>
+            Tags:
+            {% for tag in single_query.tags.all %}
+                <a href="/probtune/tagp/{{ tag }}"><span class="tagname">{{ tag.name }}</span></a>
+            {% endfor %}</span></b>
+            <br><br>
+            <span class="qtext">{{ single_query.content|linebreaks }}</span> 
+            {% if single_query.image %}
+                <img class="img-responsive" src="/media/{{ single_query.image }}">
+            {% endif %}   
             {% load comments %}
-            
             {% get_comment_count for single_query as comment_count %}
+            <p>
+                {% if single_query.show_user %}
+                    <span class="tname">Posted by</span> <span class="count"><span class="glyphicon glyphicon-user gicons"></span>{{ single_query.user.username|capfirst }} </span>
+                {% endif %}
+                <span class="tname">Views</span> <span class="count">{{ single_query.views}}</span> &nbsp;<span class="tname">Comments</span> <span class="count">{{ comment_count }}</span>
+                {% if request.user == single_query.user %}
+                    <a class="btn btn-sm btn-link tname" href="{% url 'query_update' single_query.id %}">Edit</a>
+                    <a class="btn btn-sm btn-link tname" href="{% url 'query_delete' single_query.id %}">Delete</a>
+                {% endif%}
+            </p>
+            <h3>Comments</h3>
             {% render_comment_list for single_query %}
+            <hr>
             {% render_comment_form for single_query %}
-                
-
-                
         </div>
-        <div class="col-lg-3">  
-            <div>    
-                <h3>Trending Query</h3>
+        <div class="col-lg-3" id="right">
+        <div>
+            {% if single_query.tags.similar_objects %}
+            <h3 class="shead">Similar</h3> 
+            <ul style="list-style-type: none">
+                {% for query in single_query.tags.similar_objects|slice:":5" %}
+                    <li><span class="bullet">•</span>&nbsp;<a href="/probtune/{{query.slug}}">{{query.title}}</a></li>
+                {% if not forloop.last %}
+                {% endif%}
+                {% endfor %}
+                {% endif %}
+        </div><br>
+            <div class="tquery">
+                <h3 class="shead"><span class="icon"></span>Trending Query</h3>
                 <ul style="list-style-type: none">
                     {% for query in popular_query %}
-                    <li>
-                        <a href="/probtune/{{query.slug}}">{{ query.title }} </a>
-                    </li>
-                    <br>
+                        <li><span class="bullet">•</span>&nbsp;<a href="/probtune/{{query.slug}}">{{ query.title }}</a>
+                        </li> 
                     {% endfor %}    
                 </ul>
-            </div>
-            <br>
-            
+            </div><br>
         </div>
     </div>
 {% endblock %}

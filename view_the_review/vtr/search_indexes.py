@@ -9,6 +9,7 @@ class QuerySIndex(indexes.SearchIndex, indexes.Indexable):
     created_at = indexes.DateTimeField(model_attr='created_at')
     content = indexes.CharField(model_attr='content')
     tags = indexes.MultiValueField()
+    branch = indexes.CharField(model_attr='branch')
 
     def get_model(self):
         return QueryS
@@ -16,3 +17,7 @@ class QuerySIndex(indexes.SearchIndex, indexes.Indexable):
     def index_queryset(self, using=None):
         """Used when the entire index for model is updated."""
         return self.get_model().objects.filter(created_at__lte=datetime.datetime.now())
+
+
+    def prepare_tags(self, obj):
+        return [tag.name for tag in obj.tags.all()]

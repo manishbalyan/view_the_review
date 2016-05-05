@@ -1,16 +1,11 @@
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
-from django.http import HttpResponseRedirect, HttpResponse
+from django.http import HttpResponseRedirect
 from django.shortcuts import get_object_or_404, redirect, render_to_response
 from django.core.context_processors import csrf
-from django.core.urlresolvers import reverse, reverse_lazy, resolve
-from vtr.forms import UserForm, UserProfileFormS, QueryFormS, SearchForm
-from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
-from django.core.exceptions import PermissionDenied
-from django.core.urlresolvers import reverse
+from vtr.forms import UserForm, UserProfileFormS, QueryFormS
 from vtr.models import UserProfileS, QueryS
 from faculty.models import UserProfileF
-from django.db.models import Q
 from faculty.views import index as indexf
 from django.core.mail import send_mail
 import hashlib, datetime, random
@@ -29,11 +24,10 @@ def home(request):
         return index(request)
     elif UserProfileF.objects.filter(user=request.user.id):
         userprofile = UserProfileF.objects.filter(user=request.user.id)
-
-#       if userprofile[0].department == 'ADMINISTRATION':
-#           return administration.views.index(request)
-#       else:
-        return indexf(request)
+        if userprofile[0].department == 'ADMINISTRATION':
+            return indexa(request)
+        else:
+            return indexf(request)
     else:
         return render(request, 'vtr/home.html')
 
@@ -44,16 +38,6 @@ def home(request):
 def index(request):
     userprofile = UserProfileS.objects.filter(user=request.user.id)
     allquery = QueryS.objects.all().order_by('-created_at')
-    paginator = Paginator(allquery, 10)# Show 25 contacts per page
-    page = request.GET.get('page')
-    try:
-        querys = paginator.page(page)
-    except PageNotAnInteger:
-        # If page is not an integer, deliver first page.
-        querys = paginator.page(1)
-    except EmptyPage:
-        # If page is out of range (e.g. 9999), deliver last page of results.
-        querys = paginator.page(paginator.num_pages)
     popular_query = QueryS.objects.order_by('-views')[:5]
     branch = ['CSE','IT','ECE','ME','CE','EN']
     title='All QUERIES'
@@ -63,7 +47,6 @@ def index(request):
     'popular_query': popular_query,
     'branch': branch,
     'title': title,
-    'querys': querys
     }
     return render(request, 'vtr/index.html', context_dict)
 
@@ -193,6 +176,24 @@ def branch(request, branch_name):
     popular_query = QueryS.objects.order_by('-views')[:5]
     branch = ['CSE','IT','ECE','ME','CE','EN']
     title= branch_name + ' Queries'
+    context_dict = {
+        'userprofile': userprofile,
+        'allquery': allquery,
+        'popular_query': popular_query,
+        'branch': branch,
+        'title': title
+        }
+
+    return render(request, 'vtr/index.html', context_dict)
+
+
+@login_required
+def tag(request, tag):
+    userprofile = UserProfileS.objects.filter(user=request.user.id)
+    allquery = QueryS.objects.filter(tags__name__in=[tag]).order_by('-created_at')
+    popular_query = QueryS.objects.order_by('-views')[:5]
+    branch = ['CSE','IT','ECE','ME','CE','EN']
+    title = tag + ' Queries'
     context_dict = {
         'userprofile': userprofile,
         'allquery': allquery,

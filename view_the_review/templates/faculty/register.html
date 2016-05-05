@@ -2,25 +2,24 @@
 {% load bootstrap %}
 {% block title %}Register{% endblock %}
 {% block body_block %}
-        <br><br><br>
-        <div class="container">
-           <div class="row">            
-      
-            <strong>Registration Form for Faculty</strong>           
-                <form id="user_form"  class="form-group"action="{% url 'registerF' %}" method="post" enctype="multipart/form-data">
-                
-                    {% csrf_token %}
-                    {{ user_form|bootstrap_horizontal }}
-                    {{ profile_form|bootstrap_horizontal }}
-                
-                    <br>
-                <div>
-                    <input class="btn btn-primary" type="submit" name="submit" value="Register"/>
-                </div>
-                </form>
+    <div class="container">
+        <center><h2 id="reg"><strong>Registration Form Faculty</strong></h2></center>
+        <div class="col-lg-12">
+           <div class="row ">            
+                <center>
+                    <div class="rform">
+                        <div class="form-group">           
+                            <form id="user_form"  class="form-group"action="{% url 'registerF' %}" method="post" enctype="multipart/form-data">
+                                {% csrf_token %}
+                                {{ user_form|bootstrap }}
+                                {{ profile_form|bootstrap }}
+                                <br>
+                                <input class="btn btn-primary" type="submit" name="submit" value="Register"/>
+                            </form>
+                        </div>
+                    </div>
+                </center>
             </div>
-            
         </div>
-        
-        
+    </div>
 {% endblock %}

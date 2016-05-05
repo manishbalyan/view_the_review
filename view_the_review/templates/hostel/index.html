@@ -3,14 +3,10 @@
 {% load i18n comments %}
 {% load markup_tags %}
 {% block body_block %}
+<br><br>
     <div class="row">
     &nbsp;
-        <center>
-            <div id="stories">
-            <p>Top stories for you</p>
-
-            </div>
-        </center>
+        
         <div class="col-lg-3" >
             <div id="left">
                 <h3>{{ user.username}}</h3>
@@ -23,18 +19,41 @@
                     Year:{{ users.year }}
                     <br>
                     Branch:{{ users.branch }}<br>
-                {% endfor %}
+                
             </div><br>
             <div>
             <h3 class="shead">User Activity</h3>
-                    <p><a href="{% url 'my_query' %}">MY QUERIES</a></p>
-                    {% if users.hostler %}
-                    <p><a class="btn btn-lg btn-primary" href="{% url 'hostelQ' %}" role="button">ALL HOSTEL QUERIES</a></p>
-                     <p><a class="btn btn-lg btn-primary" href="{% url 'my_hostelQ' %}" role="button"> MY HOSTEL QUERIES</a></p>
-                    {% endif %}
-            </div>         
+                     <p><a href="{% url 'home' %}">ALL ACADEMIC QUERIES</a></p>
+                    <p><a href="{% url 'my_query' %}" > MY ACADEMIC QUERIES</a></p>
+                    <li><a href="{% url 'probQS' %}" >ALL GENERAL QUERIES</a></li><br>
+                    <li><a href="{% url 'my_probQS' %}" >MY GENERAL QUERIES</a></li><br>
+                    <p><a href="{% url 'hostelQ' %}" >ALL HOSTEL QUERIES</a></p>
+                    <p><a href="{% url 'my_hostelQ' %}" > MY HOSTEL QUERIES</a></p>
+
+            </div> 
+            {% endfor %}  
+            <div id="left">
+            <h3> TAG CLOUD </h3>
+            {% load taggit_extras %}
+            {% get_taglist as tags for 'hostel.QueryH' %}
+            <ul>
+            {% for tag in tags %}
+            <li><span>></span><a href="/hostel/tag/{{ tag }}">{{ tag }} ({{tag.num_times}})</a></li>
+            {% endfor %}
+            <ul>
+
+            </div>      
         </div>
-        <div class="col-lg-6" id="middle">
+        <div class="col-lg-6">
+        <ul class="nav nav-tabs" >
+            <li class="active"><a href="{% url 'hostelQ' %}" title="Queries which are latest added">Recent</a></li>
+            <li><a href="#" title="Queries with most votes"> Votes</a></li>
+            <li><a href="{% url 'viewsh' %}" title="Queries with most views"> Views</a></li>
+            <li><a href="{% url 'commenth' %}" title="Queries with most comments"> Comments</a></li>
+            <li><a href="{% url 'weekh' %}" title="Queries added this week"> Week</a></li>
+            <li><a href="{% url 'monthh' %}" title="Queries added this month"> Month</a></li>
+            
+        </ul>
         
             
                 {% for query in allquery %}
@@ -44,8 +63,10 @@
                     <b><span class="tags">({{ query.created_at }})
                     &nbsp;Tags:
                     {% for tag in query.tags.all %}
-                    <span class="tagname">{{ tag.name }}</span>
+                    <a href="/hostel/tag/{{ tag }}"><span class="tagname">{{ tag.name }}</span></a>
                     {% endfor %}</span></b>
+                    <p>
+
                     <p>
                     {% get_comment_count for query as comment_count %}
                     {% load comments %}
@@ -70,26 +91,14 @@
                 <ul style="list-style-type: none">
                     {% for query in popular_query %}
                         <li>
-                            <span class="bullet">•</span>&nbsp;<a href="/hostel/{{query.slug}}">{{ query.title }}</a>
+                            <span class="icon"></span>&nbsp;<a href="/hostel/{{query.slug}}">{{ query.title }}</a>
                         </li> 
                         
                     {% endfor %}    
                 </ul>
             </div>
             <br>
-            <div>
-                <h3 class="shead">Branch Catagories<h3/>
-                <ul class="blist">
-                    {% for b in branch%}
-                     
-                    <li><a href="/vtr/branch/{{b}}" >{{ b }}</a></li><br>
-                    {% endfor %}
-                    {% for b in bquery%}
-                     
-                    <li>{{ b }}</li>
-                    {% endfor %}
-                </ul>
-            </div>    
+               
         </div>
     </div>               
         </div>

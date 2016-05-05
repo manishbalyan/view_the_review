@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+  <!DOCTYPE html>
 {% load static %}
 <html lang="en">
   <head>
@@ -7,13 +7,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>View The Review - {% block title %}Home{% endblock %}</title>
+    <title>View The Review - {% block title %}{% endblock %}</title>
     <link href = "{% static "css/bootstrap.min.css" %}" rel = "stylesheet">
     <link href = "{% static "css/style.css" %}" rel = "stylesheet">
-    <script src = "{% static "js/bootstrap.min.js.css" %}"></script>
-    <script src="{% static 'js/scripts/jquery-1.10.2.js' %}"></script>
-    <script src="{% static 'js/scripts/bootstrap.js' %}"></script>
-    <script src="{% static 'js/scripts/respond.js' %}"></script>
+    <script src = "{% static "js/bootstrap.min.js" %}"></script>
+    <script src="{% static "js/jquery-1.10.2.js" %}"></script>
+    <script src="{% static "js/myjquery.js" %}"></script>
+    <script src="{% static "js/bootstrap.js" %}"></script>
+    <script src="{% static "js/respond.js" %}"></script>
     <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
     <link rel="shortcut icon" href="{% static "img/vtr.png" %} " />
     <!--[if lt IE 9]>
@@ -22,7 +23,7 @@
     <![endif]-->
   </head>
   <body>
-    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation" id="navv">
       <div class="container-fluid">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
@@ -31,16 +32,16 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="{% url 'home' %}"><img src="{% static "img/vtr.png" %}" width="41px;"></a>
+          <a class="navbar-brand" href="{% url 'home' %}"><img id="logo" src="{% static "img/vtr.png" %}"></a>
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
-           <li><a href="{% url 'home' %}">Home</a></li>
+           <li><a href="{% url 'home' %}"><span class="glyphicon glyphicon-home gicons"></span>Home</a></li>
             {% if user.is_authenticated %}
               
               <li><a href="{% url 'logout' %}">{{user.username | title}} Logout</a></li>
-              <li><a href="{% url 'add_queryP'%}">Query</a></li>
-              <li><a href="{% url 'search_page'}">search</a></li>
+              <li><a href="{% url 'add_queryP'%}">Add Query</a></li>
+              <li><a href="{% url 'haystack_search'%}"><span class="glyphicon glyphicon-search gicons"></span>  Search</a></li>
             {% endif %}
               <li><a href="#">About</a></li>
               <li><a href="#">Contact</a></li>
@@ -52,7 +53,33 @@
       {% block body_block %}{% endblock %}
     </div>
      
-    <!-- footer -->    
+    <!-- footer -->  
+    <div class= "footer">
+            <div class= "container">
+              <div class = "row">
+                <div class = "col-sm-9">
+                  <address>
+                      <strong class="clgname">IPEC, Ghaziabad</strong><br>
+                      63 Site IV, Sahibabad Industrial Area,
+                      Surya Nagar Flyover Road Sahibabad,<br> Ghaziabad-U.P
+                      PIN Code-201010<br>
+                      <abbr title="Phone">Ph:</abbr> +91(120) 4535000, 2895135,136,137<br>
+                      <abbr title="Fax">Fax:</abbr> +91(120) 4535059,4535053,2895138
+                  </address>
+                </div>
+                <div class = "col-sm-3">
+                  <p>
+                    <a href = "https://www.facebook.com/letsbegenuine" target = "_blank"><i class="footerIcon fa fa-facebook-square"></i>
+                    </a>
+                    <a href = "https://twitter.com/letsbegenuine" target = "_blank"><i class="footerIcon fa fa-twitter-square"></i>
+                    </a>
+                    <a href = "https://www.pinterest.com/letsbegenuine/" target = "_blank"><i class="footerIcon fa fa-pinterest-square"></i>
+                    </a>
+                  </p>
+                </div>
+              </div>
+            </div>
+    </div>  
     
   <!-- Bootstrap core JavaScript
     ================================================== -->

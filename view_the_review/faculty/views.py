@@ -7,10 +7,14 @@ from faculty.forms import UserForm, UserProfileFormF
 from vtr.models import QueryS
 from hostel.models import QueryH
 from faculty.models import UserProfileF
-from django.db.models import Q
 from django.core.mail import send_mail
 import hashlib, datetime, random
+from datetime import timedelta
 from django.utils import timezone
+from django.db.models import Count
+from django_comments.models import Comment
+from datetime import *
+
 
 
 @login_required
@@ -19,17 +23,20 @@ def index(request):
     if (userprofile[0].department == 'WARDEN'):
         allquery = QueryH.objects.all().order_by('-created_at')
         popular_query = QueryH.objects.order_by('-views')[:5]
+        u = 0
     else:
         allquery = QueryS.objects.all().order_by('-created_at')
         popular_query = QueryS.objects.order_by('-views')[:5]
+        u = 1
     branch = ['CSE','IT','ECE','ME','CE','EN']
-    title='All QUERIES'
+    title = 'All QUERIES'
     context_dict = {
     'userprofile': userprofile,
     'allquery': allquery,
     'popular_query': popular_query,
     'branch': branch,
-    'title': title
+    'title': title,
+    'u': u
     }
     return render(request, 'faculty/index.html', context_dict)
 
@@ -117,11 +124,11 @@ def query(request, slug):
     if (userprofile[0].department == 'WARDEN'):
     	single_query = get_object_or_404(QueryH, slug=slug)
     	popular_query = QueryH.objects.order_by('-views')[:5]
+        u=0
     else:
     	single_query = get_object_or_404(QueryS, slug=slug)
     	popular_query = QueryS.objects.order_by('-views')[:5]
-    
-   
+        u=1
     branch = ['CSE','IT','ECE','ME','CE','EN']
     single_query.views += 1  # increment the no of views
     single_query.save()
@@ -129,7 +136,8 @@ def query(request, slug):
         'userprofile': userprofile,
         'single_query': single_query,
         'popular_query': popular_query,
-        'branch': branch
+        'branch': branch,
+        'u':u
         }
 
     return render(request, 'faculty/query.html', context_dict)
@@ -143,6 +151,32 @@ def branch(request, branch_name):
     popular_query = QueryS.objects.order_by('-views')[:5]
     branch = ['CSE','IT','ECE','ME','CE','EN']
     title= branch_name + ' Queries'
+    u=1
+    context_dict = {
+        'userprofile': userprofile,
+        'allquery': allquery,
+        'popular_query': popular_query,
+        'branch': branch,
+        'title': title,
+        'u':u
+        }
+
+    return render(request, 'faculty/index.html', context_dict)
+
+
+@login_required
+def tagf(request, tag):
+    userprofile = UserProfileF.objects.filter(user=request.user.id)
+    if (userprofile[0].department == 'WARDEN'):
+        allquery = QueryH.objects.filter(tags__name__in=[tag]).order_by('-created_at')
+        popular_query = QueryH.objects.order_by('-views')[:5]
+        u=0
+    else:
+        allquery = QueryS.objects.filter(tags__name__in=[tag]).order_by('-created_at')
+        popular_query = QueryS.objects.order_by('-views')[:5]
+        u=1
+    branch = ['CSE','IT','ECE','ME','CE','EN']
+    title= tag + ' Queries'
     context_dict = {
         'userprofile': userprofile,
         'allquery': allquery,
@@ -151,7 +185,7 @@ def branch(request, branch_name):
         'title': title
         }
 
-    return render(request, 'faculty/index.html', context_dict)  
+    return render(request, 'faculty/index.html', context_dict)
 
 
 @login_required
@@ -160,9 +194,11 @@ def my_queryf(request):
     if (userprofile[0].department == 'WARDEN'):
     	allquery = QueryH.objects.filter(user=request.user.id).order_by('-created_at')
     	popular_query = QueryH.objects.order_by('-views')[:5]
+        u=0
     else:
     	allquery = QueryS.objects.filter(user=request.user.id).order_by('-created_at')
     	popular_query = QueryS.objects.order_by('-views')[:5]
+        u=1
     branch = ['CSE','IT','ECE','ME','CE','EN']
     title= request.user.username + ' Queries'
     context_dict = {
@@ -170,7 +206,140 @@ def my_queryf(request):
         'allquery': allquery,
         'popular_query': popular_query,
         'branch': branch,
-        'title':title
+        'title':title,
+        'u':u
         }
 
     return render(request, 'faculty/index.html', context_dict)
+
+
+@login_required
+def weekf(request):
+    userprofile = UserProfileF.objects.filter(user=request.user.id)
+    one_week_ago = datetime.today() - timedelta(days=7)
+    if (userprofile[0].department == 'WARDEN'):
+        allquery = QueryH.objects.filter(created_at__gte=one_week_ago).order_by('-created_at')
+        popular_query = QueryH.objects.order_by('-views')[:5]
+        u=0
+    else:
+        allquery = QueryS.objects.filter(created_at__gte=one_week_ago).order_by('-created_at')
+        popular_query = QueryS.objects.order_by('-views')[:5]
+        u=1
+    branch = ['CSE','IT','ECE','ME','CE','EN']
+    title= request.user.username + ' Queries'
+    context_dict = {
+        'userprofile': userprofile,
+        'allquery': allquery,
+        'popular_query': popular_query,
+        'branch': branch,
+        'title':title,
+        'u':u
+        }
+    return render(request, 'faculty/index.html', context_dict)
+
+
+@login_required
+def monthf(request):
+    userprofile = UserProfileF.objects.filter(user=request.user.id)
+    one_month_ago = datetime.today() - timedelta(days=30)
+    if (userprofile[0].department == 'WARDEN'):
+        allquery = QueryH.objects.filter(created_at__gte=one_month_ago).order_by('-created_at')
+        popular_query = QueryH.objects.order_by('-views')[:5]
+        u=0
+    else:
+        allquery = QueryS.objects.filter(created_at__gte=one_month_ago).order_by('-created_at')
+        popular_query = QueryS.objects.order_by('-views')[:5]
+        u=1
+    branch = ['CSE','IT','ECE','ME','CE','EN']
+    title= request.user.username + ' Queries'
+    context_dict = {
+        'userprofile': userprofile,
+        'allquery': allquery,
+        'popular_query': popular_query,
+        'branch': branch,
+        'title':title,
+        'u':u
+        }
+
+    return render(request, 'faculty/index.html', context_dict)
+
+@login_required
+def viewsf(request):
+    userprofile = UserProfileF.objects.filter(user=request.user.id)
+    if (userprofile[0].department == 'WARDEN'):
+        allquery = QueryH.objects.order_by('-views')
+        popular_query = QueryH.objects.order_by('-views')[:5]
+        u=0
+    else:
+        allquery = QueryS.objects.order_by('-views')
+        popular_query = QueryS.objects.order_by('-views')[:5]
+        u=1
+    branch = ['CSE','IT','ECE','ME','CE','EN']
+    title= request.user.username + ' Queries'
+    context_dict = {
+        'userprofile': userprofile,
+        'allquery': allquery,
+        'popular_query': popular_query,
+        'branch': branch,
+        'title':title,
+        'u':u
+        }
+
+    return render(request, 'faculty/index.html', context_dict)
+
+
+@login_required
+def commentf(request):
+    userprofile = UserProfileF.objects.filter(user=request.user.id)
+    if (userprofile[0].department == 'WARDEN'):
+        allquery = QueryH.objects.annotate(comment_count=Count('comments')).filter(comment_count__gt=0).order_by('-comment_count')
+        popular_query = QueryH.objects.order_by('-views')[:5]
+        u=0
+    else:
+        allquery = QueryS.objects.annotate(comment_count=Count('comments')).filter(comment_count__gt=0).order_by('-comment_count')
+        popular_query = QueryS.objects.order_by('-views')[:5]
+        u=1
+    branch = ['CSE','IT','ECE','ME','CE','EN']
+    title= request.user.username + ' Queries'
+    context_dict = {
+        'userprofile': userprofile,
+        'allquery': allquery,
+        'popular_query': popular_query,
+        'branch': branch,
+        'title':title,
+        'u':u
+        }
+
+    return render(request, 'faculty/index.html', context_dict)
+
+def queryf_delete(request, pk):
+    queryd = get_object_or_404(QueryS, pk=pk)
+    if request.method == 'POST':
+        queryd.delete()
+        return redirect('home')
+    return render(request, 'vtr/confirm_delete.html', {'object': queryd})
+
+
+def queryf_update(request, pk):
+    queryu = get_object_or_404(QueryS, pk=pk)
+    form = QueryFormS(request.POST or None, instance=queryu)
+    if form.is_valid():
+        form.save()
+        return redirect('home')
+    return render(request, 'vtr/update_form.html', {'form': form})
+
+def commentf_delete(request, pk):
+    commentd = get_object_or_404(Comment, pk=pk)
+    if request.method == 'POST':
+        commentd.delete()
+        return redirect('home')
+    return render(request, 'vtr/confirm_delete.html', {'object': commentd})
+
+
+def commentf_update(request, pk):
+    commentu = get_object_or_404(Comment, pk=pk)
+    form = CommentDetailsForm(request.POST or None, instance=commentu)
+    if form.is_valid():
+        form.save()
+        return redirect('home')
+    return render(request, 'vtr/update_form.html', {'form': form})

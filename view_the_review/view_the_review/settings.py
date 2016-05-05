@@ -57,8 +57,8 @@ INSTALLED_APPS = (
     'crispy_forms',
     'django_comments',
     'taggit',
+    'taggit_templatetags',
     'haystack',
-    'voting',
     'bootstrap_pagination',
 
     # local apps

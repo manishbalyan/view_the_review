@@ -4,6 +4,22 @@
 		"selected_items":
 		[
 			[
+				"in",
+				"indexes"
+			],
+			[
+				"pa",
+				"padding-top"
+			],
+			[
+				"padd",
+				"padding-bottom"
+			],
+			[
+				"wi",
+				"width"
+			],
+			[
 				"padding",
 				"padding-top"
 			],
@@ -60,10 +76,6 @@
 				"request"
 			],
 			[
-				"padd",
-				"padding-left"
-			],
-			[
 				"back",
 				"background-color"
 			],
@@ -108,16 +120,8 @@
 				"margin-top"
 			],
 			[
-				"in",
-				"inline-block"
-			],
-			[
 				"fon",
 				"font-weight"
-			],
-			[
-				"pa",
-				"padding-left"
 			],
 			[
 				"U",
@@ -154,10 +158,6 @@
 			[
 				"backg",
 				"background-image"
-			],
-			[
-				"wi",
-				"width"
 			],
 			[
 				"col",
@@ -520,10 +520,10 @@
 	"buffers":
 	[
 		{
-			"file": "view_the_review/templates/vtr/index.html",
+			"file": "view_the_review/static/css/style.css",
 			"settings":
 			{
-				"buffer_size": 4989,
+				"buffer_size": 4913,
 				"line_ending": "Unix"
 			}
 		},
@@ -531,42 +531,7 @@
 			"file": "view_the_review/templates/vtr/query.html",
 			"settings":
 			{
-				"buffer_size": 4023,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "view_the_review/templates/comments/list.html",
-			"settings":
-			{
-				"buffer_size": 512,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"contents": "<!DOCTYPE html>\n{% load static %}\n<html lang=\"en\">\n  <head>\n    <meta charset=\"utf-8\">\n    <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n    <meta name=\"description\" content=\"\">\n    <meta name=\"author\" content=\"\">\n    <title>View The Review - {% block title %}{% endblock %}</title>\n    <link href = \"{% static \"css/bootstrap.min.css\" %}\" rel = \"stylesheet\">\n    <link href = \"{% static \"css/style.css\" %}\" rel = \"stylesheet\">\n    <script src = \"{% static \"js/bootstrap.min.js\" %}\"></script>\n    <script src=\"{% static \"js/jquery-1.10.2.js\" %}\"></script>\n    <script src=\"{% static \"js/myjquery.js\" %}\"></script>\n    <script src=\"{% static \"js/bootstrap.js\" %}\"></script>\n    <script src=\"{% static \"js/respond.js\" %}\"></script>\n    <link href=\"http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css\" rel=\"stylesheet\">\n    <link rel=\"shortcut icon\" href=\"{% static \"img/vtr.png\" %} \" />\n    <!--[if lt IE 9]>\n      <script src=\"https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js\"></script>\n      <script src=\"https://oss.maxcdn.com/respond/1.4.2/respond.min.js\"></script>\n    <![endif]-->\n  </head>\n  <body>\n    <div class=\"navbar navbar-inverse navbar-fixed-top\" role=\"navigation\" id=\"navv\">\n      <div class=\"container-fluid\">\n        <div class=\"navbar-header\">\n          <button type=\"button\" class=\"navbar-toggle collapsed\" data-toggle=\"collapse\" data-target=\".navbar-collapse\">\n            <span class=\"sr-only\">Toggle navigation</span>\n            <span class=\"icon-bar\"></span>\n            <span class=\"icon-bar\"></span>\n            <span class=\"icon-bar\"></span>\n          </button>\n          <a class=\"navbar-brand\" href=\"{% url 'home' %}\"><img id=\"logoimage\" src=\"{% static \"img/vtr.png\" %}\"></a>\n        </div>\n        <div class=\"navbar-collapse collapse\">\n          <ul class=\"nav navbar-nav navbar-right\">\n           <li><a href=\"{% url 'home' %}\"><span class=\"glyphicon glyphicon-home gicons\"></span>Home</a></li>\n            {% if user.is_authenticated %}\n              \n              <li><a href=\"{% url 'logout' %}\">{{user.username | title}} Logout</a></li>\n              <li><a href=\"{% url 'add_queryS'%}\">Add Query</a></li>\n              <li><a href=\"{% url 'haystack_search'%}\"><span class=\"glyphicon glyphicon-search gicons\"></span>  Search</a></li>\n            {% endif %}\n              <li><a href=\"#\">About</a></li>\n              <li><a href=\"#\">Contact</a></li>\n          </ul>\n        </div>\n      </div>\n    </div>\n    <div class=\"container\">\n      {% block body_block %}{% endblock %}\n    </div>\n     \n    <!-- footer -->  \n    <div class= \"footer\">\n            <div class= \"container\">\n              <div class = \"row\">\n                <div class = \"col-sm-9\"\n                  <p>\n                    All content on this site is under a <a rel=\"license\" href=\"http://creativecommons.org/licenses/by/4.0/\" target = \"_blank\">Creative Commons License</a><br>\n                    Feel free to copy and share. \n                  </p>\n                </div>\n                <div class = \"col-sm-3\">\n                  <p>\n                    <a href = \"https://www.facebook.com/letsbegenuine\" target = \"_blank\"><i class=\"footerIcon fa fa-facebook-square\"></i>\n                    </a>\n                    <a href = \"https://twitter.com/letsbegenuine\" target = \"_blank\"><i class=\"footerIcon fa fa-twitter-square\"></i>\n                    </a>\n                    <a href = \"https://www.pinterest.com/letsbegenuine/\" target = \"_blank\"><i class=\"footerIcon fa fa-pinterest-square\"></i>\n                    </a>\n                  </p>\n                </div>\n                </div>\n            </div>\n        </div>  \n    \n  <!-- Bootstrap core JavaScript\n    ================================================== -->\n  <!-- Placed at the end of the document so the pages load faster -->\n    <script src=\"https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js\"></script>\n    <script src=\"http://getbootstrap.com/dist/js/bootstrap.min.js\"></script>\n    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->\n    <script src=\"http://getbootstrap.com/assets/js/ie10-viewport-bug-workaround.js\"></script>\n  </body>\n</html>\n\n",
-			"file": "view_the_review/templates/vtr/base.html",
-			"file_size": 4260,
-			"file_write_time": 131059536128954389,
-			"settings":
-			{
-				"buffer_size": 4262,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "view_the_review/vtr/models.py",
-			"settings":
-			{
-				"buffer_size": 2535,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "view_the_review/static/css/style.css",
-			"settings":
-			{
-				"buffer_size": 4928,
+				"buffer_size": 6063,
 				"line_ending": "Unix"
 			}
 		}
@@ -611,35 +576,75 @@
 	[
 		"/home/manish/Documents/view_the_review",
 		"/home/manish/Documents/view_the_review/view_the_review",
+		"/home/manish/Documents/view_the_review/view_the_review/static",
+		"/home/manish/Documents/view_the_review/view_the_review/static/css",
 		"/home/manish/Documents/view_the_review/view_the_review/templates",
-		"/home/manish/Documents/view_the_review/view_the_review/templates/vtr",
-		"/home/manish/Documents/view_the_review/view_the_review/vtr"
+		"/home/manish/Documents/view_the_review/view_the_review/templates/vtr"
 	],
 	"file_history":
 	[
-		"/home/manish/Documents/view_the_review/view_the_review/vtr/views.py",
-		"/home/manish/Documents/view_the_review/view_the_review/vtr/urls.py",
-		"/home/manish/Documents/view_the_review/view_the_review/templates/vtr/base.html",
+		"/home/manish/Documents/view_the_review/view_the_review/templates/search/search.html",
+		"/home/manish/Documents/view_the_review/view_the_review/templates/search/indexes/probtune/queryp_text.txt",
+		"/home/manish/Documents/view_the_review/view_the_review/probtune/search_indexes.py",
+		"/home/manish/Documents/view_the_review/view_the_review/templates/faculty/query.html",
 		"/home/manish/Documents/view_the_review/view_the_review/vtr/models.py",
-		"/home/manish/Documents/vtr/view_the_review/templates/vtr/base.html",
-		"/home/manish/Documents/view_the_review/view_the_review/static/css/style.css",
-		"/home/manish/Documents/view_the_review/view_the_review/static/css/bootstrap.css",
-		"/home/manish/Documents/view_the_review/view_the_review/templates/vtr/query.html",
-		"/home/manish/Documents/view_the_review/view_the_review/templates/comments/list.html",
-		"/home/manish/Documents/view_the_review/view_the_review/templates/comments/form.html",
+		"/home/manish/Documents/view_the_review/view_the_review/faculty/models.py",
+		"/home/manish/Documents/view_the_review/view_the_review/vtr/search_indexes.py",
+		"/home/manish/Documents/view_the_review/view_the_review/templates/search/indexes/vtr/querys_text.txt",
+		"/home/manish/Documents/view_the_review/view_the_review/faculty/urls.py",
+		"/home/manish/Documents/view_the_review/view_the_review/probtune/views.py",
 		"/home/manish/Documents/view_the_review/view_the_review/templates/vtr/index.html",
+		"/home/manish/Documents/view_the_review/view_the_review/probtune/urls.py",
+		"/home/manish/Documents/view_the_review/view_the_review/faculty/views.py",
+		"/home/manish/Documents/view_the_review/view_the_review/templates/vtr/query.html",
+		"/home/manish/Documents/view_the_review/view_the_review/vtr/migrations/0018_auto_20160425_2220.py",
+		"/home/manish/.local/share/Trash/files/0018_auto_20160425_2220.py",
+		"/home/manish/Documents/view_the_review/view_the_review/vtr/forms.py",
+		"/home/manish/Documents/view_the_review/view_the_review/probtune/models.py",
+		"/home/manish/Documents/view_the_review/view_the_review/hostel/models.py",
+		"/home/manish/Documents/view_the_review/view_the_review/view_the_review/settings.py",
+		"/home/manish/Downloads/view_the_review/view_the_review/vtr/views.py",
+		"/home/manish/Documents/view_the_review/view_the_review/vtr/views.py",
+		"/home/manish/Documents/view_the_review/view_the_review/hostel/views.py",
+		"/home/manish/Documents/view_the_review/view_the_review/templates/vtr/register.html",
+		"/home/manish/Documents/view_the_review/view_the_review/templates/faculty/register.html",
+		"/home/manish/Documents/view_the_review/view_the_review/templates/faculty/index.html",
+		"/home/manish/Documents/view_the_review/view_the_review/templates/vtr/base.html",
+		"/home/manish/Documents/view_the_review/view_the_review/templates/faculty/base.html",
+		"/home/manish/Documents/view_the_review/view_the_review/vtr/urls.py",
+		"/home/manish/Documents/view_the_review/view_the_review/templates/probtune/indexf.html",
+		"/home/manish/Documents/view_the_review/view_the_review/templates/probtune/query.html",
+		"/home/manish/Documents/view_the_review/view_the_review/templates/probtune/indexs.html",
+		"/home/manish/Documents/view_the_review/view_the_review/templates/probtune/base.html",
+		"/home/manish/Documents/view_the_review/view_the_review/templates/vtr/add_query.html",
+		"/home/manish/Documents/view_the_review/view_the_review/templates/probtune/add_query.html",
+		"/home/manish/Documents/view_the_review/view_the_review/probtune/forms.py",
+		"/home/manish/Documents/view_the_review/view_the_review/static/css/style.css",
+		"/home/manish/Downloads/view_the_review/view_the_review/templates/vtr/index.html",
+		"/home/manish/Downloads/view_the_review/view_the_review/templates/vtr/query.html",
+		"/home/manish/Downloads/view_the_review/view_the_review/templates/vtr/home.html",
+		"/home/manish/Downloads/view_the_review/view_the_review/templates/vtr/base.html",
+		"/home/manish/Downloads/view_the_review/view_the_review/templates/vtr/add_query.html",
+		"/home/manish/Downloads/view_the_review/view_the_review/vtr/admin.py",
+		"/home/manish/Downloads/view_the_review/view_the_review/vtr/forms.py",
+		"/home/manish/Downloads/view_the_review/view_the_review/vtr/models.py",
+		"/home/manish/Downloads/view_the_review/view_the_review/vtr/urls.py",
+		"/home/manish/Documents/view_the_review/view_the_review/hostel/forms.py",
+		"/home/manish/Documents/view_the_review/view_the_review/hostel/urls.py",
+		"/home/manish/Documents/view_the_review/view_the_review/templates/hostel/index.html",
+		"/home/manish/Downloads/view_the_review/view_the_review/view_the_review/settings.py",
+		"/home/manish/Documents/view_the_review/view_the_review/view_the_review/urls.py",
+		"/home/manish/Downloads/view_the_review/view_the_review/view_the_review/urls.py",
+		"/home/manish/Documents/view_the_review/view_the_review/templates/vtr/login.html",
+		"/home/manish/Documents/view_the_review/view_the_review/templates/comments/list.html",
+		"/home/manish/Documents/view_the_review/view_the_review/static/css/bootstrap.css",
+		"/home/manish/Documents/vtr/view_the_review/templates/vtr/base.html",
+		"/home/manish/Documents/view_the_review/view_the_review/templates/comments/form.html",
 		"/home/manish/Documents/letsbegenuine/index.html",
 		"/home/manish/Documents/view_the_review/view_the_review/templates/vtr/update_form.html",
-		"/home/manish/Documents/view_the_review/view_the_review/vtr/forms.py",
 		"/home/manish/Documents/view_the_review/view_the_review/vtr/confirm_delete.html",
-		"/home/manish/Documents/view_the_review/view_the_review/view_the_review/urls.py",
-		"/home/manish/Documents/view_the_review/view_the_review/templates/search/search.html",
 		"/home/manish/Documents/view_the_review/view_the_review/templates/comments/posted.html",
-		"/home/manish/Documents/view_the_review/view_the_review/view_the_review/settings.py",
 		"/home/manish/Documents/view_the_review/view_the_review/templates/vtr/home.html",
-		"/home/manish/Documents/view_the_review/view_the_review/templates/hostel/index.html",
-		"/home/manish/Documents/view_the_review/view_the_review/templates/search/indexes/vtr/querys_text.txt",
-		"/home/manish/Documents/view_the_review/view_the_review/vtr/search_indexes.py",
 		"/home/manish/Documents/view_the_review/env/lib/python2.7/site-packages/django_comments/views/comments.py",
 		"/home/manish/Documents/view_the_review/view_the_review/templates/vtr/ query_confirm_delete.html",
 		"/home/manish/Documents/view_the_review/view_the_review/static/js/myjquery.js",
@@ -648,22 +653,12 @@
 		"/home/manish/view_the_review/view_the_review/urls.py",
 		"/home/manish/view_the_review/view_the_review/settings.py",
 		"/home/manish/Documents/vtr/view_the_review/vtr/views.py",
-		"/home/manish/Documents/view_the_review/view_the_review/templates/faculty/base.html",
-		"/home/manish/Documents/view_the_review/view_the_review/hostel/forms.py",
 		"/home/manish/Documents/view_the_review/view_the_review/templates/hostel/query.html",
 		"/home/manish/Documents/view_the_review/view_the_review/templates/hostel/base.html",
-		"/home/manish/Documents/view_the_review/view_the_review/templates/vtr/add_query.html",
 		"/home/manish/Documents/view_the_review/view_the_review/templates/hostel/add_query.html",
-		"/home/manish/Documents/view_the_review/view_the_review/hostel/views.py",
-		"/home/manish/Documents/view_the_review/view_the_review/templates/faculty/query.html",
-		"/home/manish/Documents/view_the_review/view_the_review/templates/faculty/index.html",
 		"/home/manish/Documents/view_the_review/view_the_review/faculty/search_indexes.py",
-		"/home/manish/Documents/view_the_review/view_the_review/faculty/models.py",
-		"/home/manish/Documents/view_the_review/view_the_review/faculty/urls.py",
 		"/home/manish/Documents/view_the_review/view_the_review/faculty/forms.py",
-		"/home/manish/Documents/view_the_review/view_the_review/faculty/views.py",
 		"/home/manish/Documents/view_the_review/view_the_review/templates/faculty/confirm.html",
-		"/home/manish/Documents/view_the_review/view_the_review/templates/vtr/login.html",
 		"/home/manish/Documents/bootstrap-3.2.0-dist/css/styles.css",
 		"/home/manish/Documents/view_the_review/view_the_review/templates/comments/comment_notification_email.txt",
 		"/home/manish/Documents/view_the_review/view_the_review/templates/vtr/confirm.html",
@@ -679,10 +674,8 @@
 		"/home/manish/Downloads/views_1460293901840.py",
 		"/home/manish/Documents/view_the_review/view_the_review/templates/search/indexes/vtr/quesys_text.txt",
 		"/home/manish/Documents/view_the_review/env/lib/python2.7/site-packages/django/template/loader.py",
-		"/home/manish/Documents/view_the_review/view_the_review/hostel/models.py",
 		"/home/manish/Documents/view_the_review/view_the_review/hostel/migrations/0001_initial.py",
 		"/home/manish/Documents/view_the_review/view_the_review/vtr/migrations/0001_initial.py",
-		"/home/manish/Documents/view_the_review/view_the_review/templates/vtr/register.html",
 		"/home/manish/Documents/django-quick-start/view_the_review/templates/vtr/index.html",
 		"/home/manish/Documents/django-quick-start/view_the_review/static/css/style.css",
 		"/home/manish/Documents/view_the_review/view_the_review/templates/vtr/branch.html",
@@ -717,34 +710,7 @@
 		"/home/manish/Documents/view_the_review/view_the_review/vtr/tests.py",
 		"/home/manish/Documents/Activity/view_the_review/demo/models.py",
 		"/home/manish/Documents/Activity/view_the_review/templates/vtr/register.html",
-		"/home/manish/Documents/bootstrap-3.2.0-dist/index.html",
-		"/home/manish/Documents/view_the_review/view_the_review/templates/vtr/add_post.html",
-		"/home/manish/Documents/Activity/view_the_review/view_the_review/settings.py",
-		"/home/manish/Documents/view_the_review/templates/demo/base.html",
-		"/home/manish/Documents/view_the_review/templates/demo/index.html",
-		"/home/manish/Documents/view_the_review/templates/demo/login.html",
-		"/home/manish/Documents/view_the_review/demo/forms.py",
-		"/home/manish/Documents/view_the_review/demo/models.py",
-		"/home/manish/Documents/view_the_review/templates/demo/register.html",
-		"/home/manish/Documents/view_the_review/demo/urls.py",
-		"/home/manish/Documents/view_the_review/templates/demo/add_post.html",
-		"/home/manish/Documents/view_the_review/demo/views.py",
-		"/home/manish/Documents/view_the_review/static/img/vtr.png",
-		"/home/manish/Documents/view_the_review/view_the_review/settings.py",
-		"/home/manish/Documents/view_the_review/templates/demo/contact.html",
-		"/home/manish/Documents/view_the_review/view_the_review/urls.py",
-		"/home/manish/Documents/bootstrap-3.2.0-dist/contact.html",
-		"/home/manish/Documents/books/django-bloggy/bloggy_project/blog/views.py",
-		"/home/manish/Documents/books/django-bloggy/bloggy_project/templates/blog/index.html",
-		"/home/manish/Documents/django-bloggy/wayapp_project/blog/urls.py",
-		"/home/manish/Documents/django-bloggy/wayapp_project/templates/blog/login.html",
-		"/home/manish/Documents/django-bloggy/wayapp_project/blog/views.py",
-		"/home/manish/Documents/django-bloggy/wayapp_project/templates/blog/add_post.html",
-		"/home/manish/Documents/django-bloggy/wayapp_project/templates/blog/register.html",
-		"/home/manish/Documents/django-bloggy/wayapp_project/blog/forms.py",
-		"/home/manish/Documents/django-bloggy/wayapp_project/blog/models.py",
-		"/home/manish/Documents/django-bloggy/wayapp_project/static/style.css",
-		"/home/manish/Documents/django-bloggy/wayapp_project/bloggy_project/urls.py"
+		"/home/manish/Documents/bootstrap-3.2.0-dist/index.html"
 	],
 	"find":
 	{
@@ -762,6 +728,11 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"return",
+			"#right",
+			"form-group",
+			"img",
+			"img-res",
 			"navbar-brand",
 			"#cmt",
 			">",
@@ -787,172 +758,24 @@
 	"groups":
 	[
 		{
-			"selected": 5,
+			"selected": 0,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "view_the_review/templates/vtr/index.html",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 4989,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								3018,
-								3018
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/HTML/HTML.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 399.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 5,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "view_the_review/templates/vtr/query.html",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 4023,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								2182,
-								2182
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/HTML/HTML.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 908.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 4,
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "view_the_review/templates/comments/list.html",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 512,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								512,
-								512
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/HTML/HTML.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 3,
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": "view_the_review/templates/vtr/base.html",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 4262,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								2364,
-								2364
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/HTML/HTML.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 323.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 2,
-					"type": "text"
-				},
-				{
-					"buffer": 4,
-					"file": "view_the_review/vtr/models.py",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 2535,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								2259,
-								2259
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Python/Python.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 518.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 5,
 					"file": "view_the_review/static/css/style.css",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 4928,
+						"buffer_size": 4913,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								4927,
-								4927
+								4164,
+								4164
 							]
 						],
 						"settings":
@@ -962,10 +785,40 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 4960.0,
+						"translation.y": 4054.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "view_the_review/templates/vtr/query.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 6063,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3368,
+								3368
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 569.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
 					"type": "text"
 				}
 			]

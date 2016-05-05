@@ -1,80 +1,142 @@
 {% extends 'faculty/base.html' %}
-{% block title %}Title{% endblock %}
+{% block title %}Query{% endblock %}
 {% load i18n comments %}
 {% load markup_tags %}
 {% block body_block %}
+<br><br>
     <div class="row">
-        <div class="col-lg-3" id="left">
-            
-                <h3>
-                {{ user.username}}</h3>
+        &nbsp;
+        <div class="col-lg-3">
+            <div id="left">
+                <h3>{{ user.username|capfirst }}</h3>
                 {% for users in userprofile %}
                     {% if users.profile_pic %}
-                    <img src="/media/{{ users.profile_pic }}">
-                    {% endif %}<br><br>
-                    {{ users.faculty_id  }}
-                    <br><br>
-                    {{ users.department }}
-                    <p><a class="btn btn-lg btn-primary" href="{% url 'my_queryf' %}" role="button">MY QUERIES</a></p>
-                    
+                    <img class="img-responsive img-rounded" src="/media/{{ users.profile_pic }}">
+                    {% endif %}<br>
+                    Faculty ID:{{ users.faculty_id }}
+                    <br>
+                    Department:{{ users.department }}
                 {% endfor %}
-            
-            
-                    
+            </div><br>
+            <div>
+                <h3 class="shead1">Activity</h3>
+                    <a class="btn btn-sm btn-link tname" href="{% url 'home' %}">ACADEMIC QUERIES</a><br>
+                    <a class="btn btn-sm btn-link tname" href="{% url 'my_queryf' %}" > MY ACADEMIC QUERIES</a>
+                    {% if u %}
+                        <a class="btn btn-sm btn-link tname" href="{% url 'probQF' %}" >PROBLEM QUERIES</a><br>
+                        <a class="btn btn-sm btn-link tname" href="{% url 'my_probQF' %}" >MY PROBLEM QUERIES</a><br>
+                    {% endif %}
+            </div>
+            {% if u %}
+                <div>
+                    <h3 class="shead1"> TAGS </h3>
+                    {% load taggit_extras %}
+                    {% get_taglist as tags for 'vtr.QueryS' %}
+                    <ul class="blist">
+                        {% for tag in tags %}
+                            <li><a href="/faculty/tag/{{ tag }}">{{ tag }} ({{tag.num_times}})</a></li>
+                        {% endfor %}
+                     <ul>
+                 </div> 
+            {% else %}
+                <div>
+                    <h3 class="shead1"> TAGS </h3>
+                    {% load taggit_extras %}
+                    {% get_taglist as tags for 'vtr.QueryS' %}
+                    <ul class="blist">
+                        {% for tag in tags|slice:":10" %}
+                            <li><a href="/faculty/tag/{{ tag }}">{{ tag }} ({{tag.num_times}})</a></li>
+                        {% endfor %}
+                        <li><a href="{% url 'tag_page' }">MORE TAGS</a></li>
+                    <ul>
+                </div> 
+            {% endif %}       
         </div>
         <div class="col-lg-6">
-            
-            <h2><span class="qtitle">{{ single_query.title }}</span></h2>
-            
-                <b><span class="tags">({{ single_query.created_at }})&nbsp;Tags:
-                    {% for tag in single_query.tags.all %}
-                    <span class="tagname">{{ tag.name }}</span>
-                    {% endfor %}</span></b>
-                    <br><br>
-                <p class="qtext">{{ single_query.content }}</p>
-                    
-                {% load comments %}
-                    {% get_comment_count for single_query as comment_count %}
-                    <p>
-                    {% if single_query.show_user %}
-                    Posted by <span class="count">{{ single_query.user.username }} </span>
-                    {% endif %} &nbsp; Views <span class="count">{{ single_query.views}}</span> &nbsp;Comments <span class="count">{{ comment_count }}</span></p>
-    {% if query.image %}
-        <img src="/media/{{ query.image }}">
-    {% endif %}
- </p>
-                <br>
-
+            <ul class="nav nav-tabs" >
+                <li class="active"><a href="{% url 'home' %}" title="Queries which are latest added">Recent</a></li>
+                <li><a href="#" title="Queries with most votes"> Votes</a></li>
+                <li><a href="{% url 'viewsf' %}" title="Queries with most views"> Views</a></li>
+                <li><a href="{% url 'commentf' %}" title="Queries with most comments"> Comments</a></li>
+                <li><a href="{% url 'weekf' %}" title="Queries added this week"> Week</a></li>
+                <li><a href="{% url 'monthf' %}" title="Queries added this month"> Month</a></li>
+            </ul>
+            <h2><span class="qtitle">{{ single_query.title|linebreaks }}</span></h2>
+            <b><span class="tags"><span class="glyphicon glyphicon-time gicons"></span>({{ single_query.created_at }})&nbsp;<span class="glyphicon glyphicon-tags gicons aria-hidden="true""></span>Tags:
+            {% for tag in single_query.tags.all %}
+                <a href="/vtr/tag/{{ tag }}"><span class="tagname">{{ tag.name }}</span></a>
+            {% endfor %}</span></b>
+            <br><br>
+            <span class="qtext">{{ single_query.content|linebreaks }}</span>   
+            {% if single_query.image %}
+                <img class="img-responsive" src="/media/{{ single_query.image }}">
+            {% endif %} 
+            {% load comments %}
+            {% get_comment_count for single_query as comment_count %}
+            <p>
+                {% if single_query.show_user %}
+                    <span class="tname">Posted by</span> <span class="count"><span class="glyphicon glyphicon-user gicons"></span>{{ single_query.user.username|capfirst }} </span>
+                 {% endif %}
+                 <span class="tname">Views</span> <span class="count">{{ single_query.views}}</span> &nbsp;<span class="tname">Comments</span> <span class="count">{{ comment_count }}</span>
+                {% if request.user == single_query.user %}
+                    <a class="btn btn-sm btn-link tname" href="{% url 'query_update' single_query.id %}">Edit</a>
+                     <a class="btn btn-sm btn-link tname" href="{% url 'query_delete' single_query.id %}">Delete</a>
+                {% endif%}
+            </p>
+            {% if query.image %}
+                <img class="img-responsive" src="/media/{{ query.image }}">
+            {% endif %}
             <h3>Comments</h3>
-    
             {% render_comment_list for single_query %}
             <hr>
             {% render_comment_form for single_query %}
-                
-
-                
         </div>
         <div class="col-lg-3" id="right">
-            <div class="tquery">
-                <h3 class="shead"><span class="icon"></span>Trending Query</h3>
+            {% if u %}
+                <div class="tquery">
+                    {% if single_query.tags.similar_objects %}
+                        <h3 class="shead">Similar</h3> 
+                        <ul style="list-style-type: none">
+                            {% for query in single_query.tags.similar_objects|slice:":5" %}
+                            <li><span class="bullet">•</span>&nbsp;<a href="/faculty/{{query.slug}}">{{query.title}}</a></li>
+                            {% if not forloop.last %}
+                            {% endif%}
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+                </div><br>
+            {% else %}
+                <div class="tquery">
+                    {% if single_query.tags.similar_objects %}
+                    <h3 class="shead">Similar</h3> 
+                    <ul style="list-style-type: none">
+                        {% for query in single_query.tags.similar_objects|slice:":5" %}
+                            <li><span class="bullet">•</span>&nbsp;<a href="/faculty/{{query.slug}}">{{query.title}}</a></li>
+                        {% if not forloop.last %}
+                        {% endif%}
+                        {% endfor %}
+                    </ul>
+                    {% endif %}
+                </div><br>
+        {% endif %}
+        <div class="tquery">
+            <h3 class="shead"><span class="icon"></span>Trending Query</h3>
                 <ul style="list-style-type: none">
                     {% for query in popular_query %}
-                        <li>
-                            <span class="bullet">•</span>&nbsp;<a href="/faculty/{{query.slug}}">{{ query.title }}</a>
-                        </li> 
-                        
+                        <li><span class="bullet">•</span>&nbsp;<a href="/faculty/{{query.slug}}">{{ query.title }}</a></li> 
                     {% endfor %}    
                 </ul>
-            </div>
-            <br>
+        </div><br>
+        {% if u %}
             <div>
-                <h3 class="shead">Branch Catagories<h3/>
+                <h3 class="shead">Catagories<h3/>
                 <ul class="blist">
                     {% for b in branch%}
-                    <li><a href="/faculty/branch/{{b}}" >{{b}}</a></li><br>
+                        <li><a href="/faculty/branch/{{b}}" >{{b}}</a></li><br>
                     {% endfor %}
                 </ul>
-            </div>    
+            </div>  
+        {% endif %}  
         </div>
     </div>
 {% endblock %}

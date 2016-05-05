@@ -60,7 +60,7 @@ li{
     width: 100%;
     min-height: 75px;
     z-index: 800;
-    color: #FFF;
+    color: #FFF !important;
     border-top: 2px solid #B92B27;
     border-top-width: 2px;
     border-top-style: solid;
@@ -74,6 +74,7 @@ li{
     font-weight: 1000;
     color: #999;
     line-height: 20px;
+    
 }
 
 #stories{
@@ -98,6 +99,16 @@ li{
     border-radius: 3px;
     font-weight: 400;
     cursor: default;
+    text-align: center;
+}
+
+.shead1{
+    
+    color: #666;
+    border-radius: 3px;
+    font-weight: 400;
+    cursor: default;
+    
 }
 
 #logo{
@@ -110,7 +121,7 @@ li{
 }
 
 #middle p{
-    font-family: Georgia,Times,"Times New Roman",serif;
+    font-family: "Proxima Nova";
     font-size: 16px;
     line-height: 1.4;
 
@@ -173,7 +184,7 @@ a{
 
 .qtext{
     
-    font-family: PMNCaeciliaW01-45Light;
+    font-family: "Proxima Nova";
     font-size: 14px;
     line-height: 2;
     word-wrap:break-word
@@ -230,7 +241,7 @@ a{
 
 .footer{
     background: #ECECEC;
-    font-family: Georgia,Times,"Times New Roman",serif;
+    font-family: "Proxima Nova";
     font-size: 16px;
     position: relative;
     bottom: 0px;
@@ -254,7 +265,7 @@ a{
 
 .ctext{
     background-color: #EFF0F1;
-    font-family: PMNCaeciliaW01-45Light;
+    font-family: "Proxima Nova";
     font-size: 14px;
     line-height: 2;
     word-wrap:break-word
@@ -270,7 +281,7 @@ a{
 }
 
 .col-lg-6{
-    padding-left: 0px;
+    padding-left: 10px;
 }
 
 .cbutton{
@@ -306,3 +317,5 @@ a{
 #reg{
     padding-top: 10px;
 }
+
+

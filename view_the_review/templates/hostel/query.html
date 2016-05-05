@@ -17,11 +17,24 @@
                     <br>
                     Branch:{{ users.branch }}<br><br>
             
-                    <p><a class="btn btn-lg btn-primary" href="{% url 'my_hostelQ' %}" role="button">MY HOSTEL QUERIES</a></p>
+                     <p><a href="{% url 'home' %}">ALL ACADEMIC QUERIES</a></p>
+                    <p><a href="{% url 'my_query' %}" > MY ACADEMIC QUERIES</a></p>
+                    <li><a href="{% url 'probQS' %}" >ALL GENERAL QUERIES</a></li><br>
+                    <li><a href="{% url 'my_probQS' %}" >MY GENERAL QUERIES</a></li><br>
+                    <p><a href="{% url 'hostelQ' %}" >ALL HOSTEL QUERIES</a></p>
+                    <p><a href="{% url 'my_hostelQ' %}" > MY HOSTEL QUERIES</a></p>
+                    {% endfor %}
+                 <div id="left">
+            <h3> TAG CLOUD </h3>
+            {% load taggit_extras %}
+            {% get_taglist as tags for 'hostel.QueryH' %}
+            <ul>
+            {% for tag in tags %}
+            <li><span>></span><a href="/hostel/tag/{{ tag }}">{{ tag }} ({{tag.num_times}})</a></li>
+            {% endfor %}
+            <ul>
 
-                    <p><a class="btn btn-lg btn-primary" href="{% url 'index' %}" role="button">ALL COLLEGE QUERIES</a></p>
-                     <p><a class="btn btn-lg btn-primary" href="{% url 'my_query' %}" role="button"> MY COLLEGE QUERIES</a></p>
-                    
+            </div>    
         </div>
         <div class="col-lg-6">
             
@@ -29,11 +42,13 @@
             
                 <b><span class="tags">({{ single_query.created_at }})&nbsp;Tags:
                     {% for tag in single_query.tags.all %}
-                    <span class="tagname">{{ tag.name }}</span>
+                    <a href="/hostel/tag/{{ tag }}"><span class="tagname">{{ tag.name }}</span></a>
                     {% endfor %}</span></b>
                     <br><br>
                 <p class="qtext">{{ single_query.content }}</p>
-                    
+                 {% if single_query.image %}
+            <img src="/media/{{ single_query.image }}">
+             {% endif %}   
                 {% load comments %}
                     {% get_comment_count for single_query as comment_count %}
                     <p>
@@ -48,12 +63,25 @@
             {% render_comment_form for single_query %}
         </div>
         <div class="col-lg-3" id="right">
+        <div>
+                {% if single_query.tags.similar_objects %}
+                <h3 class="shead">Similar</h3> 
+                <ul style="list-style-type: none">
+                {% for query in single_query.tags.similar_objects|slice:":5" %}
+                <li>
+                    <span>*</span>&nbsp;<a href="/hostel/{{query.slug}}">{{query.title}}</a>
+                </li>
+                {% if not forloop.last %}
+                {% endif%}
+                {% endfor %}
+                {% endif %}
+        </div><br><br>
             <div class="tquery">
                 <h3 class="shead"><span class="icon"></span>Trending Query</h3>
                 <ul style="list-style-type: none">
                     {% for query in popular_query %}
                         <li>
-                            <span class="bullet">•</span>&nbsp;<a href="/hostel/{{query.slug}}">{{ query.title }}</a>
+                            <span class="icon"></span>&nbsp;<a href="/hostel/{{query.slug}}">{{ query.title }}</a>
                         </li> 
                         
                     {% endfor %}    

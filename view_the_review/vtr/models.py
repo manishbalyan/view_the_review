@@ -1,3 +1,4 @@
+"""Imports related to vtr models."""
 from django.contrib.auth.models import User
 from django.db import models
 from django.template.defaultfilters import slugify
@@ -27,7 +28,7 @@ class UserProfileS(models.Model):
     year = models.IntegerField(blank=True, null=True)
     branch = models.CharField(max_length=30, blank=True, null=True)
     hostler = models.BooleanField(default=0)
-    profile_pic = models.ImageField(upload_to="images", default='images/@@@@.jpg')
+    profile_pic = models.ImageField(upload_to="images", blank=True, null=True)
     activation_key = models.CharField(max_length=40, blank=True, null=True)
     key_expires = models.DateTimeField(default=datetime.date.today(), null=True)
 
@@ -45,30 +46,15 @@ class QueryS(models.Model):
     show_user = models.BooleanField(default=0, null=False)
     branch = models.CharField(max_length=20, blank=True, null=True)
     views = models.IntegerField(default=0)
-    #votes = models.ManyToManyField(User, related_name='votess')
-    #abuses = models.ManyToManyField(User, related_name='abusess')
+    image = models.ImageField(upload_to=upload_to, blank=True, null=True)
     user = models.ForeignKey(User, null=True)
     slug = models.SlugField(unique=True)
     tags = TaggableManager(related_name='tags')
     comments = generic.GenericRelation(Comment, object_id_field="object_pk")
 
-    @property
-    def total_votes(self):
-        return self.votess.count()
-
-    @property
-    def total_abuses(self):
-        return self.abusess.count()
-    
     def save(self, *args, **kwargs):
         self.slug = slugify(self.title)
         super(QueryS, self).save(*args, **kwargs)
 
     def __unicode__(self):
         return self.title
-
-
-class Thread(models.Model):
-    # ...
-    userUpVotes = models.ManyToManyField(User, blank=True, related_name='threadUpVotes')
-    userDownVotes = models.ManyToManyField(User, blank=True, related_name='threadDownVotes')
