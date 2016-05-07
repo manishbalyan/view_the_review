@@ -4,103 +4,99 @@
 {% load markup_tags %}
 {% block body_block %}
 <br><br>
+<!-- row starts -->
     <div class="row">
     &nbsp;
-        
+    <!-- cool-lg-3 starts -->    
         <div class="col-lg-3" >
             <div id="left">
-                <h3>{{ user.username}}</h3>
+                <h3>{{ user.username|capfirst}}</h3>
                 {% for users in userprofile %}
                     {% if users.profile_pic %}
-                    <img src="/media/{{users.profile_pic}}">
+                    <img class="img-responsive img-rounded" id="proimage" src="/media/{{users.profile_pic}}">
                     {% endif %}<br><br>
                     Rollnumber:{{ users.rollnumber }}
                     <br>
                     Year:{{ users.year }}
                     <br>
-                    Branch:{{ users.branch }}<br>
-                
+                    Branch:{{ users.branch }}<br>    
             </div><br>
             <div>
-            <h3 class="shead">User Activity</h3>
-                     <p><a href="{% url 'home' %}">ALL ACADEMIC QUERIES</a></p>
-                    <p><a href="{% url 'my_query' %}" > MY ACADEMIC QUERIES</a></p>
-                    <li><a href="{% url 'probQS' %}" >ALL GENERAL QUERIES</a></li><br>
-                    <li><a href="{% url 'my_probQS' %}" >MY GENERAL QUERIES</a></li><br>
-                    <p><a href="{% url 'hostelQ' %}" >ALL HOSTEL QUERIES</a></p>
-                    <p><a href="{% url 'my_hostelQ' %}" > MY HOSTEL QUERIES</a></p>
-
+                <h3 class="shead1">Important</h3>
+                <a class="btn btn-sm btn-link tname" href="{% url 'home' %}">ACADEMIC QUERIES</a>
+                <a class="btn btn-sm btn-link tname" href="{% url 'probQS' %}" >PROBLEM QUERIES</a>
+                <a class="btn btn-sm btn-link tname" href="{% url 'hostelQ' %}" >HOSTEL QUERIES</a>
+                <h3 class="shead1">My Activity</h3>
+                <a class="btn btn-sm btn-link tname" href="{% url 'my_query' %}" > MY ACADEMIC QUERIES</a>
+                <a class="btn btn-sm btn-link tname" href="{% url 'my_probQS' %}" >MY PROBLEM QUERIES</a>
+                {% if users.hostler %}
+                <a class="btn btn-sm btn-link tname" href="{% url 'my_hostelQ' %}" > MY HOSTEL QUERIES</a>
+                {% endif %}
             </div> 
             {% endfor %}  
             <div id="left">
-            <h3> TAG CLOUD </h3>
-            {% load taggit_extras %}
-            {% get_taglist as tags for 'hostel.QueryH' %}
-            <ul>
-            {% for tag in tags %}
-            <li><span>></span><a href="/hostel/tag/{{ tag }}">{{ tag }} ({{tag.num_times}})</a></li>
-            {% endfor %}
-            <ul>
-
+                <h3 class="shead1"> TAGS </h3>
+                {% load taggit_extras %}
+                {% get_taglist as tags for 'hostel.QueryH' %}
+                <ul class="blist">
+                    {% for tag in tags %}
+                    <li><span></span><a href="/hostel/tag/{{ tag }}">{{ tag }} ({{tag.num_times}})</a></li>
+                    {% endfor %}
+                <ul>
             </div>      
         </div>
+    <!-- col-lg-3 ends -->
+    <!-- col-lg-6 starts -->
         <div class="col-lg-6">
-        <ul class="nav nav-tabs" >
-            <li class="active"><a href="{% url 'hostelQ' %}" title="Queries which are latest added">Recent</a></li>
-            <li><a href="#" title="Queries with most votes"> Votes</a></li>
-            <li><a href="{% url 'viewsh' %}" title="Queries with most views"> Views</a></li>
-            <li><a href="{% url 'commenth' %}" title="Queries with most comments"> Comments</a></li>
-            <li><a href="{% url 'weekh' %}" title="Queries added this week"> Week</a></li>
-            <li><a href="{% url 'monthh' %}" title="Queries added this month"> Month</a></li>
-            
-        </ul>
-        
-            
+            <ul class="nav nav-tabs" >
+                <li class="active"><a href="{% url 'hostelQ' %}" title="Queries which are latest added">Recent</a></li>
+                <li><a href="#" title="Queries with most votes"> Votes</a></li>
+                <li><a href="{% url 'viewsh' %}" title="Queries with most views"> Views</a></li>
+                <li><a href="{% url 'commenth' %}" title="Queries with most comments"> Comments</a></li>
+                <li><a href="{% url 'weekh' %}" title="Queries added this week"> Week</a></li>  
+                <li><a href="{% url 'monthh' %}" title="Queries added this month"> Month</a></li>
+            </ul>
                 {% for query in allquery %}
                 <div class="mid">
-                <hr>
+                    <hr>
                     <h4><a href="/hostel/{{query.slug}}">{{ query.title }}</a></h4>
-                    <b><span class="tags">({{ query.created_at }})
-                    &nbsp;Tags:
+                    <b><span class="tags"><span class="glyphicon glyphicon-time gicons"></span>({{ query.created_at }})</b>
+                    &nbsp;<span class="glyphicon glyphicon-tags gicons aria-hidden="true""></span>
+                    <b><span class="tags">Tags</span></b>
                     {% for tag in query.tags.all %}
                     <a href="/hostel/tag/{{ tag }}"><span class="tagname">{{ tag.name }}</span></a>
-                    {% endfor %}</span></b>
-                    <p>
-
-                    <p>
-                    {% get_comment_count for query as comment_count %}
-                    {% load comments %}
-                    {% get_comment_count for query as comment_count %}
+                    {% endfor %}</span>
                     <p>
                     {% if query.show_user %}
-                    Posted by <span class="count">{{ query.user.username }}</span>
-                    {% endif %} &nbsp; Views <span class="count">{{ query.views}}</span> &nbsp;Comments <span class="count">{{ comment_count }}</span></p> </p>              
-                    
-                    
-                    
+                    <span class="tname"> Posted by</span> <span class="count"><span class="glyphicon glyphicon-user gicons"></span>{{ query.user.username|capfirst }}</span>
+                    {% endif %} &nbsp; <span class="tname">Views</span> <span class="count">{{ query.views}}</span> &nbsp;<span class="tname">Comments</span> <span class="count">{{ comment_count }}</span>  &nbsp; 
+                    {% if request.user == query.user %}
+                    <a class="btn btn-sm btn-link tname" href="{% url 'queryh_update' query.id %}">Edit</a>
+                    <a class="btn btn-sm btn-link tname" href="{% url 'queryh_delete' query.id %}">Delete</a>
+                    {% endif%}
+                    </p>              
                     <p id="cmt">
                     {% render_comment_form for query %}
                     </p>
                     </div>
                 {% endfor %}
-            
         </div>
-       <div class="col-lg-3" id="right">
+    <!-- col-lg-6 ends -->
+    <!-- col-lg-3 starts -->
+        <div class="col-lg-3" id="right">
             <div class="tquery">
                 <h3 class="shead"><span class="icon"></span>Trending Query</h3>
                 <ul style="list-style-type: none">
                     {% for query in popular_query %}
                         <li>
-                            <span class="icon"></span>&nbsp;<a href="/hostel/{{query.slug}}">{{ query.title }}</a>
+                            <span class="bullet">•</span>&nbsp;<a href="/hostel/{{query.slug}}">{{ query.title }}</a>
                         </li> 
-                        
                     {% endfor %}    
                 </ul>
             </div>
-            <br>
-               
+            <br>       
         </div>
-    </div>               
-        </div>
+    <!-- col-lg-3 ends -->              
     </div>
+<!-- row ends -->
 {% endblock %}

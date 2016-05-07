@@ -1,10 +1,12 @@
 {% extends 'probtune/base.html' %}
 {% load bootstrap %}
 {% block body_block %}
-	<<center>
+<br>
+	<center>
         <h2> Add Your Problem</h2>
     </center>
     <div class="qform">
+    <!-- add_query form start -->
 	   <form id="query_form" method="POST" action="{% url 'add_queryP' %}" enctype="multipart/form-data">
         {% csrf_token %}
         {{ query_form | bootstrap_horizontal }}
@@ -12,6 +14,7 @@
             <input type="submit" name="submit" value="Post Query" class="btn btn-primary">	
         </div>
 	   </form>
+    <!-- add_query form end -->
     </div>
 	<br>
 {% endblock %}

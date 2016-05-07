@@ -1,10 +1,12 @@
 {% extends 'hostel/base.html' %}
 {% load bootstrap %}
 {% block body_block %}
+<br>
     <center>
         <h2> Add Your Query</h2>
     </center>
     <div class="qform">
+    <!-- add_query form hostel starts -->
 	   <form id="query_form" method="POST" action="{% url 'add_queryH' %}" enctype="multipart/form-data">
         {% csrf_token %}
         {{ query_form | bootstrap_horizontal }}
@@ -12,6 +14,7 @@
             <input type="submit" name="submit" value="Post Query" class="btn btn-primary">	
         </div>
 	   </form>
+    <!-- add_query form hostel ends -->
     </div>
 	<br>
 {% endblock %}

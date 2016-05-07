@@ -1,3 +1,4 @@
+"""Import for probtune urls."""
 from django.conf.urls import patterns, url
 from probtune import views
 
@@ -19,8 +20,7 @@ urlpatterns = patterns('', url(r'^add_queryP', views.add_queryP, name='add_query
     url(r'^my_probQS/(?P<slug>[\w|\-]+)/$', views.probquery, name='probquery'),
     url(r'^tagp/(?P<tag>[a-zA-Z0-9-]+)/?$', views.tagp, name='tagp'),
     url(r'^queryp_update/(?P<pk>\d+)$', views.queryp_update, name='queryp_update'),
-    url(r'^commentp_update/(?P<pk>\d+)$', views.commentp_update, name='commentp_update'),
+    url(r'^commentp_delete/(?P<pk>\d+)$', views.commentp_delete, name='commentp_delete'),
     url(r'^queryp_delete/(?P<pk>\d+)$', views.queryp_delete, name='queryp_delete'),
-    url(r'^commentp_delete/(?P<pk>\d+)$', views.commentp_delete, name='commentp_delete')
 
 )

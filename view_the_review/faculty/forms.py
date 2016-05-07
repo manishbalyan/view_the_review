@@ -1,16 +1,23 @@
+"""Import related to faculty forms."""
 from django import forms
 from django.contrib.auth.models import User
 from faculty.models import UserProfileF
 
 
 class UserForm(forms.ModelForm):
+    """User for faculty."""
+
     password = forms.CharField(widget=forms.PasswordInput())
+
     class Meta:
+        """It define UserForm."""
+
         model = User
         fields = ('username', 'email', 'password')
 
-    #clean email field
+    # clean email field
     def clean_email(self):
+        """Method to clean user email."""
         email = self.cleaned_data["email"]
         try:
             User._default_manager.get(email=email)
@@ -18,21 +25,26 @@ class UserForm(forms.ModelForm):
             return email
         raise forms.ValidationError('duplicate email')
 
-#modify save() method so that we can set user.is_active to False when we first create our user
-    def save(self, commit=True):        
+# modify save() method so that we can set user.is_active to False when we first create our user
+    def save(self, commit=True):
+        """Save method for UserForm."""
         user = super(UserForm, self).save(commit=False)
         user.email = self.cleaned_data['email']
         if commit:
             user.is_active = False  # not active until he opens activation link
             user.save()
-
         return user
 
+
 class UserProfileFormF(forms.ModelForm):
-    CHOICES = (('CSE', 'CSE'), ('IT', 'IT'), ('ECE', 'ECE'), ('ME', 'ME'), ('CE', 'CE'), ('EN', 'EN'),('WARDEN','WARDEN'))
+    """User for faculty."""
+
+    CHOICES = (('CSE', 'CSE'), ('IT', 'IT'), ('ECE', 'ECE'), ('ME', 'ME'), ('CE', 'CE'), ('EN', 'EN'), ('WARDEN', 'WARDEN'))
     department = forms.ChoiceField(choices=CHOICES)
     profile_pic = forms.ImageField(required=False)
 
     class Meta:
+        """It describe UserProfileF form."""
+
         model = UserProfileF
-        fields = ('faculty_id','department', 'profile_pic')
+        fields = ('faculty_id', 'department', 'profile_pic')

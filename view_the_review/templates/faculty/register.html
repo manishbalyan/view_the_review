@@ -8,7 +8,8 @@
            <div class="row ">            
                 <center>
                     <div class="rform">
-                        <div class="form-group">           
+                        <div class="form-group">  
+                        <!-- faculty registration form starts -->     
                             <form id="user_form"  class="form-group"action="{% url 'registerF' %}" method="post" enctype="multipart/form-data">
                                 {% csrf_token %}
                                 {{ user_form|bootstrap }}
@@ -16,6 +17,7 @@
                                 <br>
                                 <input class="btn btn-primary" type="submit" name="submit" value="Register"/>
                             </form>
+                        <!-- faculty registration form ends -->
                         </div>
                     </div>
                 </center>

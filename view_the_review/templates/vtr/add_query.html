@@ -2,8 +2,10 @@
 {% load bootstrap %}
 {% block body_block %}
 	<center>
+    <br>
         <h2> Add Your Query</h2>
     </center>
+    <!-- query form div start -->
     <div class="qform">
 	   <form id="query_form" method="POST" action="{% url 'add_queryS' %}" enctype="multipart/form-data">
         {% csrf_token %}
@@ -13,5 +15,6 @@
         </div>
 	   </form>
     </div>
+    <!-- query form div end -->
 	<br>
 {% endblock %}

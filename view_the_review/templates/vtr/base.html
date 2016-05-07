@@ -1,4 +1,4 @@
-  <!DOCTYPE html>
+<!DOCTYPE html>
 {% load static %}
 <html lang="en">
   <head>
@@ -8,6 +8,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <title>View The Review - {% block title %}{% endblock %}</title>
+    <!-- Bootstarap core css and js -->
     <link href = "{% static "css/bootstrap.min.css" %}" rel = "stylesheet">
     <link href = "{% static "css/style.css" %}" rel = "stylesheet">
     <script src = "{% static "js/bootstrap.min.js" %}"></script>
@@ -23,6 +24,7 @@
     <![endif]-->
   </head>
   <body>
+  <!-- Navbar starts -->
     <div class="navbar navbar-inverse navbar-fixed-top" role="navigation" id="navv">
       <div class="container-fluid">
         <div class="navbar-header">
@@ -49,10 +51,12 @@
         </div>
       </div>
     </div>
+    <!-- Navbr ends -->
+    <!-- block body starts -->
     <div class="container">
       {% block body_block %}{% endblock %}
     </div>
-     
+    <!-- Block body ends --> 
     <!-- footer -->  
     <div class= "footer">
             <div class= "container">

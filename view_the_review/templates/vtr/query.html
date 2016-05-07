@@ -4,14 +4,16 @@
 {% load markup_tags %}
 {% block body_block %}
 <br><br>
+<!-- row starts -->
     <div class="row">
         &nbsp;
+    <!-- col-lg-3 starts -->
         <div class="col-lg-3" >
             <div id="left">
                 <h3>{{ user.username|capfirst }}</h3>
                     {% for users in userprofile %}
                         {% if users.profile_pic %}
-                        <img class="img-responsive img-rounded" src="/media/{{users.profile_pic}}">
+                        <img class="img-responsive img-rounded" id="proimage" src="/media/{{users.profile_pic}}">
                         {% endif %}<br>
                         Rollnumber:{{ users.rollnumber }}
                         <br>
@@ -44,6 +46,8 @@
                 <ul>
             </div>       
         </div>
+    <!-- col-lg-3 ends -->
+    <!-- col-lg-6 starts -->
         <div class="col-lg-6">
             <ul class="nav nav-tabs" >
                 <li class="active"><a href="{% url 'home' %}" title="Queries which are latest added">Recent</a></li>
@@ -62,7 +66,8 @@
             <span class="qtext">{{ single_query.content|linebreaks }}</span>
             {% if single_query.image %}
                 <img class="img-responsive" src="/media/{{ single_query.image }}">
-            {% endif %}        
+            {% endif %}    
+            <br>    
             {% load comments %}
             {% get_comment_count for single_query as comment_count %}
             <p>
@@ -81,6 +86,8 @@
             <hr>
             {% render_comment_form for single_query %}
         </div>
+    <!-- col-lg-6 ends -->
+    <!-- col-lg-3 start -->
         <div class="col-lg-3" id="right">
             <div class="tquery">
                 {% if single_query.tags.similar_objects %}
@@ -111,5 +118,7 @@
                 </ul>
             </div>    
         </div>
+    <!-- col-lg-3 ends -->
     </div>
+<!-- row ends -->
 {% endblock %}

@@ -5,6 +5,7 @@
 <body class="bgimg">
     <link href="http://getbootstrap.com/examples/signin/signin.css" rel="stylesheet">
     <center>
+    <!-- login form starts -->
         <form class="form-signin" role="form" method="post" action="{% url 'login' %}">
             {% csrf_token %}
             <h2 class="form-signin-heading">Please sign in</h2>
@@ -16,6 +17,7 @@
                 <p class = "label label-danger">Your username and password didn't match. Please try again.</p>
             {% endif %}
         </form>
+    <!-- login form ends -->
         <h2>OR</h2>
         <h2>REGISTER YOURSELF</h2>
         <h2>It only takes a Minute:</h2>

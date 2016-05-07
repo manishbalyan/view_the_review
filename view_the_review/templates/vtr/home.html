@@ -2,6 +2,7 @@
 {% block title %}Home{% endblock %}
 {% block body_block %}
 <body>
+    <!-- Crousal starts -->
     <section id="myCarousel" class="carousel slide" data-ride="carousel">
     <!-- Indicators -->
         <ol class="carousel-indicators">
@@ -9,6 +10,7 @@
             <li data-target="#myCarousel" data-slide-to="1"></li>
             <li data-target="#myCarousel" data-slide-to="2"></li>
         </ol>
+        <!-- crousal inner item starts -->
         <div class="carousel-inner">
             <figure class="item active">
                 <img src="/media/images/main1.jpg" alt="VTR">
@@ -35,11 +37,14 @@
                 </figcaption>
             </figure>
         </div>
+        <!-- crousal ineer ends -->
         <a class="left carousel-control" href="#myCarousel" data-slide="prev">
         <span class="glyphicon glyphicon-chevron-left"></span></a>
         <a class="right carousel-control" href="#myCarousel" data-slide="next">
         <span class="glyphicon glyphicon-chevron-right"></span></a>
     </section>
+    <!-- crousal ends -->
+    <!-- three pic container starts -->
     <section class="container marketing">
         <!-- Three columns of text below the carousel -->
         <div class="row">
@@ -66,5 +71,6 @@
             </div><!-- /.col-lg-4 -->
         </div><!-- /.col-lg-4 -->
     </section>
+    <!-- three pic container ends -->
 </body>
 {% endblock %}

@@ -3,14 +3,16 @@
 {% load i18n comments %}
 {% load markup_tags %}
 {% block body_block %}
+<!-- row starts -->
     <div class="row">
+    <!-- col-lg-3 starts -->
         <div class="col-lg-3" id="left">
             <ul>
                 <h3>
                 {{ user.username}}</h3><br><br>
                 {% for users in userprofile %}
                     {% if users.profile_pic %}
-                    <img src="/media/{{ users.profile_pic }}">
+                    <img class="img-responsive" id="proimage" src="/media/{{ users.profile_pic }}">
                     {% endif %}<br><br>
                     {{ users.faculty_id }}
                     <br><br>
@@ -21,12 +23,13 @@
             
                     
         </div>
+    <!-- col-lg-6 starts -->
         <div class="col-lg-6" id="middle">
-        <h1><font size="7"><center>{{title}}</center></font></h1>
-        <center><p><a class="btn btn-lg btn-primary" href="{% url 'index' %}" role="button">GENERAL QUERIES</a>
-        <a class="btn btn-lg btn-primary" href="{% url 'hostel' %}" role="button">HOSTEL QUERIES</a>
-        <a class="btn btn-lg btn-primary" href="{% url 'academic' %}" role="button">ACADEMIC QUERIES</a></p>
-        </center>
+            <h1><font size="7"><center>{{title}}</center></font></h1>
+            <center><p><a class="btn btn-lg btn-primary" href="{% url 'index' %}" role="button">GENERAL QUERIES</a>
+            <a class="btn btn-lg btn-primary" href="{% url 'hostel' %}" role="button">HOSTEL QUERIES</a>
+            <a class="btn btn-lg btn-primary" href="{% url 'academic' %}" role="button">ACADEMIC QUERIES</a></p>
+            </center>
             <ul>
                 {% for query in allquery %}
                     <h3><a href="/administration/Hquery/{{query.slug}}">{{ query.title }}</a></h3>
@@ -40,9 +43,7 @@
                     <p>Tags:<ul class="tags">
                     {% for tag in query.tags.all %}
                     <li>{{ tag.name}}</li>
-                    {% endfor %}
-                    </ul>
-                    
+                    {% endfor %}        
                     </p>
                     <p>
                     {% if query.show_user %}
@@ -52,6 +53,8 @@
                 {% endfor %}
             </ul>
         </div>
+    <!-- col-lg-6 ends -->
+    <!-- col-lg-3 starts -->
         <div class="col-lg-3" id="right">
             <div>
                 <h3>Trending Query</h3>
@@ -66,5 +69,7 @@
             </div>
             <br>
         </div>
+    <!-- col-lg-3 ends -->
     </div>
+<!-- row ends -->
 {% endblock %}

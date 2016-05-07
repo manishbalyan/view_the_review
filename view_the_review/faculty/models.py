@@ -1,11 +1,13 @@
+"""Imports for faculty models."""
 from django.contrib.auth.models import User
 from django.db import models
-from django.template.defaultfilters import slugify
 from vtr.models import upload_to
 import datetime
 
-#Create your models here.
+
 class UserProfileF(models.Model):
+    """User profile table for faculty."""
+
     user = models.OneToOneField(User)
     faculty_id = models.CharField(max_length=30, blank=True, null=True)
     department = models.CharField(max_length=30, blank=True, null=True)
@@ -14,7 +16,10 @@ class UserProfileF(models.Model):
     key_expires = models.DateTimeField(default=datetime.date.today(), null=True)
 
     def __unicode__(self):
+        """Unicode define UserProfileF."""
         return self.user.username
 
     class Meta:
+        """It describe the user profilr for faculty."""
+
         verbose_name_plural = u'User profiles'

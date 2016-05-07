@@ -5,35 +5,36 @@
 {% load markup_tags %}
 {% block body_block %}
 <br><br>
+<!-- row starts -->
     <div class="row">
         &nbsp;
+    <!-- col-lg-3 starts -->
         <div class="col-lg-3" >
             <div id="left">
                 <h3>{{ user.username|capfirst }}</h3>
                 {% for users in userprofile %}
                     {% if users.profile_pic %}
-                    <img class="img-responsive img-rounded" src="/media/{{users.profile_pic}}">
+                    <img class="img-responsive img-rounded" id="proimage" src="/media/{{users.profile_pic}}">
                     {% endif %}<br>
                     Rollnumber:{{ users.rollnumber }}
                     <br>
                     Year:{{ users.year }}
                     <br>
                     Branch:{{ users.branch }}<br>
-                {% endfor %}
+                
             </div><br>
             <div>
                 <h3 class="shead1">Important</h3>
                 <a class="btn btn-sm btn-link tname" href="{% url 'home' %}">ACADEMIC QUERIES</a>
                 <a class="btn btn-sm btn-link tname" href="{% url 'probQS' %}" >PROBLEM QUERIES</a>
+                <a class="btn btn-sm btn-link tname" href="{% url 'hostelQ' %}" > HOSTEL QUERIES</a>
                 <h3 class="shead1">My Activity</h3>
-                <a class="btn btn-sm btn-link tname" href="{% url 'my_query' %}" > MY ACADEMIC QUERIES</a>
-                    
+                <a class="btn btn-sm btn-link tname" href="{% url 'my_query' %}" > MY ACADEMIC QUERIES</a>   
                 <a class="btn btn-sm btn-link tname" href="{% url 'my_probQS' %}" >MY PROBLEM QUERIES</a>
                 {% if users.hostler %}
-                <a class="btn btn-sm btn-link tname" href="{% url 'hostelQ' %}" > HOSTEL QUERIES</a>
                 <a class="btn btn-sm btn-link tname"href="{% url 'my_hostelQ' %}" > MY HOSTEL QUERIES</a>
                 {% endif %}
-            </div> <br>
+            </div> <br>{% endfor %}
             <div>
                 <h3 class="shead1"> TAGS </h3>
                 {% load taggit_extras %}
@@ -44,9 +45,10 @@
                     {% endfor %}
                     <li><a href="{% url 'tag_page' }">MORE TAGS</a></li>
                 <ul>
-
             </div>       
         </div>
+    <!-- col-lg-3 ends -->
+    <!-- col lg- 6 starts -->
         <div class="col-lg-6">
             <ul class="nav nav-tabs" >
                 <li class="active"><a href="{% url 'home' %}" title="Queries which are latest added">Recent</a></li>
@@ -87,6 +89,8 @@
                 </div>
             {% endfor %}
         </div>
+    <!-- col-lg-6 ends -->
+    <!-- col-lg-3 starts -->
         <div class="col-lg-3">
             <div class="tquery">
                 <h3 class="shead"><span class="icon"></span>Trending Query</h3>
@@ -109,5 +113,7 @@
                 </ul>
             </div>    
         </div>
+    <!-- col-lg-3 ends -->
     </div>
+<!-- row ends -->
 {% endblock %}

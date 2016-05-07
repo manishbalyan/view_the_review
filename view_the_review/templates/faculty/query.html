@@ -4,14 +4,16 @@
 {% load markup_tags %}
 {% block body_block %}
 <br><br>
+<!-- row starts -->
     <div class="row">
         &nbsp;
+    <!-- col-lg-3 starts -->
         <div class="col-lg-3">
             <div id="left">
                 <h3>{{ user.username|capfirst }}</h3>
                 {% for users in userprofile %}
                     {% if users.profile_pic %}
-                    <img class="img-responsive img-rounded" src="/media/{{ users.profile_pic }}">
+                    <img class="img-responsive img-rounded" id="proimage" src="/media/{{ users.profile_pic }}">
                     {% endif %}<br>
                     Faculty ID:{{ users.faculty_id }}
                     <br>
@@ -33,7 +35,7 @@
                     {% load taggit_extras %}
                     {% get_taglist as tags for 'vtr.QueryS' %}
                     <ul class="blist">
-                        {% for tag in tags %}
+                        {% for tag in tags|slice:":10" %}
                             <li><a href="/faculty/tag/{{ tag }}">{{ tag }} ({{tag.num_times}})</a></li>
                         {% endfor %}
                      <ul>
@@ -52,6 +54,8 @@
                 </div> 
             {% endif %}       
         </div>
+    <!-- col-lg-3 ends -->
+    <!-- col-lg-6 starts -->
         <div class="col-lg-6">
             <ul class="nav nav-tabs" >
                 <li class="active"><a href="{% url 'home' %}" title="Queries which are latest added">Recent</a></li>
@@ -82,6 +86,7 @@
                     <a class="btn btn-sm btn-link tname" href="{% url 'query_update' single_query.id %}">Edit</a>
                      <a class="btn btn-sm btn-link tname" href="{% url 'query_delete' single_query.id %}">Delete</a>
                 {% endif%}
+                <br>
             </p>
             {% if query.image %}
                 <img class="img-responsive" src="/media/{{ query.image }}">
@@ -91,6 +96,8 @@
             <hr>
             {% render_comment_form for single_query %}
         </div>
+    <!-- col-lg-6 ends -->
+    <!-- col-lg-3 starts -->
         <div class="col-lg-3" id="right">
             {% if u %}
                 <div class="tquery">
@@ -119,14 +126,14 @@
                     {% endif %}
                 </div><br>
         {% endif %}
-        <div class="tquery">
-            <h3 class="shead"><span class="icon"></span>Trending Query</h3>
-                <ul style="list-style-type: none">
-                    {% for query in popular_query %}
-                        <li><span class="bullet">•</span>&nbsp;<a href="/faculty/{{query.slug}}">{{ query.title }}</a></li> 
-                    {% endfor %}    
-                </ul>
-        </div><br>
+            <div class="tquery">
+                <h3 class="shead"><span class="icon"></span>Trending Query</h3>
+                    <ul style="list-style-type: none">
+                        {% for query in popular_query %}
+                            <li><span class="bullet">•</span>&nbsp;<a href="/faculty/{{query.slug}}">{{ query.title }}</a></li> 
+                        {% endfor %}    
+                    </ul>
+            </div><br>
         {% if u %}
             <div>
                 <h3 class="shead">Catagories<h3/>
@@ -138,5 +145,7 @@
             </div>  
         {% endif %}  
         </div>
+    <!-- col-lg-3 ends -->
     </div>
+<!-- row ends -->
 {% endblock %}

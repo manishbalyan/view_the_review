@@ -4,21 +4,23 @@
 {% load markup_tags %}
 {% block body_block %}
 <br><br>
+<!-- row starts -->
     <div class="row">
         &nbsp;
+    <!-- col-lg-3 starts -->
         <div class="col-lg-3">
-        <div id="left">
-            {% if u %}
-                <h3>{{ user.username|capfirst }}</h3><br>
-                    {% for users in userprofile %}
-                        {% if users.profile_pic %}
-                            <img class="img-responsive img-rounded" src="/media/{{ users.profile_pic }}">
-                        {% endif %}<br>
-                        Faculty ID:{{ users.faculty_id }}
-                        <br>    
-                        Department:{{ users.department }}
-                    {% endfor %}
-                    </div><br>
+            <div id="left">
+                {% if u %}
+                    <h3>{{ user.username|capfirst }}</h3><br>
+                        {% for users in userprofile %}
+                            {% if users.profile_pic %}
+                                <img class="img-responsive img-rounded" id="proimage" id="proimage" src="/media/{{ users.profile_pic }}">
+                            {% endif %}<br>
+                            Faculty ID:{{ users.faculty_id }}
+                            <br>    
+                            Department:{{ users.department }}
+                        {% endfor %}
+            </div><br>
             <div>
                 <h3 class="shead1">Important</h3>
                 <a class="btn btn-sm btn-link tname" href="{% url 'home' %}"> ACADEMIC QUERIES</a>
@@ -64,6 +66,8 @@
                 <ul>
             </div>                   
         </div>
+    <!-- col-lg-3 ends -->
+    <!-- col-lg-6 starts -->
         <div class="col-lg-6">
             {% if u %}
                 <ul class="nav nav-tabs" >
@@ -95,6 +99,7 @@
             {% if single_query.image %}
                 <img class="img-responsive" src="/media/{{ single_query.image }}">
             {% endif %}   
+            <br>
             {% load comments %}
             {% get_comment_count for single_query as comment_count %}
             <p>
@@ -112,18 +117,20 @@
             <hr>
             {% render_comment_form for single_query %}
         </div>
+    <!-- col-lg-3 ends -->
+    <!-- col-lg-3 starts -->
         <div class="col-lg-3" id="right">
-        <div>
-            {% if single_query.tags.similar_objects %}
-            <h3 class="shead">Similar</h3> 
-            <ul style="list-style-type: none">
-                {% for query in single_query.tags.similar_objects|slice:":5" %}
-                    <li><span class="bullet">•</span>&nbsp;<a href="/probtune/{{query.slug}}">{{query.title}}</a></li>
-                {% if not forloop.last %}
-                {% endif%}
-                {% endfor %}
-                {% endif %}
-        </div><br>
+            <div>
+                {% if single_query.tags.similar_objects %}
+                <h3 class="shead">Similar</h3> 
+                <ul style="list-style-type: none">
+                    {% for query in single_query.tags.similar_objects|slice:":5" %}
+                        <li><span class="bullet">•</span>&nbsp;<a href="/probtune/{{query.slug}}">{{query.title}}</a></li>
+                    {% if not forloop.last %}
+                    {% endif%}
+                    {% endfor %}
+                    {% endif %}
+            </div><br>
             <div class="tquery">
                 <h3 class="shead"><span class="icon"></span>Trending Query</h3>
                 <ul style="list-style-type: none">
@@ -134,5 +141,7 @@
                 </ul>
             </div><br>
         </div>
+    <!-- col-lg-3 ends -->
     </div>
+<!-- row ends -->
 {% endblock %}
