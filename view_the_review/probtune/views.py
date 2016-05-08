@@ -6,7 +6,7 @@ from probtune.forms import QueryFormP
 from probtune.models import QueryP
 from vtr.models import UserProfileS
 from faculty.models import UserProfileF
-from datetime import timedelta
+from datetime import datetime, timedelta
 from django.db.models import Count
 from django_comments.models import Comment
 from datetime import *

@@ -61,7 +61,7 @@
                 {% get_taglist as tags for 'probtune.QueryP' %}
                 <ul class="blist">
                     {% for tag in tags %}
-                    <li><span></span><a href="/probtune/tagp/{{ tag }}">{{ tag }} ({{tag.num_times}})</a></li>
+                    <li><span></span><a href="/probtune/tagp/{{ tag }}">{{ tag }}({{tag.num_times}})</a></li>
                     {% endfor %}
                 <ul>
             </div>                   
@@ -72,7 +72,6 @@
             {% if u %}
                 <ul class="nav nav-tabs" >
                     <li class="active"><a href="{% url 'probQF' %}" title="Queries which are latest added">Recent</a></li>
-                    <li><a href="#" title="Queries with most votes"> Votes</a></li>
                     <li><a href="{% url 'viewspf' %}" title="Queries with most views"> Views</a></li>
                     <li><a href="{% url 'commentpf' %}" title="Queries with most comments"> Comments</a></li>
                     <li><a href="{% url 'weekpf' %}" title="Queries added this week"> Week</a></li>

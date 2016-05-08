@@ -14,6 +14,7 @@ class UserProfileF(models.Model):
     profile_pic = models.ImageField(upload_to=upload_to, blank=True, null=True, )
     activation_key = models.CharField(max_length=40, blank=True, null=True)
     key_expires = models.DateTimeField(default=datetime.date.today(), null=True)
+    i_agree = models.BooleanField(default=0)
 
     def __unicode__(self):
         """Unicode define UserProfileF."""

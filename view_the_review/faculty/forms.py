@@ -41,10 +41,10 @@ class UserProfileFormF(forms.ModelForm):
 
     CHOICES = (('CSE', 'CSE'), ('IT', 'IT'), ('ECE', 'ECE'), ('ME', 'ME'), ('CE', 'CE'), ('EN', 'EN'), ('WARDEN', 'WARDEN'))
     department = forms.ChoiceField(choices=CHOICES)
-    profile_pic = forms.ImageField(required=False)
+    i_agree = forms.BooleanField(required=True, label='I accept the Privacy Statement that all my data is visible to admin and i will be guilty if i found of any misbehave.')
 
     class Meta:
         """It describe UserProfileF form."""
 
         model = UserProfileF
-        fields = ('faculty_id', 'department', 'profile_pic')
+        fields = ('faculty_id', 'department', 'profile_pic', 'i_agree')

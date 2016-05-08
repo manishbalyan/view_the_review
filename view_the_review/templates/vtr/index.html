@@ -27,14 +27,22 @@
                 <h3 class="shead1">Important</h3>
                 <a class="btn btn-sm btn-link tname" href="{% url 'home' %}">ACADEMIC QUERIES</a>
                 <a class="btn btn-sm btn-link tname" href="{% url 'probQS' %}" >PROBLEM QUERIES</a>
-                <a class="btn btn-sm btn-link tname" href="{% url 'hostelQ' %}" > HOSTEL QUERIES</a>
+                
                 <h3 class="shead1">My Activity</h3>
                 <a class="btn btn-sm btn-link tname" href="{% url 'my_query' %}" > MY ACADEMIC QUERIES</a>   
                 <a class="btn btn-sm btn-link tname" href="{% url 'my_probQS' %}" >MY PROBLEM QUERIES</a>
                 {% if users.hostler %}
+                <a class="btn btn-sm btn-link tname" href="{% url 'hostelQ' %}" > HOSTEL QUERIES</a>
                 <a class="btn btn-sm btn-link tname"href="{% url 'my_hostelQ' %}" > MY HOSTEL QUERIES</a>
                 {% endif %}
             </div> <br>{% endfor %}
+            <div>
+                <h3>Some link for study</h3>
+                <a class="btn btn-sm btn-link tname" href="https://www.youtube.com/">Youtube</a><br>
+                <a class="btn btn-sm btn-link tname" href="https://www.google.com/">Google</a><br>
+                <a class="btn btn-sm btn-link tname" href="https://www.quora.com/">Quora</a><br>
+                <a class="btn btn-sm btn-link tname" href="https://en.wikipedia.org/">Wikipedia</a><br>
+            </div>
             <div>
                 <h3 class="shead1"> TAGS </h3>
                 {% load taggit_extras %}
@@ -43,8 +51,14 @@
                     {% for tag in tags|slice:":10" %}
                     <li><a href="/vtr/tag/{{ tag }}">{{ tag }} ({{tag.num_times}})</a></li>
                     {% endfor %}
-                    <li><a href="{% url 'tag_page' }">MORE TAGS</a></li>
                 <ul>
+            </div>
+            <div>
+                <h3>Some link for study</h3>
+                <a class="btn btn-sm btn-link tname" href="https://www.youtube.com/">Youtube</a><br>
+                <a class="btn btn-sm btn-link tname" href="https://www.google.com/">Google</a><br>
+                <a class="btn btn-sm btn-link tname" href="https://www.quora.com/">Quora</a><br>
+                <a class="btn btn-sm btn-link tname" href="https://en.wikipedia.org/">Wikipedia</a><br>
             </div>       
         </div>
     <!-- col-lg-3 ends -->
@@ -52,7 +66,6 @@
         <div class="col-lg-6">
             <ul class="nav nav-tabs" >
                 <li class="active"><a href="{% url 'home' %}" title="Queries which are latest added">Recent</a></li>
-                <li><a href="#" title="Queries with most votes"> Votes</a></li>
                 <li><a href="{% url 'views' %}" title="Queries with most views"> Views</a></li>
                 <li><a href="{% url 'comment' %}" title="Queries with most comments"> Comments</a></li>
                 <li><a href="{% url 'week' %}" title="Queries added this week"> Week</a></li>

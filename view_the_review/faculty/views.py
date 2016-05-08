@@ -10,13 +10,11 @@ from hostel.models import QueryH
 from faculty.models import UserProfileF
 from django.core.mail import send_mail
 import hashlib
-import datetime
+from datetime import datetime, timedelta
 import random
-from datetime import timedelta
 from django.utils import timezone
 from django.db.models import Count
 from django_comments.models import Comment
-from datetime import *
 
 
 @login_required
@@ -62,13 +60,13 @@ def registerF(request):
             # Once hashed, we can update the user object.
             username = user_form.cleaned_data['username']
             email = user_form.cleaned_data['email']
-            rollnumber = profile_form.data['rollnumber']
-            year = profile_form.data['year']
-            branch = profile_form.data['branch']
-            hostler = profile_form.data['hostler']
+            faculty_id = profile_form.cleaned_data['faculty_id']
+            department = profile_form.cleaned_data['department']
+            profile_pic = profile_form.cleaned_data['profile_pic']
+            i_agree = profile_form.cleaned_data['i_agree']
             salt = hashlib.sha1(str(random.random())).hexdigest()[:5]
-            activation_key = hashlib.sha1(salt+email).hexdigest()
-            key_expires = datetime.datetime.today() + datetime.timedelta(2)
+            activation_key = hashlib.sha1(salt + email).hexdigest()
+            key_expires = datetime.today() + timedelta(2)
             user.set_password(user.password)
             user.save()
             # Now sort out the UserProfile instance.
@@ -79,7 +77,7 @@ def registerF(request):
             # Did the user provide a profile picture?
             # If so, we need to get it from the input form and put it in the UserProfile model.
             # Now we save the UserProfile model instance.
-            profile = UserProfileF(user=user, rollnumber=rollnumber, year=year, branch=branch, hostler=hostler, activation_key=activation_key, key_expires=key_expires,)
+            profile = UserProfileF(user=user, faculty_id=faculty_id, department=department, profile_pic=profile_pic, i_agree=i_agree, activation_key=activation_key, key_expires=key_expires,)
             profile.save()
             # Send email with activation key
             email_subject = 'Account confirmation'

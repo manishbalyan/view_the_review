@@ -1,3 +1,8 @@
+html {
+  position: relative;
+  min-height: 100%;
+}
+
 body{
     padding-top: 80px;
     
@@ -246,6 +251,7 @@ a{
     position: relative;
     bottom: 0px;
     width: 100%;
+    bottom: 0;
 }
 
 .footerIcon{
@@ -308,7 +314,7 @@ a{
 }
 
 .rform{
-    background-color: #F5F5F5;
+    background-color: #D0E4E6;
     width: 570px;
     padding-top: 20px;
     padding-bottom: 15px;
@@ -319,6 +325,11 @@ a{
 }
 
 #proimage{
-    max-width: 250px;
-    max-height: 250px;
+    max-width: 220px;
+    max-height: 220px;
+}
+
+#crousalimage{
+    width: 1200px;
+    height: 500px;
 }

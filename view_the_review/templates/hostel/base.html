@@ -37,15 +37,15 @@
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
-           <li><a href="{% url 'home' %}">Home</a></li>
+           <li><a href="{% url 'home' %}"><span class="glyphicon glyphicon-home gicons"></span>Home</a></li>
             {% if user.is_authenticated %}
               
               <li><a href="{% url 'logout' %}">{{user.username | title}} Logout</a></li>
               <li><a href="{% url 'add_queryH'%}">Query</a></li>
-              <li><a href="#">search</a></li>
+              <li><a href="{% url 'haystack_search'%}"><span class="glyphicon glyphicon-search gicons"></span>  Search</a></li>
             {% endif %}
               <li><a href="#">About</a></li>
-              <li><a href="#">Contact</a></li>
+              <li><a href="{% url 'contact' %}">Contact</a></li>
           </ul>
         </div>
       </div>
@@ -58,28 +58,31 @@
   <!-- body block container ends -->
   <!-- footer --> 
     <div class= "footer">
-            <div class= "container">
-              <div class = "row">
-                <div class = "col-sm-9"
-                  <p>
-                    All content on this site is under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/" target = "_blank">Creative Commons License</a><br>
-                    Feel free to copy and share. 
-                  </p>
+        <div class= "container">
+            <div class = "row">
+                <div class = "col-sm-9">
+                    <address>
+                        <strong class="clgname">IPEC, Ghaziabad</strong><br>
+                        63 Site IV, Sahibabad Industrial Area,
+                        Surya Nagar Flyover Road Sahibabad,<br> Ghaziabad-U.P
+                        PIN Code-201010<br>
+                        <abbr title="Phone">Ph:</abbr> +91(120) 4535000, 2895135,136,137<br>
+                        <abbr title="Fax">Fax:</abbr> +91(120) 4535059,4535053,2895138
+                    </address>
                 </div>
                 <div class = "col-sm-3">
-                  <p>
-                    <a href = "https://www.facebook.com/letsbegenuine" target = "_blank"><i class="footerIcon fa fa-facebook-square"></i>
-                    </a>
-                    <a href = "https://twitter.com/letsbegenuine" target = "_blank"><i class="foo
-                    <!-- body block container starts -->terIcon fa fa-twitter-square"></i>
-                    </a>
-                    <a href = "https://www.pinterest.com/letsbegenuine/" target = "_blank"><i class="footerIcon fa fa-pinterest-square"></i>
-                    <<!-- body block container ends -->
-                </p>
-                </div>
+                    <p>
+                        <a href = "#" target = "_blank"><i class="footerIcon fa fa-facebook-square"></i>
+                        </a>
+                        <a href = "#" target = "_blank"><i class="footerIcon fa fa-twitter-square"></i>
+                        </a>
+                        <a href = "#" target = "_blank"><i class="footerIcon fa fa-pinterest-square"></i>
+                        </a>
+                        </p>
                 </div>
             </div>
-        </div>   
+        </div>
+    </div>    
     
   <!-- Bootstrap core JavaScript
     ================================================== -->

@@ -4,6 +4,46 @@
 		"selected_items":
 		[
 			[
+				"to",
+				"today"
+			],
+			[
+				"up",
+				"upload_to"
+			],
+			[
+				"de",
+				"department"
+			],
+			[
+				"fac",
+				"faculty_id"
+			],
+			[
+				"fa",
+				"faculty_id"
+			],
+			[
+				"pro",
+				"profile_pic"
+			],
+			[
+				"re",
+				"required"
+			],
+			[
+				"Con",
+				"ContactForm"
+			],
+			[
+				"wid",
+				"width"
+			],
+			[
+				"max",
+				"max-height"
+			],
+			[
 				"log",
 				"login_required"
 			],
@@ -104,10 +144,6 @@
 				"QueryS"
 			],
 			[
-				"re",
-				"request"
-			],
-			[
 				"back",
 				"background-color"
 			],
@@ -118,10 +154,6 @@
 			[
 				"mod",
 				"model_attr"
-			],
-			[
-				"de",
-				"delete"
 			],
 			[
 				"s",
@@ -236,10 +268,6 @@
 				"text-align"
 			],
 			[
-				"wid",
-				"width"
-			],
-			[
 				"con",
 				"context_dict"
 			],
@@ -282,10 +310,6 @@
 			[
 				"model",
 				"models"
-			],
-			[
-				"pro",
-				"profile_form"
 			],
 			[
 				"Cho",
@@ -408,10 +432,6 @@
 				"font-size"
 			],
 			[
-				"max",
-				"max-width"
-			],
-			[
 				"old",
 				"old_tasks"
 			],
@@ -494,26 +514,6 @@
 			[
 				"op",
 				"option	Tag"
-			],
-			[
-				"wh",
-				"where"
-			],
-			[
-				"tas",
-				"task_id"
-			],
-			[
-				"task",
-				"task_id"
-			],
-			[
-				"u",
-				"url_for"
-			],
-			[
-				"conn",
-				"connect_db"
 			]
 		]
 	},
@@ -560,74 +560,76 @@
 	[
 		"/home/manish/Documents/view_the_review",
 		"/home/manish/Documents/view_the_review/view_the_review",
-		"/home/manish/Documents/view_the_review/view_the_review/static",
-		"/home/manish/Documents/view_the_review/view_the_review/static/css",
-		"/home/manish/Documents/view_the_review/view_the_review/templates",
-		"/home/manish/Documents/view_the_review/view_the_review/templates/hostel",
-		"/home/manish/Documents/view_the_review/view_the_review/templates/vtr"
+		"/home/manish/Documents/view_the_review/view_the_review/administration/migrations",
+		"/home/manish/Documents/view_the_review/view_the_review/vtr"
 	],
 	"file_history":
 	[
-		"/home/manish/Documents/view_the_review/view_the_review/static/css/style.css",
-		"/home/manish/Documents/view_the_review/view_the_review/templates/vtr/index.html",
-		"/home/manish/Documents/view_the_review/view_the_review/templates/hostel/index.html",
-		"/home/manish/Documents/view_the_review/view_the_review/templates/administration/query.html",
-		"/home/manish/Documents/view_the_review/view_the_review/templates/administration/indexs.html",
-		"/home/manish/Documents/view_the_review/view_the_review/templates/administration/indexh.html",
-		"/home/manish/Documents/view_the_review/view_the_review/templates/administration/index.html",
-		"/home/manish/Documents/view_the_review/view_the_review/templates/administration/base.html",
-		"/home/manish/Documents/view_the_review/view_the_review/templates/comments/preview.html",
-		"/home/manish/Documents/view_the_review/view_the_review/templates/comments/posted.html",
-		"/home/manish/Documents/view_the_review/view_the_review/templates/comments/list.html",
-		"/home/manish/Documents/view_the_review/view_the_review/templates/comments/form.html",
-		"/home/manish/Documents/view_the_review/view_the_review/templates/django_comment_xtd/comment.html",
-		"/home/manish/Documents/view_the_review/view_the_review/templates/faculty/register.html",
-		"/home/manish/Documents/view_the_review/view_the_review/templates/faculty/query.html",
-		"/home/manish/Documents/view_the_review/view_the_review/templates/faculty/index.html",
-		"/home/manish/Documents/view_the_review/view_the_review/templates/faculty/base.html",
-		"/home/manish/Documents/view_the_review/view_the_review/templates/hostel/query.html",
-		"/home/manish/Documents/view_the_review/view_the_review/templates/hostel/base.html",
-		"/home/manish/Documents/view_the_review/view_the_review/templates/hostel/add_query.html",
-		"/home/manish/Documents/view_the_review/view_the_review/templates/probtune/query.html",
-		"/home/manish/Documents/view_the_review/view_the_review/templates/probtune/indexs.html",
-		"/home/manish/Documents/view_the_review/view_the_review/templates/probtune/indexf.html",
-		"/home/manish/Documents/view_the_review/view_the_review/templates/probtune/base.html",
-		"/home/manish/Documents/view_the_review/view_the_review/templates/probtune/add_query.html",
-		"/home/manish/Documents/view_the_review/view_the_review/templates/search/search.html",
-		"/home/manish/Documents/view_the_review/view_the_review/templates/vtr/update_form.html",
-		"/home/manish/Documents/view_the_review/view_the_review/templates/vtr/register.html",
-		"/home/manish/Documents/view_the_review/view_the_review/templates/vtr/query.html",
-		"/home/manish/Documents/view_the_review/view_the_review/templates/vtr/login.html",
-		"/home/manish/Documents/view_the_review/view_the_review/templates/vtr/home.html",
-		"/home/manish/Documents/view_the_review/view_the_review/templates/vtr/confirm_delete.html",
-		"/home/manish/Documents/view_the_review/view_the_review/templates/vtr/confirm.html",
-		"/home/manish/Documents/view_the_review/view_the_review/templates/vtr/base.html",
-		"/home/manish/Documents/view_the_review/view_the_review/templates/vtr/add_query.html",
-		"/home/manish/Documents/letsbegenuine/contact.html",
-		"/home/manish/Documents/view_the_review/view_the_review/administration/views.py",
-		"/home/manish/Documents/view_the_review/view_the_review/administration/urls.py",
 		"/home/manish/Documents/view_the_review/view_the_review/faculty/views.py",
-		"/home/manish/Documents/view_the_review/view_the_review/faculty/urls.py",
-		"/home/manish/Documents/view_the_review/view_the_review/faculty/models.py",
-		"/home/manish/Documents/view_the_review/view_the_review/faculty/forms.py",
+		"/home/manish/Documents/view_the_review/view_the_review/vtr/views.py",
 		"/home/manish/Documents/view_the_review/view_the_review/hostel/views.py",
-		"/home/manish/Documents/view_the_review/view_the_review/hostel/urls.py",
+		"/home/manish/Documents/view_the_review/view_the_review/probtune/views.py",
+		"/home/manish/Documents/view_the_review/view_the_review/administration/views.py",
+		"/home/manish/Documents/view_the_review/view_the_review/templates/vtr/index.html",
+		"/home/manish/Documents/view_the_review/view_the_review/templates/vtr/query.html",
+		"/home/manish/Documents/view_the_review/view_the_review/templates/vtr/confirm.html",
+		"/home/manish/Documents/view_the_review/view_the_review/templates/faculty/confirm.html",
+		"/home/manish/Documents/view_the_review/view_the_review/vtr/forms.py",
+		"/home/manish/Documents/view_the_review/view_the_review/faculty/forms.py",
+		"/home/manish/Documents/view_the_review/view_the_review/vtr/models.py",
+		"/home/manish/Documents/view_the_review/view_the_review/templates/vtr/register.html",
+		"/home/manish/Documents/view_the_review/view_the_review/faculty/models.py",
+		"/home/manish/Documents/view_the_review/view_the_review/templates/faculty/index.html",
+		"/home/manish/Documents/view_the_review/view_the_review/templates/faculty/query.html",
+		"/home/manish/Documents/view_the_review/view_the_review/templates/hostel/index.html",
+		"/home/manish/Documents/view_the_review/view_the_review/templates/hostel/query.html",
+		"/home/manish/Documents/view_the_review/view_the_review/templates/probtune/indexf.html",
+		"/home/manish/Documents/view_the_review/view_the_review/templates/probtune/indexs.html",
+		"/home/manish/Documents/view_the_review/view_the_review/templates/probtune/query.html",
+		"/home/manish/Documents/view_the_review/view_the_review/templates/comments/posted.html",
+		"/home/manish/Documents/view_the_review/view_the_review/templates/administration/base.html",
+		"/home/manish/Documents/view_the_review/view_the_review/static/css/style.css",
+		"/home/manish/Documents/view_the_review/view_the_review/templates/faculty/register.html",
+		"/home/manish/Documents/view_the_review/view_the_review/templates/search/search.html",
+		"/home/manish/Documents/view_the_review/view_the_review/templates/hostel/add_query.html",
+		"/home/manish/Documents/view_the_review/view_the_review/templates/probtune/add_query.html",
+		"/home/manish/Documents/view_the_review/view_the_review/templates/vtr/add_query.html",
+		"/home/manish/Documents/view_the_review/view_the_review/templates/hostel/base.html",
+		"/home/manish/Documents/view_the_review/view_the_review/templates/faculty/base.html",
+		"/home/manish/Documents/view_the_review/view_the_review/templates/probtune/base.html",
+		"/home/manish/Documents/view_the_review/view_the_review/templates/vtr/contact.html",
+		"/home/manish/Documents/view_the_review/view_the_review/vtr/urls.py",
+		"/home/manish/Documents/view_the_review/view_the_review/templates/vtr/base.html",
+		"/home/manish/Documents/view_the_review/view_the_review/probtune/search_indexes.py",
+		"/home/manish/Documents/view_the_review/view_the_review/templates/vtr/home.html",
+		"/home/manish/Documents/view_the_review/view_the_review/hostel/search_indexex.py",
+		"/home/manish/Documents/view_the_review/view_the_review/media/images/main2.jpg",
+		"/home/manish/Documents/view_the_review/view_the_review/templates/search/indexes/hostel/queryh_text.txt",
 		"/home/manish/Documents/view_the_review/view_the_review/hostel/models.py",
 		"/home/manish/Documents/view_the_review/view_the_review/hostel/forms.py",
-		"/home/manish/Documents/view_the_review/view_the_review/probtune/views.py",
+		"/home/manish/Documents/view_the_review/view_the_review/hostel/urls.py",
+		"/home/manish/Documents/view_the_review/view_the_review/faculty/urls.py",
 		"/home/manish/Documents/view_the_review/view_the_review/probtune/urls.py",
-		"/home/manish/Documents/view_the_review/view_the_review/probtune/search_indexes.py",
+		"/home/manish/Documents/view_the_review/view_the_review/templates/comments/list.html",
+		"/home/manish/Documents/view_the_review/view_the_review/templates/administration/query.html",
+		"/home/manish/Documents/view_the_review/view_the_review/templates/vtr/update_form.html",
+		"/home/manish/Documents/view_the_review/view_the_review/templates/administration/index.html",
+		"/home/manish/Documents/view_the_review/view_the_review/templates/administration/indexh.html",
+		"/home/manish/Documents/view_the_review/view_the_review/templates/administration/indexs.html",
+		"/home/manish/Documents/view_the_review/view_the_review/templates/comments/preview.html",
+		"/home/manish/Documents/view_the_review/view_the_review/templates/comments/form.html",
+		"/home/manish/Documents/view_the_review/view_the_review/templates/django_comment_xtd/comment.html",
+		"/home/manish/Documents/view_the_review/view_the_review/templates/vtr/login.html",
+		"/home/manish/Documents/view_the_review/view_the_review/templates/vtr/confirm_delete.html",
+		"/home/manish/Documents/letsbegenuine/contact.html",
+		"/home/manish/Documents/view_the_review/view_the_review/administration/urls.py",
 		"/home/manish/Documents/view_the_review/view_the_review/probtune/models.py",
 		"/home/manish/Documents/view_the_review/view_the_review/probtune/forms.py",
 		"/home/manish/Documents/view_the_review/view_the_review/view_the_review/wsgi.py",
 		"/home/manish/Documents/view_the_review/view_the_review/view_the_review/settings.py",
 		"/home/manish/Documents/view_the_review/view_the_review/view_the_review/urls.py",
 		"/home/manish/Documents/view_the_review/view_the_review/manage.py",
-		"/home/manish/Documents/view_the_review/view_the_review/vtr/views.py",
-		"/home/manish/Documents/view_the_review/view_the_review/vtr/urls.py",
 		"/home/manish/Documents/view_the_review/view_the_review/vtr/search_indexes.py",
-		"/home/manish/Documents/view_the_review/view_the_review/vtr/models.py",
-		"/home/manish/Documents/view_the_review/view_the_review/vtr/forms.py",
 		"/home/manish/Documents/view_the_review/view_the_review/templates/search/indexes/probtune/queryp_text.txt",
 		"/home/manish/Documents/view_the_review/view_the_review/templates/search/indexes/vtr/querys_text.txt",
 		"/home/manish/Documents/view_the_review/view_the_review/vtr/migrations/0018_auto_20160425_2220.py",
@@ -657,10 +659,8 @@
 		"/home/manish/view_the_review/view_the_review/settings.py",
 		"/home/manish/Documents/vtr/view_the_review/vtr/views.py",
 		"/home/manish/Documents/view_the_review/view_the_review/faculty/search_indexes.py",
-		"/home/manish/Documents/view_the_review/view_the_review/templates/faculty/confirm.html",
 		"/home/manish/Documents/bootstrap-3.2.0-dist/css/styles.css",
 		"/home/manish/Documents/view_the_review/view_the_review/templates/comments/comment_notification_email.txt",
-		"/home/manish/Documents/view_the_review/view_the_review/templates/vtr/contact.html",
 		"/home/manish/Documents/view_the_review/view_the_review/vtr/admin.py",
 		"/home/manish/Documents/django_ecommerce/view_the_review/view_the_review/urls.py",
 		"/home/manish/Documents/django_ecommerce/view_the_review/templates/vtr/base.html",
@@ -692,10 +692,7 @@
 		"/home/manish/Desktop/Wayapp-master/wayapp_project/templates/blog/post.html",
 		"/home/manish/Documents/letsbegenuine/README.md",
 		"/media/manish/EC584FAA584F727E/Users/Manish/Documents/letsbegenuine/index.html",
-		"/home/manish/Documents/view_the_review/view_the_review/templates/forums/topic_detail.html",
-		"/home/manish/Documents/view_the_review/view_the_review/templates/forums/topic_create.html",
-		"/home/manish/Documents/view_the_review/view_the_review/templates/forums/post_create.html",
-		"/home/manish/Documents/view_the_review/view_the_review/templates/forums/forum_detail.html"
+		"/home/manish/Documents/view_the_review/view_the_review/templates/forums/topic_detail.html"
 	],
 	"find":
 	{

@@ -45,13 +45,13 @@ class UserProfileFormS(forms.ModelForm):
     branch = forms.ChoiceField(choices=CHOICES)
     year = forms.ChoiceField(choices=CHOICES1, widget=forms.RadioSelect)
     hostler = forms.BooleanField(required=False)
-    profile_pic = forms.ImageField(required=False)
+    i_agree = forms.BooleanField(required=True, label='I accept the Privacy Statement that all my data is visible to admin and i will be guilty if i found of any misbehave.')
 
     class Meta:
         """this class define how user profile form behaves."""
 
         model = UserProfileS
-        fields = ('rollnumber', 'year', 'branch', 'hostler', 'profile_pic')
+        fields = ('rollnumber', 'year', 'branch', 'hostler', 'profile_pic', 'i_agree')
 
 
 class QueryFormS(forms.ModelForm):
@@ -65,3 +65,14 @@ class QueryFormS(forms.ModelForm):
         model = QueryS
         fields = ['title', 'content', 'show_user', 'image', 'tags']
         widgets = {'tags': TagWidget()}
+
+
+class ContactForm(forms.Form):
+    """Form for contact."""
+
+    contact_name = forms.CharField(required=True)
+    contact_email = forms.EmailField(required=True)
+    content = forms.CharField(
+        required=True,
+        widget=forms.Textarea
+    )
