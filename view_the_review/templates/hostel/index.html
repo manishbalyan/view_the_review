@@ -34,13 +34,13 @@
                 {% endif %}
             </div> 
             {% endfor %}  
-            <div id="left">
+            <div>
                 <h3 class="shead1"> TAGS </h3>
                 {% load taggit_extras %}
                 {% get_taglist as tags for 'hostel.QueryH' %}
                 <ul class="blist">
                     {% for tag in tags %}
-                    <li><span></span><a href="/hostel/tag/{{ tag }}">{{ tag }} ({{tag.num_times}})</a></li>
+                    <li><span></span><a href="/hostel/tagh/{{ tag }}">{{ tag }} ({{tag.num_times}})</a></li>
                     {% endfor %}
                 <ul>
             </div>      

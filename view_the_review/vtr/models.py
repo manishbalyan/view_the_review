@@ -27,7 +27,7 @@ class UserProfileS(models.Model):
     branch = models.CharField(max_length=30, blank=True, null=True)
     hostler = models.BooleanField(default=0)
     i_agree = models.BooleanField(default=0)
-    profile_pic = models.ImageField(upload_to=upload_to, blank=True, null=True)
+    profile_pic = models.ImageField(upload_to=upload_to, blank=True, null=True, default='images/@@@@.jpg')
     activation_key = models.CharField(max_length=40, blank=True, null=True)
     key_expires = models.DateTimeField(default=datetime.date.today(), null=True)
 

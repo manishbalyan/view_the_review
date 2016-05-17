@@ -8,17 +8,19 @@
     <div class="row">
         &nbsp;
     <!-- col-lg-3 starts -->
-        <div class="col-lg-3" id="left">
-            <h3>{{ user.username|capfirst }}</h3>
-                {% for users in userprofile %}
-                    {% if users.profile_pic %}
-                    <img class="img-responsive img-rounded" id="proimage"s src="/media/{{users.profile_pic}}">
-                    {% endif %}<br><br>
-                    Rollnumber:{{ users.rollnumber }}
-                    <br>
-                    Year:{{ users.year }}
-                    <br>
-                    Branch:{{ users.branch }}<br><br>
+        <div class="col-lg-3">
+            <div id="left">
+                <h3>{{ user.username|capfirst }}</h3>
+                    {% for users in userprofile %}
+                        {% if users.profile_pic %}
+                        <img class="img-responsive img-rounded" id="proimage"s src="/media/{{users.profile_pic}}">
+                        {% endif %}<br><br>
+                        Rollnumber:{{ users.rollnumber }}
+                        <br>
+                        Year:{{ users.year }}
+                        <br>
+                        Branch:{{ users.branch }}<br>
+            </div><br>
             <div>
                 <h3 class="shead1">Important</h3>
                 <a class="btn btn-sm btn-link tname"  href="{% url 'home' %}">ACADEMIC QUERIES</a>
@@ -32,7 +34,7 @@
                 {% endif %}
             </div><br>
                     {% endfor %}
-            <div id="left">
+            <div>
                 <h3 class="shead1"> TAGS </h3>
                 {% load taggit_extras %}
                 {% get_taglist as tags for 'hostel.QueryH' %}

@@ -17,7 +17,6 @@ from django.db.models import Count
 from django_comments.models import Comment
 
 
-
 def home(request):
     """View for home page."""
     if UserProfileS.objects.filter(user=request.user.id):

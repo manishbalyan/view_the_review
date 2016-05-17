@@ -38,7 +38,7 @@
             <div>
                 <h3 class="shead1"> TAGS </h3>
                 {% load taggit_extras %}
-                {% get_taglist as tags for 'vtr.QueryS' %}
+                {% get_taglist as tags for 'probtune.QueryP' %}
                 <ul class="blist">
                     {% for tag in tags|slice:":10" %}
                     <li><a href="/probtune/tagp/{{ tag }}">{{ tag }} ({{tag.num_times}})</a></li>
