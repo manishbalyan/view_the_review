@@ -1,4 +1,4 @@
-Django==1.8
+Django==1.11.18
 Markdown==2.6.6
 Pillow==3.3.2
 Unidecode==0.04.19
