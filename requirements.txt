@@ -1,6 +1,6 @@
 django>=1.11.19
 Markdown==2.6.6
-Pillow==3.3.2
+pillow>=6.2.0
 Unidecode==0.04.19
 Whoosh==2.7.4
 akismet==0.2.0
