@@ -8,7 +8,7 @@ argparse==1.2.1
 django-bootstrap-form==3.2
 django-contrib-comments==1.6.2
 django-crispy-forms==1.6.0
-django-debug-toolbar==1.4
+django-debug-toolbar==1.11.1
 django-fluent-comments==1.2
 django-haystack==2.4.1
 django-markdown==0.8.4
